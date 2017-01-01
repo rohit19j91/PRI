@@ -1,30 +1,1380 @@
 {
-"questions": [
-{
-"question": "What is a computer network?",
-"answers": [
-"A web of connected computers or devices",
-"A computer vulnerability",
-"An Internet service provider",
-"All of the above"
-],
-"correctIndex": 1,
-"categoryId": 1,
-"categoryname": "Basic Networking",
-"score": 1
-},
-{
-"question": "What is the scientific name of a butterfly?",
-"answers": [
-"Apis",
-"Coleoptera",
-"Formicidae",
-"Rhopalocera"
-],
-"correctIndex": 3,
-"categoryId": 1,
-"categoryname": "Cybersecurity",
-"score": 1
-}
-]
+  "questions": [
+    {
+      "question":"What’s bigger: a terabyte or a kilobyte?",
+      "answers": [
+        "Terabyte",
+        "Kilobyte",
+        "They’re equal",
+        "A terabyte is never the same size so it can be larger or smaller"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"Which of the following is generally used as a computer input device?",
+      "answers": [
+        "Standard monitor",
+        "Speaker",
+        "Laser printer",
+        "Keyboard"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"Who founded Apple Computer?",
+      "answers": [
+        "Stephen Fry",
+        "Steve Jobs",
+        "Bill Gates",
+        "Stephen Hawking"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"Which of these is NOT a brand of computers?",
+      "answers": [
+        "Lenovo",
+        "Lada",
+        "Apple",
+        "Toshiba"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"A network designed to allow communication within an organization is called:",
+      "answers": [
+        "an intranet",
+        "Internet",
+        "Yahoo",
+        "World Wide Web"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"Which of these products is NOT made by the Apple Corporation?",
+      "answers": [
+        "iMAX",
+        "iPod",
+        "iMac",
+        "iPhone"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"Which of the following is NOT an example of Operating System?",
+      "answers": [
+        "Windows 98",
+        "BSD Unix",
+        "Red Hat Linux",
+        "Microsoft Office"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"What is the control unit's function in the CPU?",
+      "answers": [
+        "To transfer data to primary storage",
+        "To store program instructions",
+        "To perform logic functions",
+        "To decode program instructions"
+      ],
+      "correctIndex": 3,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },{
+      "question":"Desktop is a computer term that refers to ?",
+      "answers": [
+        "The initial screen showing icons for folders, files, and applications",
+        "The part of your work area where the computer monitor sits",
+        "Something that can and should be ignored by most users",
+        "The list of all of the contents on a particular computer"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },{
+      "question":"In a file hierarchy, a folder inside another folder is called?",
+      "answers": [
+        "Program",
+        "Internal hard disk",
+        "Subfolder",
+        "Clipboard"
+      ],
+      "correctIndex": 3,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },{
+      "question":"After you delete a file from your hard disk, it is automatically placed in the:",
+      "answers": [
+        "Search box",
+        "USB flash drive",
+        "Clipboard",
+        "Recycle bin"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"The _____________ shows what files and applications are open",
+      "answers": [
+        "Shortcut Menu",
+        "My Documents",
+        "Taskbar",
+        "Start Menu"
+      ],
+      "correctIndex": 3,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"What are antivirus programs?",
+      "answers": [
+        "Are programs designed to destroy antivirus programs",
+        "Are programs aimed at combating and eradicating computer viruses",
+        "Are programs made to deviate your social networks",
+        "Are programs made to further enhance your computer's performance"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"How can you choose a good antivirus program?",
+      "answers": [
+        "A good antivirus could be one that protects only the hard drive of your computer",
+        "A good antivirus could be one that detects many viruses or that its security has a very powerful demon",
+        "A good antivirus could be one that detects only a few viruses",
+        "A good antivirus could be one that allows all programs to work without being disturbed"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"Select one of the following to determine the proper procedure for shutting down your computer",
+      "answers": [
+        "It's best to never turn off your computer.",
+        "Whenever you are ready to quit, simply push the lighted button on your processor",
+        "Just unplug your computer",
+        "Go to the Start menu and click Shut Down"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"The Control Panel is:",
+      "answers": [
+        "A disk on which data can be stored",
+        "Another term for a display screen",
+        "A computer network that spans a relatively small area.",
+        "A system tool that allows a user to set certain system settings and preferences"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"Who invented the Internet?",
+      "answers": [
+        "Steve Jobs",
+        "More than 1 person",
+        "Al Gore",
+        "William Shockley"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"Who created the first fully electronic computer ?",
+      "answers": [
+        "Konrad Zuse",
+        "Byron Lovelace",
+        "William Gates",
+        "Steve Jobs"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"A byte consists of ________ bits?",
+      "answers": [
+        "2",
+        "7",
+        "1",
+        "8"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"The first electronic computer was called?",
+      "answers": [
+        "Apple IIe",
+        "Univac",
+        "Electronic Numerical Integrator and Computer (ENIAC)",
+        "IBM PC"
+      ],
+      "correctIndex": 3,
+      "categoryId": 1,
+      "categoryname":"General Computing",
+      "score": 1
+    },
+    {
+      "question":"What does RAM stand for?",
+      "answers": [
+        "Robust Acronym Machine",
+        "Really Aged Mother",
+        "Rigorous Altitude Memory",
+        "Random Access Memory"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What does WWW stand for?",
+      "answers": [
+        "World Wide Web",
+        "Wireless Wires Wanted",
+        "Weird and Wacky World",
+        "What-WWW? Where?!"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What does ROM stand for?",
+      "answers": [
+        "Really Old Mother ",
+        "Restricted Onomatopoeia Machine ",
+        "Rigorous Overground Machine ",
+        "Read Only Memory"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What does USB stand for?",
+      "answers": [
+        "Underside Support B ",
+        "Unas Similated Benefactor ",
+        "Universal Serial Bus",
+        "Undersystem Size: Big"
+      ],
+      "correctIndex": 3,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"GIF abbreviation usually means ?",
+      "answers": [
+        "Graphics Interchange Format",
+        "Graphical Information File",
+        "Graphical Internet Format",
+        "Graphics Internet File"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What does TCP Stand for ?",
+      "answers": [
+        "Transfer Control Protocol",
+        "Transmission Control Procedure",
+        "Transfer Control Procedure",
+        "Transmission Control Protocol"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is the abbreviation of VPN?",
+      "answers": [
+        "virtuality private network",
+        "virtual persons network",
+        "virtual public network",
+        "virtual private network"
+      ],
+      "correctIndex": 4,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is the abbreviation of VGA?",
+      "answers": [
+        "Video Graphics Array",
+        "Video Graphical Array",
+        "Video Graphical Aligned",
+        "Video Graphics Arrays"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is the abbreviation of WLAN?",
+      "answers": [
+        "Wireless Local Area Network",
+        "Wire Less Area Network",
+        "Wire Local Area Network",
+        "Wireless Local Arena Network"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is the abbreviation of NFC?",
+      "answers": [
+        "Nearby field communication",
+        "Near field communication",
+        "Near field communicating",
+        "Near fiefdom communication"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is the full form of CPU?",
+      "answers": [
+        "Command Processing Unit",
+        "Central Processing Unit",
+        "Common Practical Unit",
+        "Centralized Processing Unit"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is the full form of DNS ?",
+      "answers": [
+        "Digital Noise Receiver",
+        "Development of Natural Solutions",
+        "Domain Name System",
+        "Domain Naming System"
+      ],
+      "correctIndex": 3,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What does HTML stand for?",
+      "answers": [
+        "Highly Technical Megabyte Lists",
+        "Hyper Text Markup Language",
+        "Holistic Telephony Media Link",
+        "Highly Traditional Markup Lingo"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What does ICANN stand for?",
+      "answers": [
+        "Internet Corporation for Assigned Names and Numbers",
+        "Internet Capacity And Numeric Nations",
+        "Industrial Corporation for Automated Networks and Numbers",
+        "Internet Capacity and Active Nationwide Numerics"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"An executed program that loads the first piece of software and starts a computer.",
+      "answers": [
+        "Byte",
+        "Boot process",
+        "File virus",
+        "System unit"
+      ],
+      "correctIndex": 2,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"Refers to the sharpness and clarity of an image.",
+      "answers": [
+        "Pixels",
+        "Resolution",
+        "File virus",
+        "Work station"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"My computer froze. I am going to do a _______________ to get it working again",
+      "answers": [
+        "Cold Boot",
+        "Warm Boot",
+        "Shutdown",
+        "Force Quit"
+      ],
+      "correctIndex": 1,
+      "categoryId": 1,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"My computer is completely shut down. I do a _____________to get it started",
+      "answers": [
+        "Warm Boot",
+        "Shutdown",
+        "Force Quit",
+        "Cold Boot"
+      ],
+      "correctIndex": 1,
+      "categoryId": 5,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"The circular disk shaped magnetic components of a hard disk drive are called?",
+      "answers": [
+        "Sectors",
+        "Read and write heads",
+        "Cylinders",
+        "Platters"
+      ],
+      "correctIndex": 4,
+      "categoryId": 5,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"a numbering system that computers use; it uses only two digits: 1 and 0",
+      "answers": [
+        "Hardware",
+        "Cursor",
+        "Byte",
+        "Binary"
+      ],
+      "correctIndex": 4,
+      "categoryId": 5,
+      "categoryname":"Computer Terminology",
+      "score": 1
+    },
+    {
+      "question":"What is Wi-Fi?",
+      "answers": [
+        "Type of computer",
+        "Type of network cable",
+        "Popular technologies and standards for wireless computer networking",
+        "Computer programs that help people make money on the Internet"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What does a router do?",
+      "answers": [
+        "Makes home computers run faster",
+        "Enables safe sharing of resources among network devices in the home",
+        "Helps people build Web sites",
+        "Boils water"
+
+      ],
+      "correctIndex": 2,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"A home computer network is sometimes also called a…",
+      "answers": [
+        "LAN",
+        "MAN",
+        "SAN",
+        "WAN"
+      ],
+      "correctIndex": 1,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"An IP address is a numeric quantity that identifies…",
+      "answers": [
+        "A network adapter to other devices on the network",
+        "The manufacturer of a computer",
+        "The physical location of a computer",
+        "None of these answers"
+      ],
+      "correctIndex": 4,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What does TCP/IP stand for?",
+      "answers": [
+        "Transmission Connection Path/International Path",
+        "Transmission Control Protocol/Internet Protocol",
+        "Transfer Catch Path/Instant Path",
+        "None of the above"
+      ],
+      "correctIndex": 2,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"a numbering system that computers use; it uses only two digits: 1 and 0",
+      "answers": [
+        "Hardware",
+        "Cursor",
+        "Byte",
+        "Binary"
+      ],
+      "correctIndex": 4,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"How to verify if two computers are on the same network, which command helps you to do that? (Assume this is a TCP/IP network)",
+      "answers": [
+        "bing",
+        "bling",
+        "ping",
+        "sing"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"The service that issues IP addresses dynamically to clients on the network is known as:",
+      "answers": [
+        "DNS",
+        "DHCP",
+        "IIS",
+        "None of the above"
+      ],
+      "correctIndex": 2,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What is a Firewall in Computer Network?",
+      "answers": [
+        "The physical boundary of Network",
+        "An operating System of Computer Network",
+        "A system designed to prevent unauthorized access",
+        "A web browsing Software"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"How many layers does OSI Reference Model has?",
+      "answers": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctIndex": 4,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"ADSL is the abbreviation of ?",
+      "answers": [
+        "Asymmetric Dual Subscriber Line",
+        "Asymmetric Digital System Line",
+        "Asymmetric Dual System Line",
+        "Asymmetric Digital Subscriber Line"
+      ],
+      "correctIndex": 4,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What is the use of Bridge in Network?",
+      "answers": [
+        "to connect LANs",
+        "to separate LANs",
+        "to control Network Speed",
+        "All of the above"
+      ],
+      "correctIndex": 1,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What is the meaning of Bandwidth in Network?",
+      "answers": [
+        "Transmission capacity of a communication channels",
+        "Connected Computers in the Network",
+        "Class of IP used in Network",
+        "None of Above"
+      ],
+      "correctIndex": 1,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"IPv6 has _______ -bit addresses.",
+      "answers": [
+        "32",
+        "64",
+        "128",
+        "256"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What is the size of MAC Address?",
+      "answers": [
+        "16-bits",
+        "32-bits",
+        "48-bits",
+        "64-bits"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What does a repeater do?",
+      "answers": [
+        "It doesn't send a signal",
+        "It starts the signal",
+        "It boosts the signal",
+        "It stops the signal"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"Each IP packet must contain",
+      "answers": [
+        "Only Source address",
+        "Only Destination address",
+        "Source and Destination address",
+        "Source or Destination address"
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"Bridge works in which layer of the OSI model?",
+      "answers": [
+        "Application layer",
+        "Transport layer",
+        "Network layer",
+        "Datalink layer"
+      ],
+      "correctIndex": 4,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What is the Demilitarized Zone?",
+      "answers": [
+        "The area between firewall & connection to an external network",
+        "The area between ISP to Military area",
+        "The area surrounded by secured servers",
+        "The area surrounded by the Military"
+      ],
+      "correctIndex": 1,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What do you mean by broadcasting in Networking?",
+      "answers": [
+        "It means addressing a packet to all machine",
+        "It means addressing a packet to some machine",
+        "It means addressing a packet to a particular machine",
+        "It means addressing a packet to except a particular machine"
+      ],
+      "correctIndex": 1,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"IPv4 has _______ -bit addresses.",
+      "answers": [
+        "4",
+        "8",
+        "16",
+        "32"
+      ],
+      "correctIndex": 4,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"What is a browser cookie?",
+      "answers": [
+        "It's a plug-in that allows you to view special types of web content.",
+        "It's a type of phishing scam",
+        "It's a small piece of data that tracks your preferences on different websites.",
+        "It's a tool that can test a website's security."
+      ],
+      "correctIndex": 3,
+      "categoryId": 2,
+      "categoryname":"Basic Networking",
+      "score": 1
+    },
+    {
+      "question":"Why are cyber vulnerabilities unlikely to ever go away?",
+      "answers": [
+        "They’re protected in a secret base on the moon.",
+        "Criminals need them to steal identities.",
+        "They are side effects of the freedom and ease of communicating online.",
+        "The government won’t allow people to fix them."
+      ],
+      "correctIndex": 3,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which of these groups exploits cyber vulnerabilities?",
+      "answers": [
+        "Criminals",
+        "Governments",
+        "Hacktivists",
+        "All of the above"
+      ],
+      "correctIndex": 3,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"You receive an email with a message that says you’ve won the lottery .This kind of cyber-attack goes by the name of…..",
+      "answers": [
+        "Phishing",
+        "Spyware",
+        "Spoofing",
+        "Adware"
+      ],
+      "correctIndex": 1,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which one of the following describes spam?",
+      "answers": [
+        "Gathering information about a person or organization without their knowledge.",
+        "Performing an unauthorized, usually malicious, action such as erasing files.",
+        "Putting unnecessary load on the network by making copies of files.",
+        "Sending unwanted bulk messages."
+      ],
+      "correctIndex": 4,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Unwanted unsolicited messages, sent by unknown sources, are known as?",
+      "answers": [
+        "Viruses",
+        "Trojans",
+        "Hoaxes",
+        "Spam"
+      ],
+      "correctIndex": 4,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which one of the following describes how a virus can enter a computer",
+      "answers": [
+        "By installing licensed software",
+        "By forwarding email attachments from an unknown source",
+        "By opening email attachments from an unknown source",
+        "By not downloading files from obscure websites."
+      ],
+      "correctIndex": 3,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"To ensure that anti-virus software is effective you must?",
+      "answers": [
+        "Install windows software updates",
+        "Update the anti-virus software regularly",
+        "Restrict computer access to known persons",
+        "Install the latest versions of software"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Internet-based attacks on your computer are prevented by which of the following?",
+      "answers": [
+        "Firewall software",
+        "Anti-spam software",
+        "Anti-virus software",
+        "Anti Malware software"
+      ],
+      "correctIndex": 1,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which one of the following describes why it is important to update antivirus software regularly?",
+      "answers": [
+        "To protect your computer from all known viruses.",
+        "To ensure the software identifies old viruses.",
+        "To protect your computer from unwanted bulk messages.",
+        "To prevent the spread of malicious programs on the Internet."
+      ],
+      "correctIndex": 1,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which one of the following describes why firewalls are used?",
+      "answers": [
+        "To prevent unauthorized access by incoming transmissions.",
+        "To prevent destruction of a computer in the event of a fire.",
+        "To enable easy downloading of data from web sites.",
+        "To detect and disable viruses already on a computer."
+      ],
+      "correctIndex": 1,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which of the following is the transforming of data into an unreadable format that seems to be not readily understandable, so as to hide it from outsiders?",
+      "answers": [
+        "Digital Certificate",
+        "Encryption",
+        "Decryption",
+        "HTTP"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What is an adware?",
+      "answers": [
+        "It is a computer software that detects and cleans spyware.",
+        "It is designed to stop viruses and eliminate viruses.",
+        "It is a software that displays advertising banners while the program is running.",
+        "It is a type of virus that specifically looks for and removes another virus."
+      ],
+      "correctIndex": 3,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What is a  ‘Trojan Horse’?",
+      "answers": [
+        "It is a computer virus that frequently attack computers.",
+        "It is a malicious software that misleads users of its true intent.",
+        "It is a malfunction of the software that makes it difficult to navigate the Internet.",
+        "It is a software that sends advertisements."
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What does the https:// at the beginning of a URL denote, as opposed to http://(without the s) ?",
+    "answers": [
+    "That the site has special high definition",
+    "That information entered into the site is encrypted",
+    "That the site is the newest version available",
+    "That the site is not accessible to certain computers"
+    ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which of the following is an example of a phishing attack?",
+      "answers": [
+        "Sending an email that contains a malicious link that is disguised to look like a familiar email",
+        "Creating a fake website that looks identical to a real website in order to trick users",
+        "Sending someone a text message that contains a malicious link that is disguised to look like a notification",
+        "All of the above"
+      ],
+      "correctIndex": 4,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"A group of computers that is networked together and used by hackers to steal information is called a … ?",
+      "answers": [
+        "Botnet",
+        "Rootkit",
+        "DDoS",
+        "Operating system"
+      ],
+      "correctIndex": 1,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which of the following four passwords is the most secure?",
+      "answers": [
+        "Boat123",
+        "WTh!5Z",
+        "into*48",
+        "123456"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What is social engineering?",
+      "answers": [
+        "A group planning for a social activity in the organization",
+        "Creating a situation wherein a third party gains confidential information from you",
+        "The organization planning an activity for welfare of the neighborhood",
+        "Uploading an engineering project to social media"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Criminals access someone’s computer and encrypt the user’s personal files and data until they pay a certain fee ?",
+      "answers": [
+        "Botnet",
+        "Ransomware",
+        "Driving",
+        "Spam"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What kind of cybersecurity risks can be minimized by using a Virtual Private Network (VPN)?",
+      "answers": [
+        "Use of insecure Wi-Fi networks",
+        "Key-logging",
+        "De-anonymization by network operators",
+        "Phishing attacks"
+      ],
+      "correctIndex": 1,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What is a virus?",
+      "answers": [
+        "A helpful program used to speed your computer up.",
+        "A piece of code used to damage or harm a computer system by copying itself many times",
+        "An addon to a web browser used to block adds.",
+        "A software that blocks internet access"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"How does enabling Two Factor Authentication increase your security?",
+      "answers": [
+        "Forces you to have a password longer than two characters",
+        "Requires something you know and something you have to log into your account",
+        "Makes you do math before sending a text to ensure you’re not intoxicated",
+        "Allows you to unlock your phone by taking two consecutive selfies"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"What term is given to hackers who attempt to do good through hacking?",
+      "answers": [
+        "Black hats",
+        "White hats",
+        "Red hats",
+        "Grey hats"
+      ],
+      "correctIndex": 2,
+      "categoryId": 3,
+      "categoryname":"Basic Cybersecurity",
+      "score": 1
+    },
+    {
+      "question":"Which of the following is the security standard for WPA2?",
+      "answers": [
+        "802.11ad",
+        "802.11i",
+        "802.11n ",
+        "802.11a"
+      ],
+      "correctIndex": 4,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"What does the Computer Misuse Act make it illegal to do?",
+      "answers": [
+        "Send threats or otherwise abuse people using a computer",
+        "Send emails to people that you do not know",
+        "Try to steal or change data on a computer without permission",
+        "Specify special conditions about how any original information you create may be used by others"
+      ],
+      "correctIndex": 3,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"What does copyright mean?",
+      "answers": [
+        "You can buy any video, as long as it has an official logo on it",
+        "You are not allowed to watch a film with anyone else present in the room",
+        "The person or organization who creates an original work has the right to protect it and exclusively make a profit by using it",
+        "Prevents anyone using your personal details for any purposes other than they have previously stated"
+      ],
+      "correctIndex": 3,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"Why is it important to have a good understanding of Information Security policies and procedures?",
+      "answers": [
+        "Helps protect individuals from being victims of security incidents.",
+        "Provides an understanding of steps to follow in the event of a security incident",
+        "Helps to understand levels of responsibility",
+        "All of the above"
+      ],
+      "correctIndex": 4,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"What is intellectual property?",
+      "answers": [
+        "The ownership and right to make money from ideas, inventions and creative work",
+        "A place of business where people invent and make things",
+        "Products and inventions made by a computer company",
+        "No one can use my products"
+      ],
+      "correctIndex": 1,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"_______ are special-interest groups that quickly test, evaluate, and standardize new technologies. This is the correct answer.",
+      "answers": [
+        "Forums",
+        "Regulatory agencies",
+        "Standards organizations",
+        "All of the above"
+      ],
+      "correctIndex": 1,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"Which of these is not covered by the Data Protection Act?",
+      "answers": [
+        "The access of data",
+        "The accuracy of data",
+        "The copyright of data",
+        "The release date of the data"
+      ],
+      "correctIndex": 3,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"When was the data protection act made?",
+      "answers": [
+        "2009",
+        "2000",
+        "1969",
+        "1998"
+      ],
+      "correctIndex": 4,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"What is the purpose of the data protection act?",
+      "answers": [
+        "To protect peoples personal information.",
+        "To help police, doctors, taxmen ect. to get information.",
+        "To help everyone find information.",
+        "To increase awareness about copyright."
+      ],
+      "correctIndex": 1,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"ISO developed a standard model of computer data communication system which is known as",
+      "answers": [
+        "OSI",
+        "ANSI",
+        "DEC",
+        "SNA"
+      ],
+      "correctIndex": 1,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"ISO stands for?",
+      "answers": [
+        "International Sand Opinions",
+        "International Standards Organization",
+        "Internal Standards Organization",
+        "International Setting Organisation"
+      ],
+      "correctIndex": 2,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"ISO 27001 is",
+      "answers": [
+        " A new type of disc image",
+        "One better than 27000",
+        "An international accepted, certifiable,  Information Security standard",
+        "A rating of a very bad movie."
+      ],
+      "correctIndex": 3,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"You should be thinking about ISO-27001 if:",
+      "answers": [
+        "You need to be able to demonstrate your information security posture to a business partner",
+        "You need to have a business partner prove their information security controls are aligned with good practices and are likely to mitigate your risks to an acceptable level",
+        "You are looking for a recipe for Information Security vetted over 15+ years by tens of thousands of companies",
+        "All of the above"
+      ],
+      "correctIndex": 4,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"What is an important advantage of ISO 27001 accreditation?",
+      "answers": [
+        "To show compliance to legislation and regulations",
+        "To show control of suppliers",
+        "To show customer orientation",
+        "To show client satisfaction"
+      ],
+      "correctIndex": 1,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"Writing a security policy is important because...",
+      "answers": [
+        "The ISO/IEC27000 series requires it as part of its set of security documentation.",
+        "The organization's Board of Directors knows the issues.",
+        "It sets out the organization's formal stance on security for staff and contractors to see.",
+        "It  ensures the security officer knows what they should be doing."
+      ],
+      "correctIndex": 3,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"CIA of assets stands for",
+      "answers": [
+        "Confidentiality, Integration and Availability",
+        "Confidentiality, Integrity and Availability",
+        "Confidentiality, Integrity and Accessibility",
+        "Continuity, Integrity and Accessibility"
+      ],
+      "correctIndex": 2,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"Information Security is a matter of building and maintaining ________",
+      "answers": [
+        "Confidentiality",
+        " Trust",
+        " Protection",
+        " Firewalls"
+      ],
+      "correctIndex": 2,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"Accessing data without permission is known as ________",
+      "answers": [
+        "Illegal Access",
+        "Unauthorized Access",
+        "Legal Access",
+        "Without permission"
+      ],
+      "correctIndex": 2,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"________  provides refers to all the legal and regulatory aspects of internet and world wide we",
+      "answers": [
+        "IT act",
+        "Cyber crime",
+        "Cyber law",
+        "Fair use"
+      ],
+      "correctIndex": 2,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"This is a document that states in writing how a company plans to protect the company's physical and IT assets.",
+      "answers": [
+        "Data Encryption Standard",
+        "Security Policy",
+        "Public Key Certificate",
+        "Access Control List"
+      ],
+      "correctIndex": 2,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    },
+    {
+      "question":"The specific fundamental right protecting you against any form of data collection, including physical collection is called…",
+      "answers": [
+        "The right to the integrity of the person.",
+        "The right to freedom of speech.",
+        "The right to the protection of personal data",
+        "The right to privacy."
+      ],
+      "correctIndex": 3,
+      "categoryId": 4,
+      "categoryname":"Security and Computer Standards",
+      "score": 1
+    }
+  ]
 }
