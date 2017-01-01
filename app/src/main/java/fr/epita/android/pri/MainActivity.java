@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId())
         {
             case R.id.nav_home:
-                display_fragment(5);
+                display_fragment(9);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_profile:
@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_game:
+                navigationView.getMenu().getItem(2).setChecked(true);
                 Intent intent = new Intent(MainActivity.this, ChooseTopic.class);
                 startActivity(intent);
                 return true;
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_notifications:
                 return true;
             case R.id.nav_mynews:
-               display_fragment(8);
+               display_fragment(6);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_signnews:
@@ -203,26 +204,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 3:
                 setTitle("Reset password");
                 customViewpagerAdapter.stack.push(3);
-                navigationView.getMenu().getItem(5).setChecked(true);
+                navigationView.getMenu().getItem(7).setChecked(true);
                 viewpagerAdapter.setCurrentItem(3, false);
                 break;
             case 4:
                 setTitle("My computers");
                 customViewpagerAdapter.stack.push(4);
-                navigationView.getMenu().getItem(2).setChecked(true);
+                navigationView.getMenu().getItem(3).setChecked(true);
                 viewpagerAdapter.setCurrentItem(4, false);
                 break;
             case 5:
-                setTitle("My tamagotchi");
-                customViewpagerAdapter.stack.push(5);
-                navigationView.getMenu().getItem(0).setChecked(true);
-                viewpagerAdapter.setCurrentItem(5, false);
+                setTitle("About us");
+                customViewpagerAdapter.stack.push(10);
+                navigationView.getMenu().getItem(8).setChecked(true);
+                viewpagerAdapter.setCurrentItem(10, false);
                 break;
             case 6:
                 setTitle("My news");
-                customViewpagerAdapter.stack.push(6);
-                navigationView.getMenu().getItem(4).setChecked(true);
-                viewpagerAdapter.setCurrentItem(6, false);
+                customViewpagerAdapter.stack.push(8);
+                navigationView.getMenu().getItem(5).setChecked(true);
+                viewpagerAdapter.setCurrentItem(8, false);
                 break;
             case 7:
                 String item_web = customViewpagerAdapter.displayPageWeb.getArguments().getString("URL");
@@ -231,16 +232,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 viewpagerAdapter.setCurrentItem(7, false);
                 break;
             case 8:
-                setTitle("My News");
-                customViewpagerAdapter.stack.push(8);
-                navigationView.getMenu().getItem(4).setChecked(true);
-                viewpagerAdapter.setCurrentItem(8, false);
-                break;
-            case 9:
                 setTitle("Sign for news");
                 customViewpagerAdapter.stack.push(9);
+                navigationView.getMenu().getItem(6).setChecked(true);
                 //navigationView.getMenu().getItem(4).setChecked(true); mettre à jour une fois intégré dans le menu
                 viewpagerAdapter.setCurrentItem(9, false);
+                break;
+            case 9:
+                setTitle("Home");
+                customViewpagerAdapter.stack.push(5);
+                navigationView.getMenu().getItem(0).setChecked(true);
+                viewpagerAdapter.setCurrentItem(5, false);
                 break;
             default:
                 break;

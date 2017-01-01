@@ -15,7 +15,7 @@ import fr.epita.android.pri.StartQuiz;
 
 public class CustomViewpagerAdapter extends FragmentPagerAdapter {
 
-    private static final int nb_pages = 10;
+    private static final int nb_pages = 11;
 
     public ChangeMail changeMail;
     ChangeMobile changeMobile;
@@ -27,6 +27,7 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
     public DisplayPageWeb displayPageWeb;
     public News news;
     public SignNews signNews;
+    public HelpPage helpPage;
     public Quizquestionsjson quizquestionsjson;
     public StartQuiz startQuiz;
     public Stack<Integer> stack;
@@ -46,6 +47,7 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
         displayPageWeb = new DisplayPageWeb();
         news = new News();
         signNews = new SignNews();
+        helpPage = new HelpPage();
         quizquestionsjson = new Quizquestionsjson();
         startQuiz = new StartQuiz();
         stack = new Stack<>();
@@ -78,6 +80,8 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
                 return news;
             case 9:
                 return signNews;
+            case 10:
+                return helpPage;
             default:
                 return null;
         }
