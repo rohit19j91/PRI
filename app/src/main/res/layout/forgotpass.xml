@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/forgotlogo"
+        android:layout_width="340px"
+        android:layout_height="400px"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100px"/>
+    <TextView
+        android:id="@+id/forgotemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgotemail"
+        android:layout_centerInParent="true"
+        android:textSize="40px"
+        android:textStyle="bold"
+        />
+    <EditText
+        android:id="@+id/forgotemailtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/forgotemailhint"
+        android:inputType="text"
+        android:maxLength="10"
+        android:textSize="40px"
+        android:layout_below="@id/forgotemail"
+        android:layout_marginLeft="160px"/>
+    <Button
+        android:id="@+id/forgotsubmitbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgotsubmitbutton"
+        android:layout_below="@id/forgotemailtext"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30px"
+        />
+
+</RelativeLayout>

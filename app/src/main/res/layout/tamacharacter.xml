@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/profile_logo"
+        android:layout_width="150px"
+        android:layout_height="160px"
+        android:src="@drawable/logo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="9px"
+        android:layout_marginRight="10px"/>
+
+    <ImageView
+        android:id="@+id/tama_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tama"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10px"/>I
+
+    <TextView
+        android:id="@+id/tama_healthcomment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tama_icon"
+        android:text="Super !! Good "
+        android:textSize="60px"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/tama_healthvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="70"
+        android:layout_below="@id/tama_healthcomment"
+        android:layout_centerHorizontal="true"
+        android:textSize="200px"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimaryDark"/>
+</RelativeLayout>

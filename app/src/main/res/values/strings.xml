@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Tamagotchi</string>
+    <string name="login">Login : </string>
+    <string name="password">Password : </string>
+    <string name="loginbutton">Login</string>
+    <string name="loginhint">Login</string>
+    <string name="passwordhint">Password</string>
+    <string name="forgotpass">Forgot Password?</string>
+    <string name="rememberme">Remember Me</string>
+    <string name="signup">Not a Member yet? Sign Up here.</string>
+    <string name="forgotemail">Please Enter your email</string>
+    <string name="forgotemailhint">Email</string>
+    <string name="forgotsubmitbutton">Submit</string>
+    <string name="signupemail">Email</string>
+    <string name="signupname">Full Name</string>
+    <string name="signupmob">Mobile No.</string>
+    <string name="signuplogin">Login id </string>
+    <string name="signuppass">Password</string>
+    <string name="signupconfpass">Confirm</string>
+    <string name="profilename">Rohit Chauhan</string>
+    <string name="minigamestitle">Fun Arena</string>
+</resources>

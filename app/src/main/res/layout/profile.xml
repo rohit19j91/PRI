@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50px"
+        android:layout_marginRight="30px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profpic"/>
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profilename"
+        android:textSize="70px"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/profile_pic"
+        android:layout_marginTop="50px"/>
+
+    <RatingBar
+    android:id="@+id/profile_rating"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:layout_below="@id/profile_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40px"/>
+
+    <ImageView
+        android:id="@+id/profile_logo"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:src="@drawable/logo"
+       android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="9px"
+        android:layout_marginRight="10px"/>
+
+
+    <TextView
+        android:id="@+id/profile_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level : 1"
+        android:textSize="60px"
+        android:textStyle="italic"
+        android:layout_below="@id/profile_logo"
+       android:layout_marginLeft="20px"
+        />
+
+    <TextView
+        android:id="@+id/profile_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score : 20"
+        android:textSize="60px"
+        android:textStyle="italic"
+        android:layout_below="@id/profile_level"
+
+        android:layout_marginLeft="20px"
+        />
+
+
+</RelativeLayout>

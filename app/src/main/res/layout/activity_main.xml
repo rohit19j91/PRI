@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.epita.android.pri.MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="340px"
+        android:layout_height="400px"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100px"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textSize="60px"
+        android:textStyle="bold"
+        android:id="@+id/login_label"
+        android:layout_marginTop="600px"
+        android:layout_marginLeft="60px"/>
+
+    <EditText
+        android:id="@+id/logintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/loginhint"
+        android:inputType="text"
+        android:maxLength="10"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="60px"
+        android:layout_alignBaseline="@+id/login_label"
+        android:layout_alignLeft="@+id/passwordtext"
+        android:layout_alignStart="@+id/passwordtext" />
+
+    <TextView
+        android:layout_width="300px"
+        android:layout_height="100px"
+        android:text="@string/password"
+        android:id="@+id/password_label"
+        android:textStyle="bold"
+        android:textSize="60px"
+        android:layout_below="@id/login_label"
+        android:layout_alignLeft="@id/login_label"
+        android:layout_marginTop="40px"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordtext"
+        android:inputType="textPassword"
+        android:hint="@string/passwordhint"
+        android:maxLength="10"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="60px"
+        android:ems="10"
+        android:layout_alignBaseline="@+id/password_label"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@id/password_label"/>
+<CheckBox
+    android:id="@+id/rememberme"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/rememberme"
+    android:textColor="@color/colorWhite"
+    android:layout_below="@id/password_label"
+    android:layout_marginLeft="110px"
+    android:textSize="40px"/>
+
+    <TextView
+        android:id="@+id/forgotpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forgotpass"
+        android:textSize="40px"
+        android:layout_alignBaseline="@+id/rememberme"
+        android:layout_alignBottom="@+id/rememberme"
+        android:layout_toRightOf="@+id/loginbutton"
+        android:layout_marginStart="20px"
+        android:layout_marginLeft="20px"
+        android:linksClickable="true"
+        android:clickable="true"/>
+
+
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loginbutton"
+        android:layout_below="@id/password_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110px"/>
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginbutton"
+        android:layout_marginLeft="180px"
+        android:layout_marginTop="60px"
+        android:clickable="true"
+        android:onClick="changefrag"
+        android:text="@string/signup"
+        android:textSize="40px" />
+</RelativeLayout>
+
