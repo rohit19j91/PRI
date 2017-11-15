@@ -71,22 +71,22 @@
     android:text="@string/rememberme"
     android:textColor="@color/colorWhite"
     android:layout_below="@id/password_label"
-    android:layout_marginLeft="110px"
+    android:layout_alignBaseline="@id/forgotpass"
+    android:layout_marginLeft="50px"
     android:textSize="40px"/>
 
     <TextView
         android:id="@+id/forgotpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/forgotpass"
-        android:textSize="40px"
-        android:layout_alignBaseline="@+id/rememberme"
-        android:layout_alignBottom="@+id/rememberme"
+        android:layout_below="@+id/passwordtext"
+        android:layout_marginTop="70px"
+        android:layout_toEndOf="@+id/loginbutton"
         android:layout_toRightOf="@+id/loginbutton"
-        android:layout_marginStart="20px"
-        android:layout_marginLeft="20px"
+        android:clickable="true"
         android:linksClickable="true"
-        android:clickable="true"/>
+        android:text="@string/forgotpass"
+        android:textSize="40px" />
 
 
     <Button
@@ -96,18 +96,35 @@
         android:text="@string/loginbutton"
         android:layout_below="@id/password_label"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="110px"/>
+        android:layout_marginTop="190px"/>
 
     <TextView
         android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginbutton"
-        android:layout_marginLeft="180px"
-        android:layout_marginTop="60px"
+        android:layout_marginLeft="240px"
+        android:layout_marginTop="80px"
         android:clickable="true"
-        android:onClick="changefrag"
         android:text="@string/signup"
+        android:textSize="40px" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebook_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:id="@+id/login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/facebook_login"
+        android:layout_marginLeft="240px"
+        android:layout_marginTop="80px"
+        android:clickable="true"
         android:textSize="40px" />
 </RelativeLayout>
 
