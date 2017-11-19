@@ -121,10 +121,18 @@
         android:id="@+id/login_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/facebook_login"
+        android:layout_below="@id/google_login"
         android:layout_marginLeft="240px"
         android:layout_marginTop="80px"
         android:clickable="true"
         android:textSize="40px" />
-</RelativeLayout>
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_login"
+        android:layout_width="560px"
+        android:layout_height="100px"
+        android:layout_below="@id/facebook_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50px"/>
+
+</RelativeLayout>

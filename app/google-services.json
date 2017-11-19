@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "720776429161",
+    "project_id": "pri-2018"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720776429161:android:55ebfcbb8dbc6efc",
+        "android_client_info": {
+          "package_name": "fr.epita.android.pri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720776429161-km31u8hel2ms176ha03sn6ier5m2ce5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.epita.android.pri",
+            "certificate_hash": "f5d58e035d0b48466b81eac47119b0b22c62fb67"
+          }
+        },
+        {
+          "client_id": "720776429161-meer9fj7b6f2595qsacvh0sk5dh4lm6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdFd7XtHHxstMUNXZ5X6wCtir9xSOrqws"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

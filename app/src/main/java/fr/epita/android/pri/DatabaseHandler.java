@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
@@ -43,6 +44,7 @@ public DatabaseHandler(Context context)
        // db=openOrCreateDatabase("StudentDB", null);
        db.execSQL(TABLE_CREATE);
        this.db=db;
+        Log.d("Database Operation","Database is created successfully");
     }
 
     public void insertdata(Relation r)
@@ -63,6 +65,7 @@ public DatabaseHandler(Context context)
         val.put(COLUMN_CONFPASS,r.getConfpass());
 
     db.insert(TABLE_NAME,null,val);
+        Log.d("Database Operation","Values inserted successfully");
     cursor.close();
     db.close();
     }
@@ -92,8 +95,10 @@ return b;
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-String query= "DROP TABLE IF EXISTS"+ TABLE_NAME;
+String query= "DROP TABLE IF EXISTS "+ TABLE_NAME;
 db.execSQL(query);
 this.onCreate(db);
     }
+
+
 }
