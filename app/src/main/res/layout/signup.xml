@@ -36,7 +36,7 @@
         android:ems="10"
         android:hint="@string/signupemail"
         android:inputType="text"
-        android:maxLength="10"
+        android:maxLength="20"
         android:textSize="50px" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:ems="10"
         android:hint="@string/signupname"
         android:inputType="text"
-        android:maxLength="10"
+        android:maxLength="20"
         android:textSize="50px" />
 
     <TextView
@@ -86,7 +86,7 @@
         android:ems="10"
         android:hint="@string/signupmob"
         android:inputType="text"
-        android:maxLength="10"
+        android:maxLength="20"
         android:textSize="50px" />
     <TextView
         android:id="@+id/signuplogin"
@@ -111,7 +111,7 @@
         android:ems="10"
         android:hint="@string/signuplogin"
         android:inputType="text"
-        android:maxLength="10"
+        android:maxLength="20"
         android:textSize="50px" />
     <TextView
         android:id="@+id/signuppassword"

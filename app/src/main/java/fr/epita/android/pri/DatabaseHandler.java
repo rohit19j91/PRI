@@ -16,8 +16,8 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION=1;
-    private static final String DATABASE_NAME="users.db";
-    private static final String TABLE_NAME="users";
+    private static final String DATABASE_NAME="pri-v1.db";
+    private static final String TABLE_NAME="customer";
     private static final String COLUMN_ID="id";
     private static final String COLUMN_NAME="name";
     private static final String COLUMN_EMAIL="email";
@@ -26,24 +26,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_PASS="pass";
     private static final String COLUMN_CONFPASS="confpass";
 
-    SQLiteDatabase db;
+    private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key autoincrement," +
+            " name text, email text not null, login text not null," +
+            " pass password, confpass password,"+
+            " mobile integer not null);";
 
-    private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key " +
-            "not null, name text not null, email text not null, login text not null," +
-            " pass password not null, confpass password not null,"+
-            " mobile numeric not null);";
+    SQLiteDatabase db;
 
 public DatabaseHandler(Context context)
 {
     super(context,DATABASE_NAME,null,DATABASE_VERSION);
-
+//    SQLiteDatabase db=this.getWritableDatabase();
+    Log.d("Database Handler Cons","Get Writable DB");
 }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       // db=openOrCreateDatabase("StudentDB", null);
+    Log.d("Create DB","Pahunch gaya yahan");
        db.execSQL(TABLE_CREATE);
-       this.db=db;
         Log.d("Database Operation","Database is created successfully");
     }
 
@@ -73,7 +73,7 @@ public DatabaseHandler(Context context)
     public String searchPass(String loginuser)
     {
         db= this.getReadableDatabase();
-        String query= "select login,pass from "+TABLE_NAME;
+        String query= "select login, pass from "+TABLE_NAME;
         Cursor cursor=db.rawQuery(query,null);
         String a,b;
         b="Not Found";
@@ -93,11 +93,22 @@ return b;
 
     }
 
-    @Override
+
+    public Cursor getAllData()
+    {
+        Log.d("Its in the ALl data","ALl data me aa gaya");
+SQLiteDatabase db=this.getWritableDatabase();
+Cursor res=db.rawQuery("select * from "+TABLE_NAME,null);
+return res;
+    }
+
+
+
+  @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-String query= "DROP TABLE IF EXISTS "+ TABLE_NAME;
-db.execSQL(query);
-this.onCreate(db);
+    String query= "DROP TABLE IF EXISTS "+ TABLE_NAME;
+    db.execSQL(query);
+    onCreate(db);
     }
 
 

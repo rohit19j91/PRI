@@ -1,10 +1,13 @@
 package fr.epita.android.pri;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,10 +38,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+//View.OnClickListener,
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
-
-    Button loginbut;
+    Button loginbut,viewall;
     EditText login, password;
     TextView forgot, signup, loginstat;
     LoginButton fbloginbut;
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
 
-    DatabaseHandler dh = new DatabaseHandler(this);
+    DatabaseHandler dh ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,17 +61,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginbut = (Button) findViewById(R.id.loginbutton);
         login = (EditText) findViewById(R.id.logintext);
         password = (EditText) findViewById(R.id.passwordtext);
+        viewall = (Button) findViewById(R.id.showall);
         forgot = (TextView) findViewById(R.id.forgotpass);
         signup = (TextView) findViewById(R.id.signup);
         fbloginbut = (LoginButton) findViewById(R.id.facebook_login);
         loginstat = (TextView) findViewById(R.id.login_status);
+
+        dh= new DatabaseHandler(this);
+
+        //Google Plus Sign In
         googlesignbut = (SignInButton) findViewById(R.id.google_login);
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions).build();
 
+        // Facebook Login
         callbackManager = CallbackManager.Factory.create();
-        fbloginbut.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
+        fbloginbut.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
 
@@ -96,18 +105,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(), SignIn.class);
 
                 String loginuser = login.getText().toString();
+                System.out.println(loginuser);
                 String passuser = password.getText().toString();
+                System.out.println(passuser);
                 String passdb = dh.searchPass(loginuser);
+                System.out.println(passdb);
 
                 if (passuser.equals(passdb)) {
-                    if (loginuser.equalsIgnoreCase("admin") && passuser.equalsIgnoreCase("pass")) {
-                        Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
-                } else {
+                 else {
                     Toast.makeText(getApplicationContext(), "Username or password is incorrect !", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -138,10 +150,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switch (v.getId()) {
                     case R.id.google_login:
                         signIn();
-                        break;}
+                        break;
+                }
             }
         });
     }
+
+        public void viewevery()
+        {
+            viewall.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Cursor res=dh.getAllData();
+                    if(res.getCount()==0)
+                    {
+                        showmessage("Error","Nothing there in the database");
+                        return;
+                    }
+                    StringBuffer buffer=new StringBuffer();
+                    while(res.moveToNext())
+                    {
+                        buffer.append("Id: "+res.getString(0)+"\n");
+                        buffer.append("Name: "+res.getString(1)+"\n");
+                        buffer.append("Email: "+res.getString(2)+"\n");
+                        buffer.append("Login: "+res.getString(3)+"\n");
+                    }
+                    showmessage("Data",buffer.toString());
+                }
+            });
+        }
+
+
+
+
+
+
+    public void showmessage(String message,String title)
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -190,8 +242,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isLogin==true)
         {
             googlesignbut.setVisibility(View.GONE);
-            Intent it=new Intent(getApplicationContext(),Profile.class);
-            startActivity(it);
+           /* Intent it=new Intent(getApplicationContext(),Profile.class);
+            startActivity(it);*/
         }
         else
         {
@@ -199,13 +251,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
+    //Not required Check (View.onClickable Interface)
+    /*@Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.google_login:
                 signIn();
                 break;}
-    }
+    }*/
 }
 
 

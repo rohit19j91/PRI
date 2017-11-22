@@ -60,9 +60,9 @@ public class SignupActivity extends Activity {
                         rl.setConfpass(confpassstr);
 
                         dh.insertdata(rl);
+}
 
-
-                    } else {
+                     else {
                         Toast passmsg = Toast.makeText(SignupActivity.this, "Passwords dont match", Toast.LENGTH_LONG);
                         passmsg.show();
                     }
