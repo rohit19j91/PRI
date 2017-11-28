@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/forgotlogo"
+        android:layout_width="340px"
+        android:layout_height="match_parent"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/forgotemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/forgotlogo"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/forgotemail"
+        android:textSize="50px"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/forgotemailtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/forgotemail"
+        app:layout_constraintLeft_toRightOf="@id/forgotlogo"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/forgotemailhint"
+        android:inputType="textEmailAddress"
+        android:textSize="40px"/>
+    <Button
+        android:id="@+id/forgotsubmitbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/forgotemailtext"
+        app:layout_constraintLeft_toRightOf="@id/forgotlogo"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/forgotsubmitbutton"
+        style="@style/ButtonStyle.Borderless.ColoredText"/>
+
+</android.support.constraint.ConstraintLayout>
