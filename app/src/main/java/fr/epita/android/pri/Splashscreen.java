@@ -1,15 +1,14 @@
 package fr.epita.android.pri;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Rohit on 10/23/2017.
  */
 
-public class Splashscreen extends AppCompatActivity{
+public class Splashscreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

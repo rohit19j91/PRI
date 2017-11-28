@@ -35,5 +35,5 @@
         android:text="Submit"
         android:layout_below="@id/minigames_games"
         android:layout_centerHorizontal="true"
-                />
+        style="@style/ButtonStyle.Borderless.ColoredText"/>
 </RelativeLayout>
