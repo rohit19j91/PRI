@@ -6,6 +6,11 @@
     <string name="loginhint">Login</string>
     <string name="passwordhint">Password</string>
     <string name="forgotpass">Forgot Password?</string>
+    <string name="oldpass">Old password</string>
+    <string name="newpass">New password</string>
+    <string name="confirmpass">Confirm password</string>
+    <string name="newmail">New e-mail</string>
+    <string name="newmobile">New mobile number</string>
     <string name="rememberme">Remember Me</string>
     <string name="signup">Not a Member yet? Sign Up here.</string>
     <string name="forgotemail">Please Enter your email</string>
