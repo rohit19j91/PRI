@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-
 /**
  * Created by Rohit on 11/3/2017.
  */
@@ -24,12 +22,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_LOGIN="login";
     private static final String COLUMN_MOBILE="mobile";
     private static final String COLUMN_PASS="pass";
-    private static final String COLUMN_CONFPASS="confpass";
 
     private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key autoincrement," +
             " name text, email text not null, login text not null," +
-            " pass password, confpass password,"+
-            " mobile integer not null);";
+            " pass text not null,"+
+            " mobile text not null);";
 
     SQLiteDatabase db;
 
@@ -51,58 +48,157 @@ public DatabaseHandler(Context context)
     {
         db= this.getWritableDatabase();
         String qry="select * from "+TABLE_NAME;
-        Cursor cursor=db.rawQuery(qry,null);
-        int count=cursor.getCount();
+        //Cursor cursor=db.rawQuery(qry,null);
+        //int count=cursor.getCount();
 
 
-        ContentValues val=new ContentValues();
-        val.put(COLUMN_ID,count);
+        ContentValues val = new ContentValues();
+        //val.put(COLUMN_ID,count);
         val.put(COLUMN_NAME,r.getName());
         val.put(COLUMN_EMAIL,r.getEmail());
         val.put(COLUMN_LOGIN,r.getLogin());
         val.put(COLUMN_MOBILE,r.getMob());
         val.put(COLUMN_PASS,r.getPass());
-        val.put(COLUMN_CONFPASS,r.getConfpass());
+        System.out.println("PASSWORD: " + r.getPass());
 
     db.insert(TABLE_NAME,null,val);
         Log.d("Database Operation","Values inserted successfully");
-    cursor.close();
+    //cursor.close();
     db.close();
     }
 
+    /*
+     * Return new relation associated to the user
+     */
+
+    public Relation getRelation(String login)
+    {
+        db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE login = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{login});
+        if (cursor.moveToFirst())
+        {
+            Relation rl = new Relation();
+            rl.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+            rl.setName(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+            rl.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
+            rl.setLogin(cursor.getString(cursor.getColumnIndex(COLUMN_LOGIN)));
+            rl.setMob(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
+            cursor.close();
+            db.close();
+            return rl;
+        }
+        else
+        {
+            cursor.close();
+            db.close();
+            return null;
+        }
+    }
+
+    /*
+     * Return the password associated to the login loginuser
+     */
     public String searchPass(String loginuser)
     {
-        db= this.getReadableDatabase();
-        String query= "select login, pass from "+TABLE_NAME;
-        Cursor cursor=db.rawQuery(query,null);
-        String a,b;
-        b="Not Found";
-        if(cursor.moveToFirst()) {
-            do {
-            a= cursor.getString(0);
-            if(a.equals(loginuser))
-            {
-                b=cursor.getString(1);
-                break;
-            }
-            }
-            while (cursor.moveToNext());
+        db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_PASS + " FROM " + TABLE_NAME + " WHERE " + COLUMN_LOGIN + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{loginuser});
+        if(cursor.moveToFirst())
+        {
+                query = cursor.getString(cursor.getColumnIndex(COLUMN_PASS));
+                cursor.close();
+                db.close();
+                return query;
         }
+        cursor.close();
         db.close();
-return b;
+        return null;
+    }
 
+    /*
+      * Return the login associated to the address mail
+     */
+    public String searchLoginByMail(String mail_addr)
+    {
+        db = this.getReadableDatabase();
+        String find_login = "SELECT " + COLUMN_LOGIN + " FROM " + TABLE_NAME + " WHERE email = ?";
+        Cursor cursor  = db.rawQuery(find_login, new String[]{mail_addr});
+        if (cursor.moveToFirst()) {
+            find_login = cursor.getString(cursor.getColumnIndex(COLUMN_LOGIN));
+            cursor.close();
+            db.close();
+            return find_login;
+        }
+        cursor.close();
+        db.close();
+        return null;
+    }
+
+     /*
+      * Return the mobile associated to the address mail
+     */
+    public String searchMobileByMail(String mail_addr)
+    {
+        db = this.getReadableDatabase();
+        String find_mobile = "SELECT " + COLUMN_MOBILE + " FROM " + TABLE_NAME + " WHERE email = ?";
+        Cursor cursor = db.rawQuery(find_mobile, new String[]{mail_addr});
+        if (cursor.moveToFirst())
+        {
+                find_mobile = cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE));
+                cursor.close();
+                db.close();
+                return find_mobile;
+        }
+        cursor.close();
+        db.close();
+        return null;
+    }
+
+    /*
+     * Change the password associated to the login
+    */
+    public void changePass(String pass, String login)
+    {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PASS, PasswordFunctions.hashPass(pass, login));
+        db.update(TABLE_NAME, values, COLUMN_LOGIN + " = ?", new String[]{login});
+        db.close();
+    }
+
+    /*
+     * Change the mail associated to the login
+     */
+    public void changeMail(String mail, String login)
+    {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_EMAIL, mail);
+        db.update(TABLE_NAME, values, COLUMN_LOGIN + " = ?", new String[]{login});
+        db.close();
+    }
+
+    /*
+     * Change the mobile number associated to the mail
+     */
+    public void changeMobile(String mobile, String login)
+    {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_MOBILE, mobile);
+        db.update(TABLE_NAME, values, COLUMN_LOGIN + " = ?", new String[]{login});
+        db.close();
     }
 
 
     public Cursor getAllData()
     {
         Log.d("Its in the ALl data","ALl data me aa gaya");
-SQLiteDatabase db=this.getWritableDatabase();
-Cursor res=db.rawQuery("select * from "+TABLE_NAME,null);
-return res;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
+        return res;
     }
-
-
 
   @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
