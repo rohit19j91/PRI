@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme.Teal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <TextView
+        android:id="@+id/resetpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="Reset password"
+        android:textSize="60px"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/newpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/guide"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:ems="10"
+        android:hint="@string/newpass"
+        android:inputType="textPassword"
+        android:textSize="40px"
+        android:layout_marginLeft="160px"/>
+    <EditText
+        android:id="@+id/confirmpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/newpass"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:ems="10"
+        android:hint="@string/confirmpass"
+        android:inputType="textPassword"
+        android:textSize="40px"
+        android:layout_marginLeft="160px"
+        android:layout_marginTop="30dp"/>
+    <Button
+        android:id="@+id/submitreset"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/confirmpass"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/forgotsubmitbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        style="@style/ButtonStyle.Borderless.ColoredText"/>
+</android.support.constraint.ConstraintLayout>
