@@ -1,23 +1,12 @@
 package fr.epita.android.pri;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.Instrumentation;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.PersistableBundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,9 +16,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.login.Login;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.DeviceLoginButton;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -106,17 +93,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                Intent intent = new Intent(getApplicationContext(), Profile.class);
 
                 String loginuser = login.getText().toString();
-                System.out.println(loginuser);
-                String passuser = password.getText().toString();
-                System.out.println(passuser);
+                System.out.println("LOGIN: " + loginuser);
+                String passuser = PasswordFunctions.hashPass(password.getText().toString(), loginuser);
+                System.out.println("PASSUSER: " + passuser);
                 String passdb = dh.searchPass(loginuser);
-                System.out.println(passdb);
+                System.out.println("PASSDB: " + passdb);
 
                 if (passuser.equals(passdb)) {
-                     Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
+                        Relation rl = dh.getRelation(loginuser);
+                        intent.putExtra("RELATION", rl);
                         startActivity(intent);
                     }
                  else {

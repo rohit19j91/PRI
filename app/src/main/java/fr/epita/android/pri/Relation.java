@@ -1,13 +1,16 @@
 package fr.epita.android.pri;
 
+import java.io.Serializable;
+
 /**
  * Created by Rohit on 11/3/2017.
  */
 
-public class Relation {
+public class Relation implements Serializable{
 
-    int id,mob;
-    String email,name,login,pass,confpass;
+    int id;
+    String mob, email,name,login,pass;
+    private boolean isLogged = false;
 
     public void setId(int id)
     {
@@ -19,11 +22,11 @@ public class Relation {
         return id;
     }
 
-    public void setMob(int mob) {
+    public void setMob(String mob) {
         this.mob = mob;
     }
 
-    public int getMob() {
+    public String getMob() {
         return mob;
     }
 
@@ -51,14 +54,6 @@ public class Relation {
         return login;
     }
 
-    public void setConfpass(String confpass) {
-        this.confpass = confpass;
-    }
-
-    public String getConfpass() {
-        return confpass;
-    }
-
     public void setPass(String pass) {
         this.pass = pass;
     }
@@ -66,4 +61,8 @@ public class Relation {
     public String getPass() {
         return pass;
     }
+
+    public void setLogged(boolean isLogged) { this.isLogged = isLogged; }
+
+    public boolean getLogged() { return this.isLogged; }
 }
