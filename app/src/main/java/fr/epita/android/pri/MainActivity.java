@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         fbloginbut = (LoginButton) findViewById(R.id.facebook_login);
         loginstat = (TextView) findViewById(R.id.login_status);
 
-        dh= new DatabaseHandler(this);
+        dh = new DatabaseHandler(this);
 
         //Google Plus Sign In
         googlesignbut = (SignInButton) findViewById(R.id.google_login);
@@ -103,12 +103,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 System.out.println("PASSDB: " + passdb);
 
                 if (passuser.equals(passdb)) {
-                        Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
-                        Relation rl = dh.getRelation(loginuser);
-                        intent.putExtra("RELATION", rl);
-                        startActivity(intent);
-                    }
-                 else {
+                    Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
+                    Relation rl = dh.getRelation(loginuser);
+                    intent.putExtra("RELATION", rl);
+                    startActivity(intent);
+                } else {
                     Toast.makeText(getApplicationContext(), "Username or password is incorrect !", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -143,32 +142,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 }
             }
         });
+
+
+        viewall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                startActivity(intent);
+            }
+
+
+        });
+
     }
-
-        public void viewevery()
-        {
-            viewall.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Cursor res=dh.getAllData();
-                    if(res.getCount()==0)
-                    {
-                        showmessage("Error","Nothing there in the database");
-                        return;
-                    }
-                    StringBuffer buffer=new StringBuffer();
-                    while(res.moveToNext())
-                    {
-                        buffer.append("Id: "+res.getString(0)+"\n");
-                        buffer.append("Name: "+res.getString(1)+"\n");
-                        buffer.append("Email: "+res.getString(2)+"\n");
-                        buffer.append("Login: "+res.getString(3)+"\n");
-                    }
-                    showmessage("Data",buffer.toString());
-                }
-            });
-        }
-
 
 
 

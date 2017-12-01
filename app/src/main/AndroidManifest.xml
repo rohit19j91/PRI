@@ -30,6 +30,7 @@
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangePassword"></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMail" ></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMobile"></activity>
+        <activity android:theme="@style/AppTheme.Teal" android:name=".Quiz"></activity>
 
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>

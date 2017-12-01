@@ -1,3 +1,4 @@
+
 package fr.epita.android.pri;
 
 import android.app.Activity;
@@ -9,9 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 /**
  * Created by Rohit on 11/1/2017.
  */
+
 
 public class ForgotPassword extends Activity implements View.OnClickListener{
 
@@ -30,9 +33,11 @@ public class ForgotPassword extends Activity implements View.OnClickListener{
         StrictMode.setThreadPolicy(policy);
     }
 
-    /*
+
+/*
      * Function for send the code to the user by mail
      */
+
     public static int sent_email_code(String mail_address)
     {
         String login = dh.searchLoginByMail(mail_address);
@@ -42,7 +47,7 @@ public class ForgotPassword extends Activity implements View.OnClickListener{
         try {
             GmailSender sender = new GmailSender("oracle.separation@gmail.com", "personne93290");
             sender.sendMail("Confirmation code", "Hello " + login + ", \nYour code is " + code + "\n",
-                    "oracle.separation@gmail.com", mail_address);
+                     "oracle.separation@gmail.com", mail_address);
             return code;
         } catch (Exception e)
         {
@@ -51,9 +56,11 @@ public class ForgotPassword extends Activity implements View.OnClickListener{
         return code;
     }
 
-    /*
+
+/*
      * Function for send the code to the user by sms
      */
+
     public static int sent_sms_code(String mail_address)
     {
         String login = dh.searchLoginByMail(mail_address);
@@ -99,4 +106,5 @@ public class ForgotPassword extends Activity implements View.OnClickListener{
         }
     }
 }
+
 
