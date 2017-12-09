@@ -1,253 +1,197 @@
 package fr.epita.android.pri;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
+import fr.epita.android.pri.Fragments.CustomViewpagerAdapter;
+
 //View.OnClickListener,
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    Button loginbut,viewall;
-    EditText login, password;
-    TextView forgot, signup, loginstat;
-    LoginButton fbloginbut;
-    SignInButton googlesignbut;
-    CallbackManager callbackManager;
+    protected NavigationView navigationView;
+    private DrawerLayout drawer;
+    private View navHeader;
+    private ImageView imageHeader;
+    public TextView txtLogin;
 
-    private GoogleApiClient googleApiClient;
-    private static final int REQ_CODE = 9001;
+    private Toolbar toolbar;
 
-    DatabaseHandler dh ;
+
+    ViewPager viewpagerAdapter;
+    public CustomViewpagerAdapter customViewpagerAdapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_main);
-        loginbut = (Button) findViewById(R.id.loginbutton);
-        login = (EditText) findViewById(R.id.logintext);
-        password = (EditText) findViewById(R.id.passwordtext);
-        viewall = (Button) findViewById(R.id.showall);
-        forgot = (TextView) findViewById(R.id.forgotpass);
-        signup = (TextView) findViewById(R.id.signup);
-        fbloginbut = (LoginButton) findViewById(R.id.facebook_login);
-        loginstat = (TextView) findViewById(R.id.login_status);
 
-        dh= new DatabaseHandler(this);
+            toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        //Google Plus Sign In
-        googlesignbut = (SignInButton) findViewById(R.id.google_login);
-        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions).build();
+            drawer = (DrawerLayout) findViewById(R.id.mydrawer);
 
-        // Facebook Login
-        callbackManager = CallbackManager.Factory.create();
-
-        fbloginbut.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-                Toast.makeText(getApplicationContext(),
-                        "Login Successful !", Toast.LENGTH_LONG).show();
-                loginstat.setText("Login Successful ! \n" +
-                        loginResult.getAccessToken().getUserId());
-
-
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(getApplicationContext(),
-                        "Login Failed !", Toast.LENGTH_LONG).show();
-                loginstat.setText("Login Failed !");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-            }
-        });
-
-        loginbut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), Profile.class);
-
-                String loginuser = login.getText().toString();
-                System.out.println("LOGIN: " + loginuser);
-                String passuser = PasswordFunctions.hashPass(password.getText().toString(), loginuser);
-                System.out.println("PASSUSER: " + passuser);
-                String passdb = dh.searchPass(loginuser);
-                System.out.println("PASSDB: " + passdb);
-
-                if (passuser.equals(passdb)) {
-                        Toast.makeText(getApplicationContext(), "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
-                        Relation rl = dh.getRelation(loginuser);
-                        intent.putExtra("RELATION", rl);
-                        startActivity(intent);
-                    }
-                 else {
-                    Toast.makeText(getApplicationContext(), "Username or password is incorrect !", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        forgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ForgotPassword.class);
-                Toast.makeText(getApplicationContext(),
-                        "Forgot Password ? Really !!", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                Toast.makeText(getApplicationContext(),
-                        "Thats a super Idea !!", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-            }
-        });
-
-        googlesignbut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.google_login:
-                        signIn();
-                        break;
-                }
-            }
-        });
-    }
-
-        public void viewevery()
-        {
-            viewall.setOnClickListener(new View.OnClickListener() {
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
                 @Override
-                public void onClick(View v) {
-                    Cursor res=dh.getAllData();
-                    if(res.getCount()==0)
-                    {
-                        showmessage("Error","Nothing there in the database");
-                        return;
-                    }
-                    StringBuffer buffer=new StringBuffer();
-                    while(res.moveToNext())
-                    {
-                        buffer.append("Id: "+res.getString(0)+"\n");
-                        buffer.append("Name: "+res.getString(1)+"\n");
-                        buffer.append("Email: "+res.getString(2)+"\n");
-                        buffer.append("Login: "+res.getString(3)+"\n");
-                    }
-                    showmessage("Data",buffer.toString());
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
                 }
-            });
-        }
 
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    super.onDrawerClosed(drawerView);
+                }
+            };
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
 
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
+            navHeader = navigationView.getHeaderView(0);
 
+            imageHeader = (ImageView) navHeader.findViewById(R.id.img_header);
 
+            imageHeader.setImageResource(R.drawable.logo);
+            txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
 
-    public void showmessage(String message,String title)
-    {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        viewpagerAdapter = (ViewPager) findViewById(R.id.main_viewpager);
+        viewpagerAdapter.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+        customViewpagerAdapter = new CustomViewpagerAdapter(fragmentManager);
+        viewpagerAdapter.setAdapter(customViewpagerAdapter);
 
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        //super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQ_CODE){
-    GoogleSignInResult result=Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-    resulthandler(result);
-}
-
-    }
-
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    private void signIn() {
-        Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-        startActivityForResult(intent, REQ_CODE);
-          }
-
-    private void signOut() {
-    }
-
-    private void resulthandler(GoogleSignInResult result) {
-        if(result.isSuccess())
-        {
-           // Intent it=new Intent(getApplicationContext(),Profile.class);
-            GoogleSignInAccount account=result.getSignInAccount();
-            String name=account.getDisplayName();
-            String email=account.getEmail();
-            updateUI(true);
-        //    startActivity(it);
-            loginstat.setText(name+" "+email);
-
-        }
-        else {
-            updateUI(false);
-        }
-    }
-
-    private void updateUI(boolean isLogin) {
-
-        if (isLogin==true)
-        {
-            googlesignbut.setVisibility(View.GONE);
-           /* Intent it=new Intent(getApplicationContext(),Profile.class);
-            startActivity(it);*/
+        Intent intent = getIntent();
+        if (intent != null) {
+            int fragment = intent.getExtras().getInt("FRAGMENT");
+            display_fragment(fragment);
         }
         else
-        {
-            googlesignbut.setVisibility(View.VISIBLE);
+            setTitle("CyBit");
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
-    //Not required Check (View.onClickable Interface)
-    /*@Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.google_login:
-                signIn();
-                break;}
-    }*/
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        if (item.isChecked())
+        {
+            drawer.closeDrawer(GravityCompat.START);
+            return false;
+        }
+
+        switch (item.getItemId())
+        {
+            case R.id.nav_home:
+                display_fragment(9);
+                //viewpagerAdapter.setCurrentItem(9);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_profile:
+                display_fragment(2);
+                //viewpagerAdapter.setCurrentItem(2);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_computers:
+                display_fragment(8);
+                //viewpagerAdapter.setCurrentItem(8);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_notifications:
+                return true;
+            case R.id.nav_resetpass:
+                Bundle bundle = new Bundle();
+                bundle.putString("LOGIN", LoginActivity.rl.getLogin());
+                display_fragment(5);
+                //viewpagerAdapter.setCurrentItem(5);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_about_us:
+                display_fragment(9);
+                //viewpagerAdapter.setCurrentItem(9);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_logout:
+               Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+               startActivity(intent);
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public void display_fragment(int item) {
+        switch (item)
+        {
+            case 0:
+                setTitle("Password forgot");
+                viewpagerAdapter.setCurrentItem(0, false);
+                break;
+            case 1:
+                setTitle("Signup");
+                viewpagerAdapter.setCurrentItem(1, false);
+                break;
+            case 2:
+                setTitle("Profile");
+                viewpagerAdapter.setCurrentItem(2, false);
+                break;
+            case 3:
+                setTitle("Reset mail");
+                viewpagerAdapter.setCurrentItem(3, false);
+                break;
+            case 4:
+                setTitle("Reset mobile");
+                viewpagerAdapter.setCurrentItem(4, false);
+                break;
+            case 5:
+                setTitle("Reset password");
+                viewpagerAdapter.setCurrentItem(5, false);
+                break;
+            case 6:
+                setTitle("Reset password");
+                viewpagerAdapter.setCurrentItem(6, false);
+                break;
+            case 7:
+                setTitle("Confirmation code");
+                viewpagerAdapter.setCurrentItem(7, false);
+                break;
+            case 8:
+                setTitle("My computers");
+                viewpagerAdapter.setCurrentItem(8, false);
+                break;
+            case 9:
+                setTitle("My tamagotchi");
+                viewpagerAdapter.setCurrentItem(9, false);
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 

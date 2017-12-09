@@ -1,12 +1,14 @@
-package fr.epita.android.pri;
+package fr.epita.android.pri.Tools;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+
+import fr.epita.android.pri.Fragments.ForgotPassword;
+import fr.epita.android.pri.MainActivity;
 
 /**
  * Created by sadekseridj on 25/11/2017.
@@ -14,9 +16,9 @@ import android.support.v4.app.ActivityCompat;
 
 public class DialogMessage extends Activity {
 
-    private Context context = null;
+    private MainActivity context = null;
 
-    protected DialogMessage(Context context) {
+    public DialogMessage(MainActivity context) {
         this.context = context;
     }
 
@@ -46,10 +48,11 @@ public class DialogMessage extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int code = ForgotPassword.sent_email_code(mail_addr);
-                        Intent intent = new Intent(context, ConfirmationCode.class);
-                        intent.putExtra("CODE", code);
-                        intent.putExtra("MAIL", mail_addr);
-                        context.startActivity(intent);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("CODE", code);
+                        bundle.putString("MAIL", mail_addr);
+                        context.customViewpagerAdapter.confirmationCode.setArguments(bundle);
+                        context.display_fragment(7);
                     }
                 })
                 .setNegativeButton("Sms", new DialogInterface.OnClickListener() {
@@ -59,10 +62,11 @@ public class DialogMessage extends Activity {
                             ActivityCompat.requestPermissions((Activity) context,new String[]{"android.permission.SEND_SMS"},1);
                         }
                         int code = ForgotPassword.sent_sms_code(mail_addr);
-                        Intent intent = new Intent(context, ConfirmationCode.class);
-                        intent.putExtra("CODE", code);
-                        intent.putExtra("MAIL", mail_addr);
-                        context.startActivity(intent);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("CODE", code);
+                        bundle.putString("MAIL", mail_addr);
+                        context.customViewpagerAdapter.confirmationCode.setArguments(bundle);
+                        context.display_fragment(7);
                     }
                 });
         builder.show();

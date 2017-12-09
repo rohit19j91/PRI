@@ -1,4 +1,4 @@
-package fr.epita.android.pri;
+package fr.epita.android.pri.Tools;
 
 import java.security.AccessController;
 import java.security.Provider;

@@ -1,4 +1,4 @@
-package fr.epita.android.pri;
+package fr.epita.android.pri.Tools;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

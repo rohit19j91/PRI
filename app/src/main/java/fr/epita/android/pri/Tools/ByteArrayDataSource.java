@@ -1,4 +1,4 @@
-package fr.epita.android.pri;
+package fr.epita.android.pri.Tools;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
