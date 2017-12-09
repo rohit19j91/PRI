@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="fr.epita.android.pri">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,25 +17,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Teal">
-        <activity android:name=".Splashscreen">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".MainActivity"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".SignupActivity"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".ForgotPassword"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".SignIn"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".ConfirmationCode"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".Profile"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".ResetPassword"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".ChangePassword"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMail" ></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMobile"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.Teal" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.Teal" />
+        <!-- <activity
+           android:name=".OldPages.SignupActivity"
+           android:theme="@style/AppTheme.Teal" />
+     <activity
+           android:name=".OldPages.ForgotPassword"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".SignIn"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".OldPages.ConfirmationCode"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".OldPages.Profile"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".OldPages.ResetPassword"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".OldPages.ChangePassword"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".OldPages.ChangeMail"
+           android:theme="@style/AppTheme.Teal" />
+       <activity
+           android:name=".OldPages.ChangeMobile"
+           android:theme="@style/AppTheme.Teal" /> -->
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
     </application>
 
 </manifest>
