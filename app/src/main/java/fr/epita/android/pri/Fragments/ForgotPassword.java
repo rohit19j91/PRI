@@ -12,11 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import fr.epita.android.pri.DatabaseHandler;
-import fr.epita.android.pri.Tools.DialogMessage;
-import fr.epita.android.pri.Tools.GmailSender;
 import fr.epita.android.pri.MainActivity;
 import fr.epita.android.pri.R;
+import fr.epita.android.pri.Tools.DialogMessage;
+import fr.epita.android.pri.Tools.GmailSender;
 import fr.epita.android.pri.Tools.Tools;
+
 
 /**
  * Created by sadekseridj on 06/12/2017.
@@ -51,9 +52,11 @@ public class ForgotPassword extends Fragment implements View.OnClickListener{
         return view;
     }
 
-    /*
+
+/*
      * Function for send the code to the user by mail
      */
+
     public static int sent_email_code(String mail_address)
     {
         String login = dh.searchLoginByMail(mail_address);
@@ -63,7 +66,7 @@ public class ForgotPassword extends Fragment implements View.OnClickListener{
         try {
             GmailSender sender = new GmailSender("oracle.separation@gmail.com", "personne93290");
             sender.sendMail("Confirmation code", "Hello " + login + ", \nYour code is " + code + "\n",
-                    "oracle.separation@gmail.com", mail_address);
+                     "oracle.separation@gmail.com", mail_address);
             return code;
         } catch (Exception e)
         {
@@ -72,9 +75,11 @@ public class ForgotPassword extends Fragment implements View.OnClickListener{
         return code;
     }
 
-    /*
+
+/*
      * Function for send the code to the user by sms
      */
+
     public static int sent_sms_code(String mail_address)
     {
         String login = dh.searchLoginByMail(mail_address);

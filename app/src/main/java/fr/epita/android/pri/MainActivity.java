@@ -8,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -39,34 +40,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
 
-            toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-            drawer = (DrawerLayout) findViewById(R.id.mydrawer);
+        drawer = (DrawerLayout) findViewById(R.id.mydrawer);
 
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
-                @Override
-                public void onDrawerOpened(View drawerView) {
-                    super.onDrawerOpened(drawerView);
-                }
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
 
-                @Override
-                public void onDrawerClosed(View drawerView) {
-                    super.onDrawerClosed(drawerView);
-                }
-            };
-            drawer.setDrawerListener(toggle);
-            toggle.syncState();
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
-            navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setNavigationItemSelectedListener(this);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
-            navHeader = navigationView.getHeaderView(0);
+        navHeader = navigationView.getHeaderView(0);
 
-            imageHeader = (ImageView) navHeader.findViewById(R.id.img_header);
+        imageHeader = (ImageView) navHeader.findViewById(R.id.img_header);
 
-            imageHeader.setImageResource(R.drawable.logo);
-            txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
+        imageHeader.setImageResource(R.drawable.logo);
+        txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewpagerAdapter = (ViewPager) findViewById(R.id.main_viewpager);
@@ -83,9 +84,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (intent != null) {
             int fragment = intent.getExtras().getInt("FRAGMENT");
             display_fragment(fragment);
-        }
-        else
+        } else
             setTitle("CyBit");
+    }
+
+
+
+    public void showmessage(String message,String title)
+    {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+
     }
 
     @Override

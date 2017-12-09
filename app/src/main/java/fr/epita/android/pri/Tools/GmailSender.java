@@ -4,18 +4,21 @@ import java.security.Security;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
+import javax.activation.DataSource;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.util.ByteArrayDataSource;
+
+import fr.epita.android.pri.Tools.JSSEProvider;
 
 
 /**
  * Created by sadekseridj on 25/11/2017.
  */
+
 
 public class GmailSender extends javax.mail.Authenticator {
 
@@ -53,7 +56,7 @@ public class GmailSender extends javax.mail.Authenticator {
     public synchronized void sendMail(String subject, String body, String sender, String recipient) throws Exception {
         try {
             MimeMessage message = new MimeMessage(session);
-            DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+            DataHandler handler = new DataHandler((DataSource) new ByteArrayDataSource(body.getBytes(), "text/plain"));
             message.setSender(new InternetAddress(sender));
             message.setSubject(subject);
             message.setDataHandler(handler);
@@ -67,4 +70,5 @@ public class GmailSender extends javax.mail.Authenticator {
         }
     }
 }
+
 
