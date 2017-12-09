@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme.Teal"
+    tools:context="fr.epita.android.pri.MainActivity">
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="10dp"
+        android:src="@drawable/cybitlogo"
+        android:background="@color/material_teal_500"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputloginconnex"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/logo"
+        android:layout_marginLeft="30dp">
+
+        <EditText
+            android:id="@+id/editloginconnex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Login"
+            android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputpassconnex"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/inputloginconnex"
+        app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
+        app:layout_constraintRight_toRightOf="@id/inputloginconnex"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/editpassconnex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <CheckBox
+        android:id="@+id/rememberme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/inputpassconnex"
+        app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
+        android:text="@string/rememberme"
+        android:layout_marginTop="20dp"
+        android:textSize="30px"
+        android:theme="@style/AppTheme.Teal"/>
+
+    <TextView
+        android:id="@+id/forgotpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordtext"
+        app:layout_constraintTop_toTopOf="@id/rememberme"
+        app:layout_constraintLeft_toRightOf="@id/rememberme"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="30dp"
+        android:clickable="true"
+        android:linksClickable="true"
+        android:text="@string/forgotpass"
+        android:textSize="30px"
+        android:textAppearance="@style/TextStyle.Body2"/>
+
+
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rememberme"
+        app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
+        app:layout_constraintRight_toLeftOf="@id/guide"
+        android:text="@string/loginbutton"
+        android:layout_marginTop="20dp"
+        style="@style/ButtonStyle.Colored.NoRaise"/>
+
+    <Button
+        android:id="@+id/showall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/loginbutton"
+        app:layout_constraintLeft_toLeftOf="@id/guide"
+        app:layout_constraintRight_toRightOf="@id/inputloginconnex"
+        android:text="ShowAll"
+        style="@style/ButtonStyle.Colored.NoRaise"/>
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/loginbutton"
+        app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
+        app:layout_constraintRight_toRightOf="@id/inputloginconnex"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:text="@string/signup"
+        android:textSize="17dp"
+        android:textAppearance="@style/TextStyle.Body2"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebook_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/signup"
+        app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
+        android:layout_marginTop="20dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/signup"
+        app:layout_constraintRight_toRightOf="@id/inputloginconnex"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+
+</android.support.constraint.ConstraintLayout>
