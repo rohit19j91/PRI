@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import fr.epita.android.pri.DatabaseHandler;
 import fr.epita.android.pri.LoginActivity;
 import fr.epita.android.pri.MainActivity;
 import fr.epita.android.pri.R;
-import fr.epita.android.pri.Tools.DialogMessage;
 import fr.epita.android.pri.Tools.PasswordFunctions;
 import fr.epita.android.pri.Tools.Tools;
 
@@ -78,7 +78,6 @@ public class ChangePassword extends Fragment implements View.OnClickListener{
         String oldp = PasswordFunctions.hashPass(editoldpass.getText().toString(), login);
         String newp = editnewpass.getText().toString();
         String confirmp = editconfirmpass.getText().toString();
-        DialogMessage dialogMessage = new DialogMessage(context);
         Tools tools = new Tools(context);
         switch (view.getId()) {
             case R.id.submitchange:
@@ -106,8 +105,8 @@ public class ChangePassword extends Fragment implements View.OnClickListener{
                         editoldpass.setText("");
                         editnewpass.setText("");
                         editconfirmpass.setText("");
-                        dialogMessage.pop_up_message("Success", "Your password has been changed");
-                        context.display_fragment(2);
+                        Toast.makeText(context, "Your password has been changed", Toast.LENGTH_SHORT);
+                        context.display_fragment(0);
                         break;
                     }
                     inputconfirmpass.setErrorEnabled(true);

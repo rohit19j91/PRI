@@ -110,12 +110,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 System.out.println("PASSDB: " + passdb);
 
                 if (passuser.equals(passdb)) {
+                    login.setText("");
+                    password.setText("");
                     Toast.makeText(LoginActivity.this, "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
                     rl = dh.getRelation(loginuser);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("FRAGMENT", 9);
+                    intent.putExtra("FRAGMENT", 5);
                     startActivity(intent);
-                    //display_fragment(3);
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Username or password is incorrect !", Toast.LENGTH_SHORT).show();
@@ -128,10 +129,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
                 Toast.makeText(LoginActivity.this,
                         "Forgot Password ? Really !!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("FRAGMENT", 0);
+                Intent intent = new Intent(LoginActivity.this, ForgotpassActivity.class);
                 startActivity(intent);
-                //context.display_fragment(1);
             }
         });
         signup.setOnClickListener(new View.OnClickListener() {
@@ -139,10 +138,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
                 Toast.makeText(LoginActivity.this,
                         "Thats a super Idea !!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("FRAGMENT", 1);
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
-                //context.display_fragment(2);
             }
         });
 
@@ -197,7 +194,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         builder.setCancelable(true);
         builder.setTitle(title);
         builder.setMessage(message);
-
     }
 
 

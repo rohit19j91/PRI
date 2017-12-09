@@ -119,18 +119,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId())
         {
             case R.id.nav_home:
-                display_fragment(9);
-                //viewpagerAdapter.setCurrentItem(9);
+                display_fragment(5);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_profile:
-                display_fragment(2);
-                //viewpagerAdapter.setCurrentItem(2);
+                display_fragment(0);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_computers:
-                display_fragment(8);
-                //viewpagerAdapter.setCurrentItem(8);
+                display_fragment(4);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_notifications:
@@ -138,13 +135,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_resetpass:
                 Bundle bundle = new Bundle();
                 bundle.putString("LOGIN", LoginActivity.rl.getLogin());
-                display_fragment(5);
-                //viewpagerAdapter.setCurrentItem(5);
+                display_fragment(3);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_about_us:
-                display_fragment(9);
-                //viewpagerAdapter.setCurrentItem(9);
+                display_fragment(5);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_logout:
@@ -160,44 +155,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item)
         {
             case 0:
-                setTitle("Password forgot");
+                setTitle("Profile");
                 viewpagerAdapter.setCurrentItem(0, false);
                 break;
             case 1:
-                setTitle("Signup");
+                setTitle("Reset mail");
                 viewpagerAdapter.setCurrentItem(1, false);
                 break;
             case 2:
-                setTitle("Profile");
+                setTitle("Reset mobile");
                 viewpagerAdapter.setCurrentItem(2, false);
                 break;
             case 3:
-                setTitle("Reset mail");
+                setTitle("Reset password");
                 viewpagerAdapter.setCurrentItem(3, false);
                 break;
             case 4:
-                setTitle("Reset mobile");
+                setTitle("My computers");
                 viewpagerAdapter.setCurrentItem(4, false);
                 break;
             case 5:
-                setTitle("Reset password");
-                viewpagerAdapter.setCurrentItem(5, false);
-                break;
-            case 6:
-                setTitle("Reset password");
-                viewpagerAdapter.setCurrentItem(6, false);
-                break;
-            case 7:
-                setTitle("Confirmation code");
-                viewpagerAdapter.setCurrentItem(7, false);
-                break;
-            case 8:
-                setTitle("My computers");
-                viewpagerAdapter.setCurrentItem(8, false);
-                break;
-            case 9:
                 setTitle("My tamagotchi");
-                viewpagerAdapter.setCurrentItem(9, false);
+                viewpagerAdapter.setCurrentItem(7, false);
                 break;
             default:
                 break;

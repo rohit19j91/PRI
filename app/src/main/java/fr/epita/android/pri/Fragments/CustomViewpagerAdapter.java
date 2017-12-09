@@ -10,16 +10,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class CustomViewpagerAdapter extends FragmentPagerAdapter {
 
-    private static final int nb_pages = 10;
+    private static final int nb_pages = 6;
 
     public ChangeMail changeMail;
     ChangeMobile changeMobile;
     ChangePassword changePassword;
-    public ConfirmationCode confirmationCode;
-    ForgotPassword forgotPassword;
     Profil profile;
-    ResetPassword resetPassword;
-    SignupActvity signupActvity;
     public ComputersList computersList;
     Tamacharacter tamacharacter;
 
@@ -31,11 +27,7 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
         changeMail = new ChangeMail();
         changeMobile = new ChangeMobile();
         changePassword = new ChangePassword();
-        confirmationCode = new ConfirmationCode();
-        forgotPassword = new ForgotPassword();
         profile = new Profil();
-        resetPassword = new ResetPassword();
-        signupActvity = new SignupActvity();
         computersList = new ComputersList();
         tamacharacter = new Tamacharacter();
 
@@ -47,24 +39,16 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
         switch (position)
         {
             case 0:
-                return forgotPassword;
-            case 1:
-                return signupActvity;
-            case 2:
                 return profile;
-            case 3:
+            case 1:
                 return changeMail;
-            case 4:
+            case 2:
                 return changeMobile;
-            case 5:
+            case 3:
                 return changePassword;
-            case 6:
-                return resetPassword;
-            case 7:
-                return confirmationCode;
-            case 8:
+            case 4:
                 return computersList;
-            case 9:
+            case 5:
                 return tamacharacter;
             default:
                 return null;

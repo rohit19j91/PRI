@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import fr.epita.android.pri.DatabaseHandler;
 import fr.epita.android.pri.LoginActivity;
-import fr.epita.android.pri.Tools.DialogMessage;
 import fr.epita.android.pri.MainActivity;
 import fr.epita.android.pri.R;
 
@@ -104,13 +104,13 @@ public class Profil extends Fragment implements View.OnClickListener{
                 Bundle bundle_mail = new Bundle();
                 bundle_mail.putString("LOGIN", LoginActivity.rl.getLogin());
                 context.customViewpagerAdapter.changeMail.setArguments(bundle_mail);
-                context.display_fragment(3);
+                context.display_fragment(1);
                 break;
             case R.id.resetMobile:
                 Bundle bundle_mobile = new Bundle();
                 bundle_mobile.putString("LOGIN", LoginActivity.rl.getLogin());
                 context.customViewpagerAdapter.changeMobile.setArguments(bundle_mobile);
-                context.display_fragment(4);
+                context.display_fragment(2);
                 break;
             case R.id.profile_pic:
                 Intent intentfiles = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -137,8 +137,7 @@ public class Profil extends Fragment implements View.OnClickListener{
             }
             else
             {
-                DialogMessage dialogMessage = new DialogMessage(context);
-                dialogMessage.pop_up_message("Denied", "You have to choose a picture only !");
+                Toast.makeText(context, "You have to choose a picture only !", Toast.LENGTH_SHORT);
                 return;
             }
         }

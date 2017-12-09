@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import fr.epita.android.pri.DatabaseHandler;
 import fr.epita.android.pri.MainActivity;
 import fr.epita.android.pri.R;
-import fr.epita.android.pri.Tools.DialogMessage;
 import fr.epita.android.pri.Tools.Tools;
 
 /**
@@ -54,7 +54,6 @@ public class ChangeMail extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         String login = context.getIntent().getExtras().getString("LOGIN");
         String mail = editemail.getText().toString();
-        DialogMessage dialogMessage = new DialogMessage(context);
         Tools tools = new Tools(context);
         switch (view.getId())
         {
@@ -65,8 +64,8 @@ public class ChangeMail extends Fragment implements View.OnClickListener{
                     break;
                 }
                 dh.changeMail(mail, login);
-                dialogMessage.pop_up_message("Succes", "Your mail has been changed !");
-                context.display_fragment(2);
+                Toast.makeText(context, "Your mail has been changed !", Toast.LENGTH_SHORT).show();
+                context.display_fragment(0);
                 break;
             default:
                 break;
