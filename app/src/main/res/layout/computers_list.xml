@@ -20,7 +20,8 @@
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@id/add_computer"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:divider="#FF0000"
+        android:layout_marginTop="50dp"
+        android:divider="@color/colorPrimaryDark"
         android:dividerHeight="1dp"/>
 
     <TextView
