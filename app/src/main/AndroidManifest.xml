@@ -30,6 +30,18 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.Teal" />
+        <activity
+            android:name=".ForgotpassActivity"
+            android:theme="@style/AppTheme.Teal" />
+        <activity
+            android:name=".ResetpassActivity"
+            android:theme="@style/AppTheme.Teal" />
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/AppTheme.Teal" />
+        <activity
+            android:name=".ConfirmationcodeActivity"
+            android:theme="@style/AppTheme.Teal" />
         <!-- <activity
            android:name=".OldPages.SignupActivity"
            android:theme="@style/AppTheme.Teal" />
