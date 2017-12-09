@@ -1,5 +1,7 @@
 package fr.epita.android.pri;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 /**
@@ -10,6 +12,7 @@ public class Relation implements Serializable{
 
     int id;
     String mob, email,name,login,pass;
+    Uri uri = null;
     private boolean isLogged = false;
 
     public void setId(int id)
@@ -65,4 +68,8 @@ public class Relation implements Serializable{
     public void setLogged(boolean isLogged) { this.isLogged = isLogged; }
 
     public boolean getLogged() { return this.isLogged; }
+
+    public Uri getUri() { return this.uri; }
+
+    public void setUri(Uri uri) { this.uri = uri; }
 }
