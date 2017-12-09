@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import fr.epita.android.pri.Tools.PasswordFunctions;
+
 /**
  * Created by Rohit on 11/3/2017.
  */
@@ -22,11 +24,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_LOGIN="login";
     private static final String COLUMN_MOBILE="mobile";
     private static final String COLUMN_PASS="pass";
+    private static final String COLUMN_PICTURE="picture";
 
     private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key autoincrement," +
             " name text, email text not null, login text not null," +
             " pass text not null,"+
-            " mobile text not null);";
+            " mobile text not null" +
+            " picture text);";
 
     SQLiteDatabase db;
 
@@ -59,7 +63,7 @@ public DatabaseHandler(Context context)
         val.put(COLUMN_LOGIN,r.getLogin());
         val.put(COLUMN_MOBILE,r.getMob());
         val.put(COLUMN_PASS,r.getPass());
-        System.out.println("PASSWORD: " + r.getPass());
+        val.put(COLUMN_PICTURE, (r.getUri() == null) ? "" : r.getUri().toString());
 
     db.insert(TABLE_NAME,null,val);
         Log.d("Database Operation","Values inserted successfully");
@@ -163,6 +167,18 @@ public DatabaseHandler(Context context)
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PASS, PasswordFunctions.hashPass(pass, login));
+        db.update(TABLE_NAME, values, COLUMN_LOGIN + " = ?", new String[]{login});
+        db.close();
+    }
+
+    /*
+     * Change the picture associated to the login
+    */
+    public void changePicture(String uri, String login)
+    {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PICTURE, uri);
         db.update(TABLE_NAME, values, COLUMN_LOGIN + " = ?", new String[]{login});
         db.close();
     }
