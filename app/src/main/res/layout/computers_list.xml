@@ -4,12 +4,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <Button
+        android:id="@+id/add_computer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:text="Add computer"
+        style="@style/ButtonStyle.Colored.NoRaise"/>
+
 
     <ListView
         android:id="@+id/computerslist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_computer"
         app:layout_constraintLeft_toLeftOf="parent"
         android:divider="#FF0000"
         android:dividerHeight="1dp"/>

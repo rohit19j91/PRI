@@ -20,7 +20,7 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
     Profil profile;
     ResetPassword resetPassword;
     SignupActvity signupActvity;
-    ComputersList computersList;
+    public ComputersList computersList;
     Tamacharacter tamacharacter;
 
 
@@ -38,6 +38,8 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
         signupActvity = new SignupActvity();
         computersList = new ComputersList();
         tamacharacter = new Tamacharacter();
+
+
     }
 
     @Override

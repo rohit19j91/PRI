@@ -51,7 +51,7 @@ public class CustomListAdapter extends BaseAdapter {
 
         if (view == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(context);
-            rowView = layoutInflater.inflate(R.layout.computers_list, viewGroup, false);
+            rowView = layoutInflater.inflate(R.layout.listitem, viewGroup, false);
             viewHolder = new ViewHolder(rowView);
             rowView.setTag(viewHolder);
 
