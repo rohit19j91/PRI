@@ -50,8 +50,8 @@
         android:id="@+id/profile_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toRightOf="@id/profile_name"
+        android:layout_marginLeft="60dp"
+        app:layout_constraintLeft_toRightOf="@id/profile_level"
         app:layout_constraintTop_toBottomOf="@id/profile_name" />
 
     <TextView
@@ -112,15 +112,6 @@
         app:layout_constraintTop_toBottomOf="@id/email"
         style="@style/ButtonStyle.Borderless.ColoredText"/>
 
-    <Button
-        android:id="@+id/resetPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Reset password"
-        app:layout_constraintLeft_toLeftOf="@id/profile_pic"
-        app:layout_constraintTop_toBottomOf="@id/mobile"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
 
 
 </android.support.constraint.ConstraintLayout>

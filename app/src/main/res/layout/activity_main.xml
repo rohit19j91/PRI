@@ -1,174 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_container"
+<android.support.v4.widget.DrawerLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/mydrawer"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<!-- This LinearLayout represents the contents of the screen  -->
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/AppTheme.Teal"
-    tools:context="fr.epita.android.pri.MainActivity">
+    android:orientation="vertical">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
-
-    <ImageView
-        android:id="@+id/logo"
+    <!-- The ActionBar displayed at the top -->
+    <include
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="300px"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:src="@drawable/logo"
-        android:layout_marginTop="10dp"/>
+        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/login_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/logintext"
-        app:layout_constraintTop_toTopOf="@id/logintext"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/login"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:textAppearance="@style/TextStyle.Body1"/>
+    <!-- The main content view where fragments are loaded -->
+    <FrameLayout
+        android:id="@+id/flContent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/logintext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintLeft_toRightOf="@id/login_label"
-        android:ems="10"
-        android:hint="@string/loginhint"
-        android:inputType="text"
-        android:maxLength="30"
-        android:textSize="20dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="35dp"/>
+    </android.support.v4.view.ViewPager>
+    </FrameLayout>
+</LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/passwordtext"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/password"
-        android:id="@+id/password_label"
-        android:textSize="20dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginLeft="20dp"
-        android:textAppearance="@style/TextStyle.Body1"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/logintext"
-        app:layout_constraintLeft_toRightOf="@id/password_label"
-        android:id="@+id/passwordtext"
-        android:inputType="textPassword"
-        android:hint="@string/passwordhint"
-        android:maxLength="30"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
-        android:textSize="20dp"
-        android:ems="10"
-        android:theme="@style/EditTextStyle"/>
-
-<CheckBox
-    android:id="@+id/rememberme"
+<android.support.design.widget.NavigationView
+    android:id="@+id/nav_view"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/password_label"
-    app:layout_constraintLeft_toLeftOf="@id/password_label"
-    android:text="@string/rememberme"
-    android:layout_marginTop="20dp"
-    android:textSize="30px"
-    android:theme="@style/AppTheme.Teal"/>
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    app:headerLayout="@layout/nav_header_main"
+    app:menu="@menu/activity_main_drawer" />
 
-    <TextView
-        android:id="@+id/forgotpass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordtext"
-        app:layout_constraintTop_toBottomOf="@id/password_label"
-        app:layout_constraintLeft_toRightOf="@id/rememberme"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="30dp"
-        android:clickable="true"
-        android:linksClickable="true"
-        android:text="@string/forgotpass"
-        android:textSize="30px"
-        android:textAppearance="@style/TextStyle.Body2"/>
+</android.support.v4.widget.DrawerLayout>
 
 
-    <Button
-        android:id="@+id/loginbutton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rememberme"
-        app:layout_constraintLeft_toLeftOf="@id/password_label"
-        app:layout_constraintRight_toLeftOf="@id/guide"
-        android:text="@string/loginbutton"
-        android:layout_marginTop="20dp"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
-
-    <TextView
-        android:id="@+id/signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/loginbutton"
-        app:layout_constraintLeft_toLeftOf="@id/loginbutton"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:text="@string/signup"
-        android:textSize="30px"
-        android:textAppearance="@style/TextStyle.Body2"/>
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/facebook_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/signup"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guide"
-        android:layout_marginTop="50dp" />
-
-    <TextView
-        android:id="@+id/login_status"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/signup"
-        app:layout_constraintLeft_toLeftOf="@id/rememberme"
-        android:layout_marginTop="10dp"
-        android:text="Status"
-        android:clickable="true"
-        android:textAppearance="@style/TextStyle.Body2"/>
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/google_login"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/signup"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/guide"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="10dp"/>
-
-    <Button
-        android:id="@+id/showall"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/loginbutton"
-        app:layout_constraintLeft_toRightOf="@id/guide"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_toLeftOf="@+id/passwordtext"
-        android:layout_toStartOf="@+id/passwordtext"
-        android:text="ShowAll"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
-
-</android.support.constraint.ConstraintLayout>

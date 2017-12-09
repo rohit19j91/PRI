@@ -4,47 +4,36 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/forgotlogo"
-        android:layout_width="340px"
-        android:layout_height="400px"
-        android:src="@drawable/logo"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="50px"/>
-    <TextView
-        android:id="@+id/forgotemail"
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/forgotlogo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        android:text="@string/forgotemail"
-        android:textSize="50px"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
+
     <EditText
         android:id="@+id/forgotemailtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/forgotemail"
+        app:layout_constraintTop_toBottomOf="@id/guide"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        android:ems="10"
+        android:ems="15"
         android:hint="@string/forgotemailhint"
         android:inputType="textEmailAddress"
         android:textSize="40px"/>
-    <Button
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/forgotsubmitbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/forgotemailtext"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        android:text="@string/forgotsubmitbutton"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:src="@android:drawable/ic_menu_send"
+        android:tint="#FFF"
+        android:background="@drawable/roudbutton"/>
 
 </android.support.constraint.ConstraintLayout>

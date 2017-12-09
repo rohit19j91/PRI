@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/profile_pic"
         android:layout_width="100dp"
         android:layout_height="120dp"
-        android:layout_marginLeft="30px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="parent" />
 
@@ -35,7 +37,7 @@
         android:id="@+id/profile_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
         android:text="Level : 1"
         android:textSize="40px"
@@ -58,7 +60,7 @@
         android:id="@+id/firstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="45dp"
         android:text="Firstname: Rohit"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="@id/profile_pic"
@@ -68,7 +70,7 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="Name: Chauhan"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="@id/profile_pic"
@@ -78,50 +80,41 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="E-mail: rohitchauhan@gmail.com"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="@id/profile_pic"
         app:layout_constraintTop_toBottomOf="@id/name" />
 
-    <Button
+    <ImageView
         android:id="@+id/resetMail"
         android:layout_width="30dp"
         android:layout_height="32dp"
-        android:layout_margin="12dp"
+        android:adjustViewBounds="true"
         app:layout_constraintLeft_toRightOf="@id/email"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
+        app:layout_constraintTop_toTopOf="@id/email"
+        android:src="@android:drawable/ic_menu_edit"
+        android:tint="?colorAccent" />
 
     <TextView
         android:id="@+id/mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="Mobile n°: 0654444433"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="@id/profile_pic"
         app:layout_constraintTop_toBottomOf="@id/email"
         />
 
-    <Button
+    <ImageView
         android:id="@+id/resetMobile"
         android:layout_width="30dp"
         android:layout_height="32dp"
-        android:layout_margin="10dp"
         app:layout_constraintLeft_toRightOf="@id/mobile"
-        app:layout_constraintTop_toBottomOf="@id/email"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
-
-    <Button
-        android:id="@+id/resetPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Reset password"
-        app:layout_constraintLeft_toLeftOf="@id/profile_pic"
-        app:layout_constraintTop_toBottomOf="@id/mobile"
-        style="@style/ButtonStyle.Borderless.ColoredText"/>
+        app:layout_constraintTop_toTopOf="@id/mobile"
+        android:src="@android:drawable/ic_menu_edit"
+        android:tint="?colorAccent" />
 
 
 </android.support.constraint.ConstraintLayout>
