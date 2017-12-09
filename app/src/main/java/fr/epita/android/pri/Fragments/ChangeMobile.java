@@ -2,6 +2,7 @@ package fr.epita.android.pri.Fragments;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +23,8 @@ import fr.epita.android.pri.Tools.Tools;
 
 public class ChangeMobile extends Fragment implements View.OnClickListener{
 
-    private EditText mobile = null;
+    private TextInputLayout inputmobile = null;
+    private EditText editmobile = null;
     private ImageButton submit = null;
     private DatabaseHandler dh = null;
     final MainActivity context = (MainActivity) getActivity();
@@ -39,7 +41,8 @@ public class ChangeMobile extends Fragment implements View.OnClickListener{
     {
         final View view = inflater.inflate(R.layout.changemobile, container, false);
         dh = new DatabaseHandler(context);
-        mobile = (EditText) view.findViewById(R.id.newmobile);
+        inputmobile = (TextInputLayout) view.findViewById(R.id.inputnewmobile);
+        editmobile = (EditText) view.findViewById(R.id.editnewmobile);
         submit = (ImageButton) view.findViewById(R.id.submitmobile);
         submit.setOnClickListener(this);
 
@@ -50,28 +53,23 @@ public class ChangeMobile extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         //String login = getIntent().getExtras().getString("LOGIN");
         String login = LoginActivity.rl.getLogin();
-        String mob = mobile.getText().toString();
+        String mob = editmobile.getText().toString();
         DialogMessage dialogMessage = new DialogMessage(context);
+        Tools tools = new Tools(context);
         switch (view.getId())
         {
             case R.id.submitmobile:
-                if (mob.equals(""))
+                inputmobile.setErrorEnabled(false);
+                if (mob.trim().isEmpty() || mob.length() != 10)
                 {
-                    dialogMessage.pop_up_message("Denied", "You have to put a mobile number !");
+                    inputmobile.setErrorEnabled(true);
+                    inputmobile.setError("The mobile format is not correct");
+                    tools.setAnimaton(inputmobile);
                     break;
                 }
-                if (Tools.checkMobile(mob))
-                {
-                    dh.changeMobile(mob, login);
-                    dialogMessage.pop_up_message("Succes", "Your mobile number has been changed !");
-                    //Relation rl = dh.getRelation(login);
-                    //Bundle bundle = new Bundle();
-                    //bundle.putSerializable("RELATION", rl);
-                    //context.customViewpagerAdapter.profil.setArguments(bundle);
-                    context.display_fragment(2);
-                    break;
-                }
-                dialogMessage.pop_up_message("Denied", "The mail format is not correct !");
+                dh.changeMobile(mob, login);
+                dialogMessage.pop_up_message("Succes", "Your mobile number has been changed !");
+                context.display_fragment(2);
                 break;
             default:
                 break;

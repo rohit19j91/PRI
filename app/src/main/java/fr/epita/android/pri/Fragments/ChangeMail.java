@@ -2,6 +2,7 @@ package fr.epita.android.pri.Fragments;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,8 @@ import fr.epita.android.pri.Tools.Tools;
 
 public class ChangeMail extends Fragment implements View.OnClickListener{
 
-    private EditText email = null;
+    private TextInputLayout inputemail = null;
+    private EditText editemail = null;
     private ImageButton submit = null;
     private DatabaseHandler dh = null;
     MainActivity context;
@@ -40,7 +42,8 @@ public class ChangeMail extends Fragment implements View.OnClickListener{
         final View view = inflater.inflate(R.layout.changemail, container, false);
         context = (MainActivity) getActivity();
         dh = new DatabaseHandler(context);
-        email = (EditText) view.findViewById(R.id.newmail);
+        inputemail = (TextInputLayout) view.findViewById(R.id.inputnewmail);
+        editemail = (EditText) view.findViewById(R.id.editnewemail);
         submit = (ImageButton) view.findViewById(R.id.submitmail);
         submit.setOnClickListener(this);
 
@@ -50,27 +53,20 @@ public class ChangeMail extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         String login = context.getIntent().getExtras().getString("LOGIN");
-        String mail = email.getText().toString();
+        String mail = editemail.getText().toString();
         DialogMessage dialogMessage = new DialogMessage(context);
+        Tools tools = new Tools(context);
         switch (view.getId())
         {
             case R.id.submitmail:
-                if (mail.equals(""))
+                if (! tools.checkEmail(editemail, inputemail, "The mail format is not correct"))
                 {
-                    dialogMessage.pop_up_message("Denied", "You have to put a mail !");
+                    tools.setAnimaton(inputemail);
                     break;
                 }
-                if (Tools.checkMail(mail))
-                {
-                    dh.changeMail(mail, login);
-                    dialogMessage.pop_up_message("Succes", "Your mail has been changed !");
-                    //Relation rl = dh.getRelation(login);
-                    //Bundle bundle = new Bundle();
-                    //bundle.putSerializable("RELATION", rl);
-                    context.display_fragment(2);
-                    break;
-                }
-                dialogMessage.pop_up_message("Denied", "The mail format is not correct !");
+                dh.changeMail(mail, login);
+                dialogMessage.pop_up_message("Succes", "Your mail has been changed !");
+                context.display_fragment(2);
                 break;
             default:
                 break;

@@ -1,15 +1,11 @@
 package fr.epita.android.pri.Fragments;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,6 +17,7 @@ import fr.epita.android.pri.R;
 import fr.epita.android.pri.Relation;
 import fr.epita.android.pri.Tools.DialogMessage;
 import fr.epita.android.pri.Tools.PasswordFunctions;
+import fr.epita.android.pri.Tools.Tools;
 
 /**
  * Created by sadekseridj on 06/12/2017.
@@ -32,8 +29,6 @@ public class SignupActvity extends Fragment implements View.OnClickListener{
     TextInputLayout inputmob, inputemail, inputname, inputlogin, inputpass, inputconfpass;
     DatabaseHandler dh;
     DialogMessage dialogMessage;
-    Animation animShake;
-    Vibrator vibrator;
     MainActivity context;
 
 
@@ -64,65 +59,41 @@ public class SignupActvity extends Fragment implements View.OnClickListener{
         inputpass = (TextInputLayout) view.findViewById(R.id.inputpass);
         inputconfpass = (TextInputLayout) view.findViewById(R.id.inputpassconfirm);
 
-        animShake = AnimationUtils.loadAnimation(context, R.anim.shake);
-        vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-
         sbbtn.setOnClickListener(this);
 
         return view;
     }
 
-    public boolean checkFieldSignup(EditText editText, TextInputLayout inputLayout, String err)
-    {
-        if(editText.getText().toString().trim().isEmpty())
-        {
-            inputLayout.setErrorEnabled(true);
-            inputLayout.setError(err);
-            return false;
-        }
-        inputLayout.setErrorEnabled(false);
-        return true;
-    }
 
     @Override
     public void onClick(View view) {
+        Tools tools = new Tools(context);
         switch (view.getId())
         {
             case R.id.signupsubmitbutton:
-                if (!checkFieldSignup(email, inputemail, "Error on the email address")) {
-                    inputemail.setAnimation(animShake);
-                    inputemail.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                inputconfpass.setErrorEnabled(false);
+                if (! tools.checkEmail(email, inputemail, "Error on the email address")) {
+                    tools.setAnimaton(inputemail);
                     break;
                 }
-                if (!checkFieldSignup(name, inputname, "Error on the name")) {
-                    inputname.setAnimation(animShake);
-                    inputname.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                if (! tools.checkFieldSignup(name, inputname, "Error on the name")) {
+                    tools.setAnimaton(inputname);
                     break;
                 }
-                if (!checkFieldSignup(mob, inputmob, "Error on the number mobile")) {
-                    inputmob.setAnimation(animShake);
-                    inputmob.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                if (! tools.checkFieldSignup(mob, inputmob, "Error on the number mobile")) {
+                    tools.setAnimaton(inputmob);
                     break;
                 }
-                if (!checkFieldSignup(login, inputlogin, "Error on the login")) {
-                    inputlogin.setAnimation(animShake);
-                    inputlogin.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                if (! tools.checkFieldSignup(login, inputlogin, "Error on the login")) {
+                    tools.setAnimaton(inputlogin);
                     break;
                 }
-                if (!checkFieldSignup(pass, inputpass, "Error on the password")) {
-                    inputpass.setAnimation(animShake);
-                    inputpass.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                if (! tools.checkFieldSignup(pass, inputpass, "Error on the password")) {
+                    tools.setAnimaton(inputpass);
                     break;
                 }
-                if (!checkFieldSignup(confpass, inputconfpass, "Error on the password confirmation")) {
-                    inputconfpass.setAnimation(animShake);
-                    inputconfpass.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                if (! tools.checkFieldSignup(confpass, inputconfpass, "Error on the password confirmation")) {
+                    tools.setAnimaton(inputconfpass);
                     break;
                 }
                 inputmob.setErrorEnabled(false);
@@ -157,9 +128,7 @@ public class SignupActvity extends Fragment implements View.OnClickListener{
                 else {
                     inputconfpass.setErrorEnabled(true);
                     inputconfpass.setError("Error on the password confirmation");
-                    inputconfpass.setAnimation(animShake);
-                    inputconfpass.startAnimation(animShake);
-                    vibrator.vibrate(120);
+                    tools.setAnimaton(inputconfpass);
                 }
         }
 

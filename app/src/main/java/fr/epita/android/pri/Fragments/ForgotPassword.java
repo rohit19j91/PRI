@@ -2,6 +2,7 @@ package fr.epita.android.pri.Fragments;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -26,7 +27,8 @@ import fr.epita.android.pri.Tools.Tools;
 public class ForgotPassword extends Fragment implements View.OnClickListener{
 
     private static DatabaseHandler dh = null;
-    private EditText mail = null;
+    private TextInputLayout inputemail = null;
+    private EditText editemail = null;
     private ImageButton submit = null;
     MainActivity context;
 
@@ -43,7 +45,8 @@ public class ForgotPassword extends Fragment implements View.OnClickListener{
         final View view = inflater.inflate(R.layout.forgotpass, container, false);
         context = (MainActivity) getActivity();
         dh = new DatabaseHandler(context);
-        mail = (EditText) view.findViewById(R.id.forgotemailtext);
+        inputemail = (TextInputLayout) view.findViewById(R.id.inputemail);
+        editemail = (EditText) view.findViewById(R.id.editemail);
         submit = (ImageButton) view.findViewById(R.id.forgotsubmitbutton);
         submit.setOnClickListener(this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -96,28 +99,27 @@ public class ForgotPassword extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        String email_addr = mail.getText().toString();
+        String email_addr = editemail.getText().toString();
         String login = dh.searchLoginByMail(email_addr);
         DialogMessage dialogMessage = new DialogMessage(context);
+        Tools tools = new Tools(context);
         switch (view.getId())
         {
             case R.id.forgotsubmitbutton:
-                if (mail.getText().toString().equals(""))
+                inputemail.setErrorEnabled(false);
+                if (! tools.checkEmail(editemail, inputemail, "The mail format is not correct"))
                 {
-                    dialogMessage.pop_up_message("Access Denied", "Please put your mail");
-                    break;
-                }
-                if (! Tools.checkMail(email_addr))
-                {
-                    dialogMessage.pop_up_message("Access Denied", "The mail format is not correct");
+                    tools.setAnimaton(inputemail);
                     break;
                 }
                 if (login == null)
                 {
-                    dialogMessage.pop_up_message("Access Denied", "Mail not found, please sign up");
+                    inputemail.setErrorEnabled(true);
+                    inputemail.setError("Mail not found, please sign up");
+                    tools.setAnimaton(inputemail);
                     break;
                 }
-                mail.setText("");
+                editemail.setText("");
                 dialogMessage.pop_up_code(email_addr);
                 break;
             default:

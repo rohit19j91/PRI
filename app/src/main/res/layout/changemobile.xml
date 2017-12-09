@@ -11,18 +11,22 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.35"/>
 
-    <EditText
-        android:id="@+id/newmobile"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputnewmobile"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/guide"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:ems="13"
-        android:hint="@string/newmobile"
-        android:inputType="number"
-        android:textSize="40px"
-        android:maxLength="10" />
+        app:layout_constraintRight_toRightOf="parent">
+        <EditText
+            android:id="@+id/editnewmobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="New mobile number"
+            android:inputType="number"
+            android:maxLength="10"/>
+    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/submitmobile"

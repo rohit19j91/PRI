@@ -11,44 +11,54 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25"/>
 
-    <EditText
-        android:id="@+id/oldpass"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputoldpass"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/guide"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:ems="15"
-        android:hint="@string/oldpass"
-        android:inputType="textPassword"
-        android:textSize="40px"
-        android:layout_marginLeft="10dp"/>
-    <EditText
-        android:id="@+id/newpass"
-        android:layout_width="wrap_content"
+        app:layout_constraintRight_toRightOf="parent">
+        <EditText
+            android:id="@+id/editoldpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Old password"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputnewpass"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/oldpass"
+        app:layout_constraintTop_toBottomOf="@id/inputoldpass"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:ems="15"
-        android:hint="@string/newpass"
-        android:inputType="textPassword"
-        android:textSize="40px"
-        android:layout_marginLeft="10px"
-        android:layout_marginTop="30dp"/>
-    <EditText
-        android:id="@+id/confirmpass"
-        android:layout_width="wrap_content"
+        app:layout_constraintRight_toRightOf="parent">
+        <EditText
+            android:id="@+id/editnewpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="New password"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputconfirmpass"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/newpass"
+        app:layout_constraintTop_toBottomOf="@id/inputnewpass"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:ems="15"
-        android:hint="@string/confirmpass"
-        android:inputType="textPassword"
-        android:textSize="40px"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintRight_toRightOf="parent">
+        <EditText
+            android:id="@+id/editconfirmpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Confirm password"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/submitchange"
         android:layout_width="50dp"
