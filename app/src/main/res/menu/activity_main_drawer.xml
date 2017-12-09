@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/nav_home" />
+
+        <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_computers"
+            android:icon="@drawable/computer"
+            android:title="My computers" />
+
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/notifications"
+            android:title="@string/nav_notifications" />
+
+        <item
+        android:id="@+id/nav_resetpass"
+        android:icon="@drawable/edit"
+        android:title="Reset my password" />
+
+    </group>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="@string/nav_about_us" />
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
+                android:title="Log out" />
+        </menu>
+    </item>
+
+</menu>
