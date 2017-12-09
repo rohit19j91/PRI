@@ -1,13 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base Theme -->
     <style name="BaseTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <!-- Attributes for all APIs -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
         <item name="dialogTheme">@style/AppTheme.Dialog</item>
         <item name="alertDialogTheme">@style/AppTheme.Dialog.Alert</item>
         <item name="colorControlHighlight">@color/selector_black_pressed</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 
@@ -66,21 +66,21 @@
         <item name="colorAccent">@color/material_teal_a700</item>
     </style>
 
-    <!-- Light App Bar Theme -->
+    <!-- Light App Bar Theme
     <style name="AppTheme.AppBar.Light" parent="@style/ThemeOverlay.AppCompat.ActionBar">
-    </style>
+    </style> -->
 
-    <!-- Dark App Bar Theme -->
+    <!-- Dark App Bar Theme
     <style name="AppTheme.AppBar.Dark" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-    </style>
+    </style> -->
 
-    <!-- Light Overlay Theme -->
+    <!-- Light Overlay Theme
     <style name="AppTheme.Overlay.Light" parent="@style/ThemeOverlay.AppCompat.Light">
-    </style>
+    </style> -->
 
-    <!-- Dark Overlay Theme -->
+    <!-- Dark Overlay Theme
     <style name="AppTheme.Overlay.Dark" parent="@style/ThemeOverlay.AppCompat.Dark">
-    </style>
+    </style> -->
 
     <!-- Button Styles -->
     <style name="ButtonStyle" parent="@style/Widget.AppCompat.Button">
