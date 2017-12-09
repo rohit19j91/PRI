@@ -49,9 +49,9 @@ dependencies {
 
     //noinspection GradleCompatible
     compile 'com.android.support:design:25.4.0'
-    implementation files('/build/lib/activation.jar')
-    implementation files('/build/lib/additionnal.jar')
-    implementation files('/build/lib/mail.jar')
-    implementation files('build/lib/glide-3.6.0.jar')
+    //implementation files('/build/lib/activation.jar')
+    //implementation files('/build/lib/additionnal.jar')
+    //implementation files('/build/lib/mail.jar')
+    //implementation files('build/lib/glide-3.6.0.jar')
 }
 apply plugin: 'com.google.gms.google-services'
