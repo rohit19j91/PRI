@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.sql.Date;
@@ -19,10 +21,12 @@ import fr.epita.android.pri.Tools.Tools;
  * Created by sadekseridj on 09/12/2017.
  */
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     EditText mob, email, name, login, pass, confpass, dob;
     TextInputLayout inputmob, inputemail, inputname, inputlogin, inputpass, inputconfpass, inputdob;
+    RadioGroup radioGroup;
+    RadioButton male, female;
     DatabaseHandler dh;
 
 
@@ -43,6 +47,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         pass = (EditText) findViewById(R.id.editpass);
         confpass = (EditText) findViewById(R.id.editpassconfirm);
         dob = (EditText) findViewById(R.id.editdob);
+        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        male = (RadioButton) findViewById(R.id.male);
+        female = (RadioButton) findViewById(R.id.female);
 
         inputmob = (TextInputLayout) findViewById(R.id.inputmobile);
         inputemail = (TextInputLayout) findViewById(R.id.inputemail);
@@ -53,6 +60,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         inputdob = (TextInputLayout) findViewById(R.id.inputdob);
 
         sbbtn.setOnClickListener(this);
+        radioGroup.setOnCheckedChangeListener(this);
     }
 
     private boolean checkDOB()
@@ -132,6 +140,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 String passstr = pass.getText().toString();
                 String confpassstr = confpass.getText().toString();
                 Date date_birth = Date.valueOf(dob.getText().toString());
+                int sexe = (radioGroup.getCheckedRadioButtonId() == male.getId()) ? 1 : 0;
 
                 if (passstr.equals(confpassstr)) {
                     // Ajouter le sexe
@@ -143,6 +152,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     LoginActivity.rl.setPass(PasswordFunctions.hashPass(passstr, loginstr));
                     LoginActivity.rl.setUri(null);
                     LoginActivity.rl.setDob(date_birth);
+                    LoginActivity.rl.setSexe(sexe);
 
                     dh.insertdata(LoginActivity.rl);
 
@@ -166,6 +176,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     tools.setAnimaton(inputconfpass);
                 }
         }
+    }
 
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        switch (i)
+        {
+            case R.id.male:
+                break;
+            case R.id.female:
+                break;
+            default:
+                break;
+        }
     }
 }

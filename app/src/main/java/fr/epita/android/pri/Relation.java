@@ -11,7 +11,7 @@ import java.sql.Date;
 
 public class Relation implements Serializable{
 
-    int id;
+    int id, sexe;
     String mob, email,name,login,pass;
     Date dob;
     Uri uri = null;
@@ -78,4 +78,8 @@ public class Relation implements Serializable{
     public Date getDob() { return this.dob; }
 
     public void setDob(Date date) { this.dob = date; }
+
+    public int getSexe() { return this.sexe; }
+
+    public void setSexe(int s) { this.sexe = s; }
 }
