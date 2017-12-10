@@ -3,7 +3,6 @@ package fr.epita.android.pri;
 import android.net.Uri;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  * Created by Rohit on 11/3/2017.
@@ -12,8 +11,7 @@ import java.sql.Date;
 public class Relation implements Serializable{
 
     int id, sexe;
-    String mob, email,name,login,pass;
-    Date dob;
+    String mob, email,name,login,pass, dob;
     Uri uri = null;
     private boolean isLogged = false;
 
@@ -75,9 +73,9 @@ public class Relation implements Serializable{
 
     public void setUri(Uri uri) { this.uri = uri; }
 
-    public Date getDob() { return this.dob; }
+    public String getDob() { return this.dob; }
 
-    public void setDob(Date date) { this.dob = date; }
+    public void setDob(String date) { this.dob = date; }
 
     public int getSexe() { return this.sexe; }
 

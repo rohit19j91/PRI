@@ -79,11 +79,7 @@ public class Profil extends Fragment implements View.OnClickListener{
         dh = new DatabaseHandler(context);
 
 
-        if (LoginActivity.rl.getUri() == null)
-        {
-            // Charger une photo de base
-        }
-        else
+        if (LoginActivity.rl.getUri() != null)
         {
             Glide.with(this).load(LoginActivity.rl.getUri()).into(profilepic);
         }

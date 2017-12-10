@@ -24,12 +24,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_LOGIN="login";
     private static final String COLUMN_MOBILE="mobile";
     private static final String COLUMN_PASS="pass";
+    private static final String COLUMN_SEXE = "sexe";
+    private static final String COLUMN_DOB = "dob";
     private static final String COLUMN_PICTURE="picture";
 
     private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key autoincrement," +
             " name text, email text not null, login text not null," +
             " pass text not null,"+
             " mobile text not null" +
+            " sexe int not null" +
+            " dob date text null" +
             " picture text);";
 
     SQLiteDatabase db;
@@ -63,6 +67,8 @@ public DatabaseHandler(Context context)
         val.put(COLUMN_LOGIN,r.getLogin());
         val.put(COLUMN_MOBILE,r.getMob());
         val.put(COLUMN_PASS,r.getPass());
+        val.put(COLUMN_SEXE,r.getSexe());
+        val.put(COLUMN_DOB,r.getDob());
         val.put(COLUMN_PICTURE, (r.getUri() == null) ? "" : r.getUri().toString());
 
     db.insert(TABLE_NAME,null,val);

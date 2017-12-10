@@ -139,7 +139,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 String loginstr = login.getText().toString();
                 String passstr = pass.getText().toString();
                 String confpassstr = confpass.getText().toString();
-                Date date_birth = Date.valueOf(dob.getText().toString());
+                String date_birth = dob.getText().toString();
                 int sexe = (radioGroup.getCheckedRadioButtonId() == male.getId()) ? 1 : 0;
 
                 if (passstr.equals(confpassstr)) {
