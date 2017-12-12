@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     public void showmessage(String message,String title)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -104,17 +103,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
+        else if (customViewpagerAdapter != null &&
+                customViewpagerAdapter.displayPageWeb.webView != null &&
+                customViewpagerAdapter.displayPageWeb.webView.canGoBack())
+            customViewpagerAdapter.displayPageWeb.webView.goBack();
+        else if (customViewpagerAdapter != null &&
+                customViewpagerAdapter.webViewList.webView != null &&
+                customViewpagerAdapter.webViewList.webView.canGoBack())
+            customViewpagerAdapter.webViewList.webView.goBack();
         else if (customViewpagerAdapter.stack.size() > 1) {
             customViewpagerAdapter.stack.pop();
             display_fragment(customViewpagerAdapter.stack.pop());
-        }
-        else if (customViewpagerAdapter != null) {
-            if (customViewpagerAdapter.webViewList != null) {
-                if (customViewpagerAdapter.webViewList.webView != null) {
-                    if (customViewpagerAdapter.webViewList.webView.canGoBack())
-                        customViewpagerAdapter.webViewList.webView.goBack();
-                }
-            }
         }
         else
             super.onBackPressed();
@@ -173,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 0:
                 setTitle("Profile");
                 customViewpagerAdapter.stack.push(0);
+                navigationView.getMenu().getItem(1).setChecked(true);
                 viewpagerAdapter.setCurrentItem(0, false);
                 break;
             case 1:
@@ -188,21 +188,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 3:
                 setTitle("Reset password");
                 customViewpagerAdapter.stack.push(3);
+                navigationView.getMenu().getItem(5).setChecked(true);
                 viewpagerAdapter.setCurrentItem(3, false);
                 break;
             case 4:
                 setTitle("My computers");
                 customViewpagerAdapter.stack.push(4);
+                navigationView.getMenu().getItem(2).setChecked(true);
                 viewpagerAdapter.setCurrentItem(4, false);
                 break;
             case 5:
                 setTitle("My tamagotchi");
                 customViewpagerAdapter.stack.push(5);
+                navigationView.getMenu().getItem(0).setChecked(true);
                 viewpagerAdapter.setCurrentItem(5, false);
                 break;
             case 6:
                 setTitle("My news");
                 customViewpagerAdapter.stack.push(6);
+                navigationView.getMenu().getItem(4).setChecked(true);
                 viewpagerAdapter.setCurrentItem(6, false);
                 break;
             case 7:
