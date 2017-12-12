@@ -105,8 +105,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 String loginuser = login.getText().toString();
                 System.out.println("LOGIN: " + loginuser);
                 String passuser = PasswordFunctions.hashPass(password.getText().toString(), loginuser);
+                System.out.println("HERE2");
                 System.out.println("PASSUSER: " + passuser);
+                System.out.println("HERE3");
                 String passdb = dh.searchPass(loginuser);
+                System.out.println("HERE4");
                 System.out.println("PASSDB: " + passdb);
 
                 if (passuser.equals(passdb)) {
