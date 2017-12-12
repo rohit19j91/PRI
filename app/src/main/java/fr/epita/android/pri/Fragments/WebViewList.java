@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.webkit.WebView;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -59,17 +57,6 @@ public class WebViewList extends Fragment {
         listView.setAdapter(customWebViewListAdapter);
 
         listView.setClickable(true);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(context, "ITEM: " + item, Toast.LENGTH_SHORT).show();
-                Bundle bundle = new Bundle();
-                bundle.putString("URL", item);
-                context.customViewpagerAdapter.displayPageWeb.setArguments(bundle);
-                context.display_fragment(7);
-            }
-        });
 
         return view;
     }

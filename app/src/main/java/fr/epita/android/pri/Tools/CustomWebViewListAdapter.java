@@ -2,6 +2,7 @@ package fr.epita.android.pri.Tools;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -60,6 +62,16 @@ public class CustomWebViewListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
+        viewHolder.buttonopen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("URL", item);
+                context.customViewpagerAdapter.displayPageWeb.setArguments(bundle);
+                context.display_fragment(7);
+            }
+        });
+
         // configuration du webview pour l'utilisation du javascript
         WebSettings webSettings = viewHolder.webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -97,12 +109,13 @@ public class CustomWebViewListAdapter extends BaseAdapter {
     }
 
     class ViewHolder {
-        //final TextView textView;
         final WebView webView;
+        final Button buttonopen;
 
         public ViewHolder(final View rowView) {
           //textView = (TextView) rowView.findViewById(R.id.text_web_view);
             webView = (WebView) rowView.findViewById(R.id.web_view);
+            buttonopen = (Button) rowView.findViewById(R.id.button_open);
         }
     }
 }

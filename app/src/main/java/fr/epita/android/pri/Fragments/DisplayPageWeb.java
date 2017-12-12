@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import fr.epita.android.pri.DatabaseHandler;
 import fr.epita.android.pri.MainActivity;
@@ -35,6 +37,27 @@ public class DisplayPageWeb extends Fragment {
         dh = new DatabaseHandler(context);
 
         webView = (WebView) view.findViewById(R.id.webpageview);
+
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setDomStorageEnabled(true);
+
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+
+         webView.setWebViewClient(new WebViewClient() {
+             public void onPageFinished(WebView webView, String url) {
+               webView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView webView, String url)
+            {
+                webView.loadUrl(url);
+                return true;
+            }
+        });
 
         return view;
     }

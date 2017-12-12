@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="50dp"
         android:divider="@color/colorPrimaryDark"
         android:dividerHeight="1dp"/>
 
