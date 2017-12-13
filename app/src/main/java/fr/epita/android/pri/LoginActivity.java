@@ -98,6 +98,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
+
         loginbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +157,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 }
             }
         });
+
+        viewall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoginActivity.this,Quiz.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
 
@@ -165,39 +177,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         return true;
     }
 
-    public void viewevery()
-    {
-        viewall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Cursor res=dh.getAllData();
-                if(res.getCount()==0)
-                {
-                    showmessage("Error","Nothing there in the database");
-                    return;
-                }
-                StringBuffer buffer=new StringBuffer();
-                while(res.moveToNext())
-                {
-                    buffer.append("Id: "+res.getString(0)+"\n");
-                    buffer.append("Name: "+res.getString(1)+"\n");
-                    buffer.append("Email: "+res.getString(2)+"\n");
-                    buffer.append("Login: "+res.getString(3)+"\n");
-                }
-                showmessage("Data",buffer.toString());
-            }
-        });
-    }
 
 
 
-    public void showmessage(String message,String title)
-    {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-    }
+
 
 
     @Override
