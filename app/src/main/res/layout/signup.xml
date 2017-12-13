@@ -39,7 +39,7 @@
         app:layout_constraintLeft_toLeftOf="@id/inputemail"
         app:layout_constraintRight_toRightOf="@id/inputemail">
         <EditText
-            android:id="@+id/editame"
+            android:id="@+id/editname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

@@ -53,5 +53,7 @@ dependencies {
     //implementation files('/build/lib/additionnal.jar')
     //implementation files('/build/lib/mail.jar')
     //implementation files('build/lib/glide-3.6.0.jar')
+
+    compile 'me.dm7.barcodescanner:zxing:1.9'
 }
 apply plugin: 'com.google.gms.google-services'
