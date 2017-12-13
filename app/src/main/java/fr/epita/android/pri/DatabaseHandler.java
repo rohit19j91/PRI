@@ -31,9 +31,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key autoincrement," +
             " name text, email text not null, login text not null," +
             " pass text not null,"+
-            " mobile text not null" +
-            " sexe int not null" +
-            " dob date text null" +
+            " mobile text not null," +
+            " sexe int not null," +
+            " dob date text null," +
             " picture text);";
 
     SQLiteDatabase db;

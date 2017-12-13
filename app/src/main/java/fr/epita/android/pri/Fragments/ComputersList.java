@@ -1,11 +1,13 @@
 package fr.epita.android.pri.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 
 import fr.epita.android.pri.DatabaseHandler;
 import fr.epita.android.pri.MainActivity;
+import fr.epita.android.pri.QRCodeActivity;
 import fr.epita.android.pri.R;
 import fr.epita.android.pri.Tools.CustomListAdapter;
 
@@ -20,10 +23,11 @@ import fr.epita.android.pri.Tools.CustomListAdapter;
  * Created by sadekseridj on 07/12/2017.
  */
 
-public class ComputersList extends Fragment {
+public class ComputersList extends Fragment implements View.OnClickListener{
 
     public ListView listView;
     TextView emptyListView;
+    public Button buttonAdd;
     MainActivity context;
     DatabaseHandler dh;
 
@@ -45,6 +49,8 @@ public class ComputersList extends Fragment {
 
         listView = (ListView) view.findViewById(R.id.computerslist);
         emptyListView = (TextView) view.findViewById(R.id.emptylist);
+        buttonAdd = (Button) view.findViewById(R.id.add_computer);
+        buttonAdd.setOnClickListener(this);
 
         list = new ArrayList<>();
         list.add(new Pair<String, String>("Ordi1", "id1"));
@@ -64,5 +70,18 @@ public class ComputersList extends Fragment {
     {
         if (list.isEmpty())
             listView.setEmptyView(emptyListView);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.add_computer:
+                Intent intent = new Intent(context, QRCodeActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 }

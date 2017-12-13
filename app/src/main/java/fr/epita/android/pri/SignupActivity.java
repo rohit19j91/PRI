@@ -11,7 +11,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 import fr.epita.android.pri.Tools.PasswordFunctions;
@@ -42,7 +41,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         mob = (EditText) findViewById(R.id.editmobile);
         email = (EditText) findViewById(R.id.editemail);
-        name = (EditText) findViewById(R.id.editemail);
+        name = (EditText) findViewById(R.id.editname);
         login = (EditText) findViewById(R.id.editlogin);
         pass = (EditText) findViewById(R.id.editpass);
         confpass = (EditText) findViewById(R.id.editpassconfirm);
@@ -61,6 +60,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         sbbtn.setOnClickListener(this);
         radioGroup.setOnCheckedChangeListener(this);
+    }
+
+    private boolean checkMobile()
+    {
+        if(mob.getText().toString().trim().isEmpty() || mob.getText().toString().length() != 10)
+        {
+            inputmob.setErrorEnabled(true);
+            inputmob.setError("Error on the number mobile");
+            return false;
+        }
+        inputmob.setErrorEnabled(false);
+        return true;
     }
 
     private boolean checkDOB()
@@ -112,7 +123,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     tools.setAnimaton(inputname);
                     break;
                 }
-                if (! tools.checkFieldSignup(mob, inputmob, "Error on the number mobile")) {
+                if (! checkMobile()) {
                     tools.setAnimaton(inputmob);
                     break;
                 }
@@ -128,7 +139,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     tools.setAnimaton(inputconfpass);
                     break;
                 }
-                if (! tools.checkFieldSignup(dob, inputdob, "Error on the D.O.B")) {
+                if (! checkDOB()) {
                     tools.setAnimaton(inputdob);
                     break;
                 }

@@ -23,6 +23,11 @@
             android:title="@string/nav_notifications" />
 
         <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/notifications"
+            android:title="@string/nav_news" />
+
+        <item
         android:id="@+id/nav_resetpass"
         android:icon="@drawable/edit"
         android:title="Reset my password" />

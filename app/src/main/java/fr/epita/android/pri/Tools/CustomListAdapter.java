@@ -1,5 +1,7 @@
 package fr.epita.android.pri.Tools;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +66,29 @@ public class CustomListAdapter extends BaseAdapter {
         viewHolder.pseudo.setText(item.first);
         viewHolder.id.setText(item.second);
 
+        viewHolder.buttonRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.create();
+                //final AlertDialog dialog = builder.create();
+                builder.setTitle("Would you like to delete this computer ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // enlever l'ordi dans la BDD
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                return;
+                            }
+                        });
+                builder.show();
+            }
+        });
+
         return rowView;
     }
 
@@ -71,11 +96,13 @@ public class CustomListAdapter extends BaseAdapter {
         final ImageView avatar;
         final TextView pseudo;
         final TextView id;
+        final ImageView buttonRemove;
 
         public ViewHolder(View rowView) {
             avatar = (ImageView) rowView.findViewById(R.id.avatar_computer);
             pseudo = (TextView) rowView.findViewById(R.id.pseudo_computer);
             id = (TextView) rowView.findViewById(R.id.id_computer);
+            buttonRemove = (ImageView) rowView.findViewById(R.id.button_remove);
         }
     }
 }

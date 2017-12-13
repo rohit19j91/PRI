@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private Toolbar toolbar;
 
-
+    FragmentManager fragmentManager;
     ViewPager viewpagerAdapter;
     public CustomViewpagerAdapter customViewpagerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         imageHeader.setImageResource(R.drawable.cybitlogo);
         txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         viewpagerAdapter = (ViewPager) findViewById(R.id.main_viewpager);
         viewpagerAdapter.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -89,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     public void showmessage(String message,String title)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -101,12 +101,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START))
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        else if (customViewpagerAdapter != null &&
+                customViewpagerAdapter.displayPageWeb.webView != null &&
+                customViewpagerAdapter.displayPageWeb.webView.canGoBack())
+            customViewpagerAdapter.displayPageWeb.webView.goBack();
+        else if (customViewpagerAdapter != null &&
+                customViewpagerAdapter.webViewList.webView != null &&
+                customViewpagerAdapter.webViewList.webView.canGoBack())
+            customViewpagerAdapter.webViewList.webView.goBack();
+        else if (customViewpagerAdapter.stack.size() > 1) {
+            customViewpagerAdapter.stack.pop();
+            display_fragment(customViewpagerAdapter.stack.pop());
+        }
+        else
             super.onBackPressed();
         }
-    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -132,6 +143,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             case R.id.nav_notifications:
                 return true;
+            case R.id.nav_news:
+                display_fragment(6);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
             case R.id.nav_resetpass:
                 Bundle bundle = new Bundle();
                 bundle.putString("LOGIN", LoginActivity.rl.getLogin());
@@ -156,32 +171,61 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             case 0:
                 setTitle("Profile");
+                customViewpagerAdapter.stack.push(0);
+                navigationView.getMenu().getItem(1).setChecked(true);
                 viewpagerAdapter.setCurrentItem(0, false);
                 break;
             case 1:
                 setTitle("Reset mail");
+                customViewpagerAdapter.stack.push(1);
                 viewpagerAdapter.setCurrentItem(1, false);
                 break;
             case 2:
                 setTitle("Reset mobile");
+                customViewpagerAdapter.stack.push(2);
                 viewpagerAdapter.setCurrentItem(2, false);
                 break;
             case 3:
                 setTitle("Reset password");
+                customViewpagerAdapter.stack.push(3);
+                navigationView.getMenu().getItem(5).setChecked(true);
                 viewpagerAdapter.setCurrentItem(3, false);
                 break;
             case 4:
                 setTitle("My computers");
+                customViewpagerAdapter.stack.push(4);
+                navigationView.getMenu().getItem(2).setChecked(true);
                 viewpagerAdapter.setCurrentItem(4, false);
                 break;
             case 5:
                 setTitle("My tamagotchi");
+                customViewpagerAdapter.stack.push(5);
+                navigationView.getMenu().getItem(0).setChecked(true);
+                viewpagerAdapter.setCurrentItem(5, false);
+                break;
+            case 6:
+                setTitle("My news");
+                customViewpagerAdapter.stack.push(6);
+                navigationView.getMenu().getItem(4).setChecked(true);
+                viewpagerAdapter.setCurrentItem(6, false);
+                break;
+            case 7:
+                String item_web = customViewpagerAdapter.displayPageWeb.getArguments().getString("URL");
+                customViewpagerAdapter.displayPageWeb.webView.loadUrl(item_web);
+                customViewpagerAdapter.stack.push(7);
                 viewpagerAdapter.setCurrentItem(7, false);
                 break;
             default:
                 break;
         }
     }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+    }
+
 }
 
 
