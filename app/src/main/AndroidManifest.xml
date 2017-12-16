@@ -51,6 +51,9 @@
         <activity
             android:name=".QRCodeActivity"
             android:theme="@style/AppTheme.Teal" />
+        <activity
+        android:name=".Fragments.News"
+        android:theme="@style/AppTheme.Teal" />
         <!-- <activity
            android:name=".OldPages.SignupActivity"
            android:theme="@style/AppTheme.Teal" />
