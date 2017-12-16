@@ -12,7 +12,7 @@ import java.util.Stack;
 
 public class CustomViewpagerAdapter extends FragmentPagerAdapter {
 
-    private static final int nb_pages = 8;
+    private static final int nb_pages = 10;
 
     public ChangeMail changeMail;
     ChangeMobile changeMobile;
@@ -22,7 +22,8 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
     Tamacharacter tamacharacter;
     public WebViewList webViewList ;
     public DisplayPageWeb displayPageWeb;
-
+    public News news;
+    public SignNews signNews;
     public Stack<Integer> stack;
 
 
@@ -38,6 +39,8 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
         tamacharacter = new Tamacharacter();
         webViewList = new WebViewList();
         displayPageWeb = new DisplayPageWeb();
+        news = new News();
+        signNews = new SignNews();
         stack = new Stack<>();
 
     }
@@ -64,6 +67,10 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
                 return webViewList;
             case 7:
                 return displayPageWeb;
+            case 8:
+                return news;
+            case 9:
+                return signNews;
             default:
                 return null;
         }
