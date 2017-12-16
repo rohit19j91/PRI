@@ -44,7 +44,6 @@ public class News extends Fragment{
     private String mLink;
 
     public ArrayList<String> listNews;
-   // ArrayList<RssFeedModel> items;
 
     public News()
     {
