@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         imageHeader.setImageResource(R.drawable.cybitlogo);
         txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
+        txtLogin.setText(LoginActivity.rl.getLogin());
 
         fragmentManager = getSupportFragmentManager();
         viewpagerAdapter = (ViewPager) findViewById(R.id.main_viewpager);

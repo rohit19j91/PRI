@@ -76,8 +76,6 @@ public class Profil extends Fragment implements View.OnClickListener{
         reset_mail = (ImageView) view.findViewById(R.id.resetMail);
         reset_mobile = (ImageView) view.findViewById(R.id.resetMobile);
 
-        context.txtLogin.setText(LoginActivity.rl.getLogin());
-
         profilepic.setClickable(true);
 
         dh = new DatabaseHandler(context);
