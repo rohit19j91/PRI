@@ -10,42 +10,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.23"/>
+        app:layout_constraintGuide_percent="0.3"/>
 
-    <TextView
-        android:id="@+id/resetpass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        android:layout_marginTop="25dp"
-        android:text="Reset password"
-        android:textSize="60px"
-        android:textStyle="bold" />
     <EditText
         android:id="@+id/newpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/guide"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:ems="10"
         android:hint="@string/newpass"
         android:inputType="textPassword"
-        android:textSize="40px"
-        android:layout_marginLeft="160px"/>
+        android:textSize="20dp" />
     <EditText
         android:id="@+id/confirmpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/newpass"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/newpass"
         android:ems="10"
         android:hint="@string/confirmpass"
         android:inputType="textPassword"
-        android:textSize="40px"
-        android:layout_marginLeft="160px"
+        android:textSize="20dp"
         android:layout_marginTop="30dp"/>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/submitreset"
         android:layout_width="50dp"
