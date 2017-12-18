@@ -183,7 +183,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
                 else {
                     inputconfpass.setErrorEnabled(true);
-                    inputconfpass.setError("Error on the password confirmation");
+                    inputconfpass.setError("Password don't match");
                     tools.setAnimaton(inputconfpass);
                 }
         }
