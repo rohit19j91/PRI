@@ -139,7 +139,6 @@
         android:id="@+id/resetMail"
         android:layout_width="30dp"
         android:layout_height="20dp"
-        android:adjustViewBounzds="true"
         app:layout_constraintLeft_toRightOf="@id/emailtitle"
         app:layout_constraintTop_toTopOf="@id/emailtitle"
         android:layout_marginLeft="10dp"

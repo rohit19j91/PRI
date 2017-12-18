@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/loginbutton"
         app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
-        app:layout_constrainRight_toRightOf="@id/inputloginconnex"
+        app:layout_constraintRight_toRightOf="@id/inputloginconnex"
         android:layout_marginTop="20dp"
         android:clickable="true"
         android:text="@string/signup"
