@@ -45,7 +45,7 @@ public class DisplayPageWeb extends Fragment {
         webSettings.setDomStorageEnabled(true);
 
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-
+        
          webView.setWebViewClient(new WebViewClient() {
              public void onPageFinished(WebView webView, String url) {
                webView.setVisibility(View.VISIBLE);

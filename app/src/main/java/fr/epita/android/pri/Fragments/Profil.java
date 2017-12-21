@@ -25,8 +25,10 @@ import fr.epita.android.pri.R;
 
 public class Profil extends Fragment implements View.OnClickListener{
 
-    private TextView profilename = null;
-    private TextView firstname = null;
+    private TextView login = null;
+    private TextView dob = null;
+    private TextView level = null;
+    private TextView score = null;
     private TextView name = null;
     private TextView email = null;
     private TextView mobile = null;
@@ -47,12 +49,11 @@ public class Profil extends Fragment implements View.OnClickListener{
     public void initProfile()
     {
         LoginActivity.rl.setLogged(true);
-        String [] fullname = LoginActivity.rl.getName().split(" ");
-        profilename.setText(LoginActivity.rl.getLogin());
-        firstname.setText("Firstname: " + fullname[0]);
-        name.setText("Name: " + ((fullname.length == 1) ? "" : fullname[1]));
-        email.setText("E-mail: " + LoginActivity.rl.getEmail());
-        mobile.setText("Mobile: " + LoginActivity.rl.getMob());
+        login.setText(LoginActivity.rl.getLogin());
+        dob.setText(LoginActivity.rl.getDob());
+        name.setText(LoginActivity.rl.getName());
+        email.setText(LoginActivity.rl.getEmail());
+        mobile.setText(LoginActivity.rl.getMob());
     }
 
     @Override
@@ -61,8 +62,12 @@ public class Profil extends Fragment implements View.OnClickListener{
     {
         final View view = inflater.inflate(R.layout.profile, container, false);
         context = (MainActivity) getActivity();
-        profilename = (TextView) view.findViewById(R.id.profile_name);
-        firstname = (TextView) view.findViewById(R.id.firstname);
+        profilepic = (ImageView) view.findViewById(R.id.profile_pic);
+        login = (TextView) view.findViewById(R.id.login);
+        dob = (TextView) view.findViewById(R.id.dob);
+        level = (TextView) view.findViewById(R.id.level);
+        score = (TextView) view.findViewById(R.id.score);
+
         name = (TextView) view.findViewById(R.id.name);
         email = (TextView) view.findViewById(R.id.email);
         mobile = (TextView) view.findViewById(R.id.mobile);
@@ -70,9 +75,6 @@ public class Profil extends Fragment implements View.OnClickListener{
 
         reset_mail = (ImageView) view.findViewById(R.id.resetMail);
         reset_mobile = (ImageView) view.findViewById(R.id.resetMobile);
-        profilepic = (ImageView) view.findViewById(R.id.profile_pic);
-
-        context.txtLogin.setText(LoginActivity.rl.getLogin());
 
         profilepic.setClickable(true);
 

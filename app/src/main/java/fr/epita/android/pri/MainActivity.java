@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         imageHeader.setImageResource(R.drawable.cybitlogo);
         txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
+        txtLogin.setText(LoginActivity.rl.getLogin());
 
         fragmentManager = getSupportFragmentManager();
         viewpagerAdapter = (ViewPager) findViewById(R.id.main_viewpager);
@@ -143,8 +144,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             case R.id.nav_notifications:
                 return true;
-            case R.id.nav_news:
-                display_fragment(6);
+            case R.id.nav_mynews:
+               display_fragment(8);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            case R.id.nav_signnews:
+                display_fragment(9);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_resetpass:
@@ -158,8 +163,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_logout:
-               Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-               startActivity(intent);
+               Intent intent_nav = new Intent(MainActivity.this, LoginActivity.class);
+               startActivity(intent_nav);
                 return true;
             default:
                 return false;
@@ -214,6 +219,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 customViewpagerAdapter.displayPageWeb.webView.loadUrl(item_web);
                 customViewpagerAdapter.stack.push(7);
                 viewpagerAdapter.setCurrentItem(7, false);
+                break;
+            case 8:
+                setTitle("My News");
+                customViewpagerAdapter.stack.push(8);
+                navigationView.getMenu().getItem(4).setChecked(true);
+                viewpagerAdapter.setCurrentItem(8, false);
+                break;
+            case 9:
+                setTitle("Sign for news");
+                customViewpagerAdapter.stack.push(9);
+                //navigationView.getMenu().getItem(4).setChecked(true); mettre à jour une fois intégré dans le menu
+                viewpagerAdapter.setCurrentItem(9, false);
                 break;
             default:
                 break;

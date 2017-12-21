@@ -12,8 +12,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import fr.epita.android.pri.Tools.JSSEProvider;
-
 
 /**
  * Created by sadekseridj on 25/11/2017.
@@ -56,7 +54,9 @@ public class GmailSender extends javax.mail.Authenticator {
     public synchronized void sendMail(String subject, String body, String sender, String recipient) throws Exception {
         try {
             MimeMessage message = new MimeMessage(session);
-            DataHandler handler = new DataHandler((DataSource) new ByteArrayDataSource(body.getBytes(), "text/plain"));
+            ByteArrayDataSource byteArrayDataSource = new ByteArrayDataSource(body.getBytes(), "text/plain");
+            DataSource dataSource = DataSource.class.cast(byteArrayDataSource);
+            DataHandler handler = new DataHandler(dataSource);
             message.setSender(new InternetAddress(sender));
             message.setSubject(subject);
             message.setDataHandler(handler);

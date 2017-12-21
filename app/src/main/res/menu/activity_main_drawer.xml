@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
@@ -22,10 +23,16 @@
             android:icon="@drawable/notifications"
             android:title="@string/nav_notifications" />
 
-        <item
-            android:id="@+id/nav_news"
-            android:icon="@drawable/notifications"
-            android:title="@string/nav_news" />
+        <item android:title="News">
+            <menu>
+                <item
+                android:id="@+id/nav_mynews"
+                android:title="@string/nav_news" />
+                <item
+                    android:id="@+id/nav_signnews"
+                    android:title="@string/nav_signfornews" />
+            </menu>
+        </item>
 
         <item
         android:id="@+id/nav_resetpass"
@@ -39,12 +46,11 @@
             <item
                 android:id="@+id/nav_about_us"
                 android:title="@string/nav_about_us" />
-
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/logout"
-                android:title="Log out" />
         </menu>
     </item>
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout"
+        android:title="Log out" />
 
 </menu>
