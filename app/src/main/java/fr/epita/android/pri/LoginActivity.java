@@ -1,33 +1,33 @@
-package fr.epita.android.pri;
+        package fr.epita.android.pri;
 
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.database.Cursor;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.os.Bundle;
+        import android.support.annotation.NonNull;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.CheckBox;
+        import android.widget.EditText;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
+        import com.facebook.CallbackManager;
+        import com.facebook.FacebookCallback;
+        import com.facebook.FacebookException;
+        import com.facebook.FacebookSdk;
+        import com.facebook.login.LoginResult;
+        import com.facebook.login.widget.LoginButton;
+        import com.google.android.gms.auth.api.Auth;
+        import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+        import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+        import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+        import com.google.android.gms.common.ConnectionResult;
+        import com.google.android.gms.common.SignInButton;
+        import com.google.android.gms.common.api.GoogleApiClient;
 
-import fr.epita.android.pri.Tools.PasswordFunctions;
+        import fr.epita.android.pri.Tools.PasswordFunctions;
 
 /**
  * Created by sadekseridj on 09/12/2017.
@@ -38,9 +38,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     Button loginbut,viewall;
     EditText login, password;
     TextView forgot, signup;
+    CheckBox rememberMe;
     LoginButton fbloginbut;
     SignInButton googlesignbut;
     CallbackManager callbackManager;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor editor;
+    private boolean saveLogin;
 
     private GoogleApiClient googleApiClient;
     private static final int REQ_CODE = 9001;
@@ -61,10 +65,21 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         loginbut = (Button) findViewById(R.id.loginbutton);
         login = (EditText) findViewById(R.id.editloginconnex);
         password = (EditText) findViewById(R.id.editpassconnex);
+        rememberMe = (CheckBox) findViewById(R.id.rememberme);
         viewall = (Button) findViewById(R.id.showall);
         forgot = (TextView) findViewById(R.id.forgotpass);
         signup = (TextView) findViewById(R.id.signup);
         fbloginbut = (LoginButton) findViewById(R.id.facebook_login);
+
+        loginPreferences = getSharedPreferences("loginPreferences", MODE_PRIVATE);
+        editor = loginPreferences.edit();
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin == true)
+        {
+            login.setText(loginPreferences.getString("login", ""));
+            password.setText(loginPreferences.getString("password", ""));
+            rememberMe.setChecked(true);
+        }
 
         dh= new DatabaseHandler(this);
 
@@ -104,16 +119,28 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
 
                 String loginuser = login.getText().toString();
-                System.out.println("LOGIN: " + loginuser);
+
                 String passuser = PasswordFunctions.hashPass(password.getText().toString(), loginuser);
-                System.out.println("HERE2");
-                System.out.println("PASSUSER: " + passuser);
-                System.out.println("HERE3");
+
+
+
                 String passdb = dh.searchPass(loginuser);
-                System.out.println("HERE4");
-                System.out.println("PASSDB: " + passdb);
+
+
 
                 if (passuser.equals(passdb)) {
+                    if (rememberMe.isChecked())
+                    {
+                        editor.putBoolean("saveLogin", true);
+                        editor.putString("login", loginuser);
+                        editor.putString("password", password.getText().toString());
+                        editor.commit();
+                    }
+                    else
+                    {
+                        editor.clear();
+                        editor.commit();
+                    }
                     login.setText("");
                     password.setText("");
                     Toast.makeText(LoginActivity.this, "Redirecting... Login Successful", Toast.LENGTH_SHORT).show();
@@ -161,7 +188,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         viewall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,Quiz.class);
+                Intent intent=new Intent(LoginActivity.this,Quizquestionsjson.class);
                 startActivity(intent);
             }
         });
