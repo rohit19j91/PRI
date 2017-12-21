@@ -83,8 +83,8 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 =======
-        <activity android:theme="@style/AppTheme.Teal" android:name=".MainActivity"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".SignupActivity"></activity>
+        <!--  <activity android:theme="@style/AppTheme.Teal" android:name=".MainActivity"></activity>
+          <activity android:theme="@style/AppTheme.Teal" android:name=".SignupActivity"></activity>-->
         <activity android:theme="@style/AppTheme.Teal" android:name=".ForgotPassword"></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".SignIn"></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".ConfirmationCode"></activity>
@@ -93,8 +93,10 @@
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangePassword"></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMail" ></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMobile"></activity>
-        <activity android:theme="@style/AppTheme.Teal" android:name=".Quiz"></activity>
->>>>>>> sadekBranch
+        <activity android:theme="@style/AppTheme.Teal" android:name=".Quiztopic"></activity>
+        <activity android:theme="@style/AppTheme.Teal" android:name=".Quizquestionsjson"></activity>
+
+        >>>>>>> sadekBranch
 
     </application>
 

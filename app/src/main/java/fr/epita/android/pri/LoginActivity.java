@@ -1,8 +1,6 @@
 package fr.epita.android.pri;
 
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -161,7 +159,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         viewall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,Quiz.class);
+                Intent intent=new Intent(LoginActivity.this,Quizquestionsjson.class);
                 startActivity(intent);
             }
         });

@@ -1,0 +1,30 @@
+{
+"questions": [
+{
+"question": "What is a computer network?",
+"answers": [
+"A web of connected computers or devices",
+"A computer vulnerability",
+"An Internet service provider",
+"All of the above"
+],
+"correctIndex": 1,
+"categoryId": 1,
+"categoryname": "Basic Networking",
+"score": 1
+},
+{
+"question": "What is the scientific name of a butterfly?",
+"answers": [
+"Apis",
+"Coleoptera",
+"Formicidae",
+"Rhopalocera"
+],
+"correctIndex": 3,
+"categoryId": 1,
+"categoryname": "Cybersecurity",
+"score": 1
+}
+]
+}

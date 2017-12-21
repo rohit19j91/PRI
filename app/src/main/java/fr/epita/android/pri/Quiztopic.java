@@ -18,9 +18,9 @@ import java.util.ArrayList;
  * Created by Rohit on 11/29/2017.
  */
 
-public class Quiz extends Activity {
+public class Quiztopic extends Activity {
 
-    private static String TAG = "Quiz";
+    private static String TAG = "Quiztopic";
 
     private float[] yData={20f,20f,20f,20f,20f};
     private String[] xData={"Rohit","Hermine","Avantika","Gaurav","Akshita"};
@@ -29,7 +29,7 @@ public class Quiz extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.minigames);
-        Log.d(TAG,"onCreate: Of the Quiz class");
+        Log.d(TAG,"onCreate: Of the Quiztopic class");
 
         pieChart= (PieChart) findViewById(R.id.piechartquiz);
 
@@ -37,7 +37,7 @@ public class Quiz extends Activity {
         pieChart.setHoleRadius(20f);
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setHoleColor(Color.BLUE);
-        pieChart.setCenterText("Quiz");
+        pieChart.setCenterText("Quiztopic");
         pieChart.setCenterTextSize(17);
         addDataSet();
 
@@ -63,7 +63,7 @@ public class Quiz extends Activity {
           //  xEntrys.add(xData[y]);}
 
         //Create Data set
-        PieDataSet pieDataSet=new PieDataSet(yEntrys,"Quiz");
+        PieDataSet pieDataSet=new PieDataSet(yEntrys,"Quiztopic");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(0);
 
@@ -93,7 +93,5 @@ public class Quiz extends Activity {
         pieChart.setData(pieData);
         pieChart.invalidate();
 
-
     }
-
 }
