@@ -40,6 +40,7 @@ public class SignNews extends Fragment implements View.OnClickListener{
         context = (MainActivity) getActivity();
         dh = new DatabaseHandler(context);
 
+        // aller chercher les news dans la bdd une fois que c'est pret et cocher les cases dont l'user est abonné
         allNews = new ArrayList<>();
         allNews.add("News 1");
         allNews.add("News 2");
@@ -87,6 +88,7 @@ public class SignNews extends Fragment implements View.OnClickListener{
         {
             case R.id.submitsignnews:
                 // gérer les checkbox cochées et ajouter a la DBB du user
+                context.display_fragment(8);
                 break;
             default:
                 break;
