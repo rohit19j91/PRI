@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import fr.epita.android.pri.Fragments.CustomViewpagerAdapter;
 
 //View.OnClickListener,
@@ -66,10 +68,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navHeader = navigationView.getHeaderView(0);
 
         imageHeader = (ImageView) navHeader.findViewById(R.id.img_header);
+        if (LoginActivity.rl.getUri() != null)
+            Glide.with(this).load(LoginActivity.rl.getUri()).into(imageHeader);
+        else
+            imageHeader.setImageResource(R.drawable.cybitlogo);
 
-        imageHeader.setImageResource(R.drawable.cybitlogo);
         txtLogin = (TextView) navHeader.findViewById(R.id.txtlogin);
         txtLogin.setText(LoginActivity.rl.getLogin());
+        txtLogin.setText(txtLogin.getText().toString().substring(0,1).toUpperCase() + txtLogin.getText().toString().substring(1));
 
         fragmentManager = getSupportFragmentManager();
         viewpagerAdapter = (ViewPager) findViewById(R.id.main_viewpager);

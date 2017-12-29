@@ -12,7 +12,7 @@ public class Relation implements Serializable{
 
     int id, sexe;
     String mob, email,name,login,pass, dob;
-    Uri uri = null;
+    Uri uri;
     private boolean isLogged = false;
 
     public void setId(int id)

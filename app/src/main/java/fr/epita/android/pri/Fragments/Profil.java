@@ -50,8 +50,10 @@ public class Profil extends Fragment implements View.OnClickListener{
     {
         LoginActivity.rl.setLogged(true);
         login.setText(LoginActivity.rl.getLogin());
+        login.setText(login.getText().toString().substring(0,1).toUpperCase() + login.getText().toString().substring(1));
         dob.setText(LoginActivity.rl.getDob());
         name.setText(LoginActivity.rl.getName());
+        name.setText(name.getText().toString().substring(0,1).toUpperCase() + name.getText().toString().substring(1));
         email.setText(LoginActivity.rl.getEmail());
         mobile.setText(LoginActivity.rl.getMob());
     }
@@ -130,7 +132,7 @@ public class Profil extends Fragment implements View.OnClickListener{
             {
                 Uri uri = resultData.getData();
                 dh.changePicture(uri.toString(), LoginActivity.rl.getLogin());
-                LoginActivity.rl.setUri(uri);
+                //LoginActivity.rl.setUri(uri);
                 Glide.with(this).load(uri).into(profilepic);
             }
             else
