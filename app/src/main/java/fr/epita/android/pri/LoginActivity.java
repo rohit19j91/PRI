@@ -188,8 +188,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         viewall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(LoginActivity.this,Quizquestionsjson.class);
-                startActivity(intent);
+               // Intent intent=new Intent(LoginActivity.this,Quizquestionsjson.class);
+              //  startActivity(intent);
             }
         });
 
