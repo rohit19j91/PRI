@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.util.Log;
 
 import fr.epita.android.pri.Tools.PasswordFunctions;
@@ -15,7 +16,7 @@ import fr.epita.android.pri.Tools.PasswordFunctions;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION=1;
+    private static final int DATABASE_VERSION=2;
     private static final String DATABASE_NAME="pri-v1.db";
     private static final String TABLE_NAME="customer";
     private static final String COLUMN_ID="id";
@@ -48,7 +49,7 @@ public DatabaseHandler(Context context)
     @Override
     public void onCreate(SQLiteDatabase db) {
     Log.d("Create DB","Pahunch gaya yahan");
-       db.execSQL(TABLE_CREATE);
+        db.execSQL(TABLE_CREATE);
         Log.d("Database Operation","Database is created successfully");
     }
 
@@ -94,6 +95,9 @@ public DatabaseHandler(Context context)
             rl.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL)));
             rl.setLogin(cursor.getString(cursor.getColumnIndex(COLUMN_LOGIN)));
             rl.setMob(cursor.getString(cursor.getColumnIndex(COLUMN_MOBILE)));
+            rl.setSexe(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_SEXE))));
+            rl.setDob(cursor.getString(cursor.getColumnIndex(COLUMN_DOB)));
+            rl.setUri(Uri.parse(cursor.getString(cursor.getColumnIndex(COLUMN_PICTURE))));
             cursor.close();
             db.close();
             return rl;
