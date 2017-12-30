@@ -14,6 +14,11 @@
         android:title="Profile" />
 
         <item
+            android:id="@+id/nav_game"
+            android:icon="@drawable/gamepad"
+            android:title="Quizz game" />
+
+        <item
             android:id="@+id/nav_computers"
             android:icon="@drawable/computer"
             android:title="My computers" />

@@ -144,6 +144,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 display_fragment(0);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
+            case R.id.nav_game:
+                display_fragment(10);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
             case R.id.nav_computers:
                 display_fragment(4);
                 drawer.closeDrawer(GravityCompat.START);
@@ -237,6 +241,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 customViewpagerAdapter.stack.push(9);
                 //navigationView.getMenu().getItem(4).setChecked(true); mettre à jour une fois intégré dans le menu
                 viewpagerAdapter.setCurrentItem(9, false);
+                break;
+            case 10:
+                setTitle("Quizz game");
+                customViewpagerAdapter.stack.push(10);
+                viewpagerAdapter.setCurrentItem(10, false);
                 break;
             default:
                 break;
