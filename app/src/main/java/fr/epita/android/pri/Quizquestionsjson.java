@@ -1,17 +1,14 @@
 package fr.epita.android.pri;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,14 +17,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
  * Created by Rohit on 12/13/2017.
  */
 
-public class Quizquestionsjson extends Activity {
+public class Quizquestionsjson extends Fragment {
 
     public TextView question_category;
     public TextView currentquizpoints;
@@ -37,6 +33,8 @@ public class Quizquestionsjson extends Activity {
     public Button option2;
     public Button option3;
     public Button option4;
+
+    MainActivity context;
 
     TextView progressBar;
     MyCountDownTimer myCountDownTimer;
@@ -49,6 +47,11 @@ public class Quizquestionsjson extends Activity {
     int totalCount=5;
     boolean isTimerFinished = false;
     static LinkedHashMap lhm = new LinkedHashMap();
+
+    public Quizquestionsjson()
+    {
+
+    }
 
     //Setting the timer of 20 secs per question
     MyCountDownTimer countDownTimer = new MyCountDownTimer(10000 /* 20 Sec */,
@@ -77,20 +80,22 @@ public class Quizquestionsjson extends Activity {
             }
         }
     @Override
-    protected void onCreate(@Nullable    Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.quiztopic);
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
+            savedInstanceState)
+    {
 
+        final View view = inflater.inflate(R.layout.quiztopic, container, false);
+        context = (MainActivity) getActivity();
         // Assigning all the TextViews to the TextViews on the Layout page
-        progressBar=findViewById(R.id.quiztimerbar);
-        questionsatt=findViewById(R.id.questionsattempted);
-        question_category=findViewById(R.id.quiztopic);
-        quiz_question=findViewById(R.id.quizquestions);
-        currentquizpoints=findViewById(R.id.currentquizpoints);
-        option1=findViewById(R.id.option1);
-        option2=findViewById(R.id.option2);
-        option3=findViewById(R.id.option3);
-        option4=findViewById(R.id.option4);
+        progressBar= view.findViewById(R.id.quiztimerbar);
+        questionsatt= view.findViewById(R.id.questionsattempted);
+        question_category= view.findViewById(R.id.quiztopic);
+        quiz_question= view.findViewById(R.id.quizquestions);
+        currentquizpoints= view.findViewById(R.id.currentquizpoints);
+        option1= view.findViewById(R.id.option1);
+        option2= view.findViewById(R.id.option2);
+        option3= view.findViewById(R.id.option3);
+        option4= view.findViewById(R.id.option4);
 
 
         setQuestionView();
@@ -132,7 +137,7 @@ public class Quizquestionsjson extends Activity {
             e.printStackTrace();
         }
 
-
+    return view;
 
     }
 
@@ -150,7 +155,7 @@ public class Quizquestionsjson extends Activity {
         String json = null;
         try {
 
-            InputStream is = getApplication().getAssets().open("questions.json");
+            InputStream is = context.getApplication().getAssets().open("questions.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
