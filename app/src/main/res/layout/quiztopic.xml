@@ -5,137 +5,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/quizlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#2f2828">
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:max="10"/>
+
+    <ImageView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        app:layout_constraintTop_toBottomOf="@id/progressbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/timer"
+        android:layout_margin="10dp"/>
     <TextView
         android:id="@+id/quiztimerbar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:text="20"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/quizquestions"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/colorWhite"
+        android:text="10"
+        android:textSize="20dp"
+        app:layout_constraintTop_toTopOf="@id/timer"
+        app:layout_constraintLeft_toRightOf="@id/timer" />
 
     <TextView
-        android:id="@+id/quiztopic"
+        android:id="@+id/miss"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintTop_toTopOf="@id/timer"
+        app:layout_constraintLeft_toRightOf="@id/quiztimerbar"
+        android:background="@drawable/rectanglemiss"
+        android:text="MS"
+        android:gravity="center"
+        android:textColor="@color/colorGreen"/>
+
+    <TextView
+        android:id="@+id/currentquizmiss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="topic"
-        android:textSize="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:text="0"
+        app:layout_constraintTop_toTopOf="@+id/quiztimerbar"
+        app:layout_constraintLeft_toRightOf="@id/miss"
+        android:layout_marginLeft="5dp"/>
 
     <TextView
-        android:id="@+id/questionsattempted"
-        android:layout_width="85dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="92dp"
-        android:text="No of Questions Attempted"
-        app:layout_constraintBottom_toTopOf="@+id/quizquestions"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/xp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintTop_toTopOf="@id/timer"
+        app:layout_constraintLeft_toRightOf="@id/currentquizmiss"
+        android:background="@drawable/rectangle"
+        android:text="XP"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorRed"/>
 
     <TextView
         android:id="@+id/currentquizpoints"
-        android:layout_width="61dp"
-        android:layout_height="22dp"
-        android:layout_marginBottom="104dp"
-        android:layout_marginRight="48dp"
-        android:ems="10"
-        android:text="Points"
-        app:layout_constraintBottom_toTopOf="@+id/quizquestions"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:text="0"
+        app:layout_constraintTop_toTopOf="@+id/quiztimerbar"
+        app:layout_constraintLeft_toRightOf="@id/xp"
+        android:layout_marginLeft="5dp"/>
+
 
     <TextView
         android:id="@+id/quizquestions"
-        android:layout_width="365dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="20dp"
-        android:textColorHighlight="@color/colorBlack"
+        android:textSize="25dp"
+        android:textColorHighlight="@color/colorWhite"
+        android:textColor="@color/colorWhite"
         android:text="Questions"
-        app:layout_constraintBottom_toTopOf="@+id/option1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/quiztimerbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/option1"
-        android:layout_width="354dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="272dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="80dp"
         android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quizquestions"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="12dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/option2"
-        android:layout_width="354dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/option1"
-         />
+        app:layout_constraintLeft_toLeftOf="@id/option1"
+        app:layout_constraintRight_toRightOf="@id/option1"/>
 
     <Button
         android:id="@+id/option3"
-        android:layout_width="354dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/option2"
+        app:layout_constraintLeft_toLeftOf="@id/option1"
+        app:layout_constraintRight_toRightOf="@id/option1"
          />
 
     <Button
         android:id="@+id/option4"
-        android:layout_width="354dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="8dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/option3"
-         />
-
-    <TextView
-        android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Questions Attempted"
-        android:textAppearance="@android:style/TextAppearance.Material.Caption"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/questionsattempted"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="NewApi"
-        android:layout_marginLeft="8dp" />
+        android:layout_height="80dp"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/option3"
+        app:layout_constraintLeft_toLeftOf="@id/option1"
+        app:layout_constraintRight_toRightOf="@id/option1"
+         />
 </android.support.constraint.ConstraintLayout>

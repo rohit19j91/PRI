@@ -2,12 +2,10 @@ package fr.epita.android.pri;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -23,20 +21,20 @@ import java.util.LinkedHashMap;
  * Created by Rohit on 12/13/2017.
  */
 
-public class Quizquestionsjson extends Fragment {
+public class Quizquestionsjson extends AppCompatActivity {
 
-    public TextView question_category;
+    //public TextView question_category;
     public TextView currentquizpoints;
-    public TextView questionsatt;
+    public TextView questionsMiss;
     public TextView quiz_question;
+    public ProgressBar progressBar;
     public Button option1;
     public Button option2;
     public Button option3;
     public Button option4;
 
-    MainActivity context;
 
-    TextView progressBar;
+    TextView time;
     MyCountDownTimer myCountDownTimer;
     ArrayList<Quizstructure> quizstructure;
     Quizstructure currentQ;
@@ -47,11 +45,6 @@ public class Quizquestionsjson extends Fragment {
     int totalCount=5;
     boolean isTimerFinished = false;
     static LinkedHashMap lhm = new LinkedHashMap();
-
-    public Quizquestionsjson()
-    {
-
-    }
 
     //Setting the timer of 20 secs per question
     MyCountDownTimer countDownTimer = new MyCountDownTimer(10000 /* 20 Sec */,
@@ -65,7 +58,8 @@ public class Quizquestionsjson extends Fragment {
 
         @Override
         public void onTick(long l) {
-            progressBar.setText((l / 1000) + "");
+            time.setText((l / 1000) + "");
+            progressBar.setProgress((int) (l / 1000));
             Log.e("Second Gone", "Another Second Gone");
             Log.e("Time Remaining", "seconds remaining: " + l
                     / 1000);
@@ -76,54 +70,55 @@ public class Quizquestionsjson extends Fragment {
             countDownTimer.cancel();
         //    if (getNextQuestion(false)) {
                 // Start The timer again
-                countDownTimer.start();
+            progressBar.setProgress(10);
+            countDownTimer.start();
             }
         }
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
-            savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.quiztopic, container, false);
-        context = (MainActivity) getActivity();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.quiztopic);
         // Assigning all the TextViews to the TextViews on the Layout page
-        progressBar= view.findViewById(R.id.quiztimerbar);
-        questionsatt= view.findViewById(R.id.questionsattempted);
-        question_category= view.findViewById(R.id.quiztopic);
-        quiz_question= view.findViewById(R.id.quizquestions);
-        currentquizpoints= view.findViewById(R.id.currentquizpoints);
-        option1= view.findViewById(R.id.option1);
-        option2= view.findViewById(R.id.option2);
-        option3= view.findViewById(R.id.option3);
-        option4= view.findViewById(R.id.option4);
+        time = findViewById(R.id.quiztimerbar);
+        questionsMiss = findViewById(R.id.currentquizmiss);
+        //question_category= view.findViewById(R.id.quiztopic);
+        quiz_question = findViewById(R.id.quizquestions);
+        currentquizpoints = findViewById(R.id.currentquizpoints);
+        progressBar = (ProgressBar)findViewById(R.id.progressbar);
+        progressBar.setProgress(10);
+        option1 = findViewById(R.id.option1);
+        option2 = findViewById(R.id.option2);
+        option3 = findViewById(R.id.option3);
+        option4 = findViewById(R.id.option4);
 
 
         setQuestionView();
         countDownTimer.start();
-        quizstructure =new ArrayList<Quizstructure>();
+        quizstructure = new ArrayList<Quizstructure>();
         myCountDownTimer = new MyCountDownTimer(10000, 1000);
         myCountDownTimer.start();
-       // currentQ = quesList.get(qid);
+        // currentQ = quesList.get(qid);
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset());
             JSONArray jArray = obj.getJSONArray("questions");
             qid++;
             for (int i = 0; i < jArray.length(); i++) {
                 JSONObject jo_inside = jArray.getJSONObject(i);
-                JSONArray janswers=jo_inside.getJSONArray("answers");
+                JSONArray janswers = jo_inside.getJSONArray("answers");
 
-                questionsatt.setText(Integer.toString(qid));
+                questionsMiss.setText(Integer.toString(qid));
 
                 String question = jo_inside.getString("question");
-               // String answer = jo_inside.getString("answers");
-                String correct_index=jo_inside.getString("correctIndex");
-                String category_Id=jo_inside.getString("categoryId");
-                String score=jo_inside.getString("score");
-                String categoryname=jo_inside.getString("categoryname");
+                // String answer = jo_inside.getString("answers");
+                String correct_index = jo_inside.getString("correctIndex");
+                String category_Id = jo_inside.getString("categoryId");
+                String score = jo_inside.getString("score");
+                String categoryname = jo_inside.getString("categoryname");
 
 
                 //Setting all the TextViews values from the JSON file
-                question_category.setText(categoryname);
+                //question_category.setText(categoryname);
                 quiz_question.setText(question);
                 currentquizpoints.setText(score);
                 option1.setText(janswers.get(0).toString());
@@ -133,11 +128,9 @@ public class Quizquestionsjson extends Fragment {
             }
 
 
-        }  catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
-    return view;
 
     }
 
@@ -155,7 +148,7 @@ public class Quizquestionsjson extends Fragment {
         String json = null;
         try {
 
-            InputStream is = context.getApplication().getAssets().open("questions.json");
+            InputStream is = getApplication().getAssets().open("questions.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
