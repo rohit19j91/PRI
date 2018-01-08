@@ -97,6 +97,8 @@
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMail" ></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".ChangeMobile"></activity>
         <activity android:theme="@style/AppTheme.Teal" android:name=".Quiztopic"></activity>
+        <activity android:theme="@style/AppTheme.Teal" android:name=".Quizquestionsjson"></activity>
+        <activity android:theme="@style/AppTheme.Teal" android:name=".StartQuiz"></activity>
   <!--      <activity android:theme="@style/AppTheme.Teal" android:name=".Quizquestionsjson"></activity> -->
 
 
