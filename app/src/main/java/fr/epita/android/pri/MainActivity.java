@@ -25,7 +25,7 @@ import fr.epita.android.pri.Fragments.CustomViewpagerAdapter;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     protected NavigationView navigationView;
-    private DrawerLayout drawer;
+    public DrawerLayout drawer;
     private View navHeader;
     private ImageView imageHeader;
     public TextView txtLogin;
@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_game:
-                display_fragment(10);
-                drawer.closeDrawer(GravityCompat.START);
+                Intent intent = new Intent(MainActivity.this, StartQuiz.class);
+                startActivity(intent);
                 return true;
             case R.id.nav_computers:
                 display_fragment(4);
@@ -241,11 +241,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 customViewpagerAdapter.stack.push(9);
                 //navigationView.getMenu().getItem(4).setChecked(true); mettre à jour une fois intégré dans le menu
                 viewpagerAdapter.setCurrentItem(9, false);
-                break;
-            case 10:
-                setTitle("Quizz game");
-                customViewpagerAdapter.stack.push(10);
-                viewpagerAdapter.setCurrentItem(10, false);
                 break;
             default:
                 break;

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.Stack;
 
 import fr.epita.android.pri.Quizquestionsjson;
+import fr.epita.android.pri.StartQuiz;
 
 /**
  * Created by sadekseridj on 06/12/2017.
@@ -14,7 +15,7 @@ import fr.epita.android.pri.Quizquestionsjson;
 
 public class CustomViewpagerAdapter extends FragmentPagerAdapter {
 
-    private static final int nb_pages = 11;
+    private static final int nb_pages = 10;
 
     public ChangeMail changeMail;
     ChangeMobile changeMobile;
@@ -27,6 +28,7 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
     public News news;
     public SignNews signNews;
     public Quizquestionsjson quizquestionsjson;
+    public StartQuiz startQuiz;
     public Stack<Integer> stack;
 
 
@@ -45,6 +47,7 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
         news = new News();
         signNews = new SignNews();
         quizquestionsjson = new Quizquestionsjson();
+        startQuiz = new StartQuiz();
         stack = new Stack<>();
 
     }
@@ -75,8 +78,6 @@ public class CustomViewpagerAdapter extends FragmentPagerAdapter {
                 return news;
             case 9:
                 return signNews;
-            case 10:
-                return quizquestionsjson;
             default:
                 return null;
         }
