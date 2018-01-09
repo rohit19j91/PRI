@@ -1,9 +1,13 @@
 package fr.epita.android.pri;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,20 +18,18 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
  * Created by Rohit on 12/13/2017.
  */
 
-public class Quizquestionsjson extends AppCompatActivity {
+public class Quizquestionsjson extends AppCompatActivity implements View.OnClickListener{
 
     //public TextView question_category;
-    public TextView currentquizpoints;
     public TextView questionsMiss;
     public TextView quiz_question;
     public ProgressBar progressBar;
+    public TextView textXp;
     public Button option1;
     public Button option2;
     public Button option3;
@@ -36,21 +38,26 @@ public class Quizquestionsjson extends AppCompatActivity {
 
     TextView time;
     MyCountDownTimer myCountDownTimer;
-    ArrayList<Quizstructure> quizstructure;
-    Quizstructure currentQ;
-    boolean nextFlag =false;
-    public static int score,correct,wrong,wronganswers;
+    //ArrayList<Quizstructure> quizstructure;
+    //Quizstructure currentQ;
+    //boolean nextFlag =false;
+    //public static int score,correct,wrong,wronganswers;
     public boolean isCorrect;
     static int qid=0;
+    String goodAnswer;
+    int scoreQuestion = 0;
+    int xp = 0;
+    int misses = 0;
+    int correctIndex;
     int totalCount=5;
-    boolean isTimerFinished = false;
-    static LinkedHashMap lhm = new LinkedHashMap();
+    //boolean isTimerFinished = false;
+    //static LinkedHashMap lhm = new LinkedHashMap();
 
     //Setting the timer of 20 secs per question
     MyCountDownTimer countDownTimer = new MyCountDownTimer(10000 /* 20 Sec */,
             1000);
 
-// Creating the Countdown timer class for getting the timer for each question
+    // Creating the Countdown timer class for getting the timer for each question
     public class MyCountDownTimer extends CountDownTimer {
         public MyCountDownTimer(long startTime, long interval) {
             super(startTime, interval);
@@ -68,12 +75,20 @@ public class Quizquestionsjson extends AppCompatActivity {
         public void onFinish() {
             Log.e("Times up", "Times up");
             countDownTimer.cancel();
-        //    if (getNextQuestion(false)) {
-                // Start The timer again
-            progressBar.setProgress(10);
-            countDownTimer.start();
-            }
+            misses++;
+            questionsMiss.setText(Integer.toString(misses));
+            selectGoodAnswer();
+            qid++;
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setQuestion(qid);
+                }
+            }, 2000);
         }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -84,64 +99,78 @@ public class Quizquestionsjson extends AppCompatActivity {
         questionsMiss = findViewById(R.id.currentquizmiss);
         //question_category= view.findViewById(R.id.quiztopic);
         quiz_question = findViewById(R.id.quizquestions);
-        currentquizpoints = findViewById(R.id.currentquizpoints);
-        progressBar = (ProgressBar)findViewById(R.id.progressbar);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar);
         progressBar.setProgress(10);
+        textXp = (TextView) findViewById(R.id.currentquizpoints);
+        textXp.setText(String.valueOf(xp));
         option1 = findViewById(R.id.option1);
+        option1.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+        option1.setOnClickListener(this);
         option2 = findViewById(R.id.option2);
+        option2.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+        option2.setOnClickListener(this);
         option3 = findViewById(R.id.option3);
+        option3.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+        option3.setOnClickListener(this);
         option4 = findViewById(R.id.option4);
+        option4.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+        option4.setOnClickListener(this);
 
-
-        setQuestionView();
-        countDownTimer.start();
-        quizstructure = new ArrayList<Quizstructure>();
-        myCountDownTimer = new MyCountDownTimer(10000, 1000);
-        myCountDownTimer.start();
+        //quizstructure = new ArrayList<Quizstructure>();
         // currentQ = quesList.get(qid);
+        myCountDownTimer = new MyCountDownTimer(10000, 1000);
+        setQuestion(qid);
+    }
+
+    public void setQuestion(int i)
+    {
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset());
             JSONArray jArray = obj.getJSONArray("questions");
-            qid++;
-            for (int i = 0; i < jArray.length(); i++) {
-                JSONObject jo_inside = jArray.getJSONObject(i);
-                JSONArray janswers = jo_inside.getJSONArray("answers");
+            //for (int i = 0; i < jArray.length(); i++) {
+            JSONObject jo_inside = jArray.getJSONObject(i);
+            JSONArray janswers = jo_inside.getJSONArray("answers");
 
-                questionsMiss.setText(Integer.toString(qid));
+            String question = jo_inside.getString("question");
+            // String answer = jo_inside.getString("answers");
 
-                String question = jo_inside.getString("question");
-                // String answer = jo_inside.getString("answers");
-                String correct_index = jo_inside.getString("correctIndex");
-                String category_Id = jo_inside.getString("categoryId");
-                String score = jo_inside.getString("score");
-                String categoryname = jo_inside.getString("categoryname");
+            correctIndex = Integer.valueOf(jo_inside.getString("correctIndex"));
+            goodAnswer = janswers.get(correctIndex).toString();
+            String category_Id = jo_inside.getString("categoryId");
+            scoreQuestion = Integer.valueOf(jo_inside.getString("score"));
+            String categoryname = jo_inside.getString("categoryname");
 
+            //Setting all the TextViews values from the JSON file
+            //question_category.setText(categoryname);
+            quiz_question.setText(question);
+            //currentquizpoints.setText(score);
+            option1.setText(janswers.get(0).toString());
+            option1.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+            option2.setText(janswers.get(1).toString());
+            option2.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+            option3.setText(janswers.get(2).toString());
+            option3.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
+            option4.setText(janswers.get(3).toString());
+            option4.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
 
-                //Setting all the TextViews values from the JSON file
-                //question_category.setText(categoryname);
-                quiz_question.setText(question);
-                currentquizpoints.setText(score);
-                option1.setText(janswers.get(0).toString());
-                option2.setText(janswers.get(1).toString());
-                option3.setText(janswers.get(2).toString());
-                option4.setText(janswers.get(3).toString());
-            }
-
-
+            progressBar.setProgress(10);
+            countDownTimer.start();
+            //   }
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-
     }
 
-    private void setQuestionView() {
-  /*      quiz_question.setText(currentQ.getQUESTION());
-        option1.setText(currentQ.getOPTA());
-        option2.setText(currentQ.getOPTB());
-        option3.setText(currentQ.getOPTC());
-        option4.setText(currentQ.getOPTC());
-*/
-    }
+}
+
+   /* private void setQuestionView(int qid) {
+
+        quiz_question.setText(quizstructure.get(qid).getQuestion());
+        option1.setText(quizstructure.get(qid).getAnswers()[0]);
+        option2.setText(quizstructure.get(qid).getAnswers()[1]);
+        option3.setText(quizstructure.get(qid).getAnswers()[2]);
+        option4.setText(quizstructure.get(qid).getAnswers()[3]);
+
+    }*/
 
 
     private String loadJSONFromAsset() {
@@ -160,9 +189,81 @@ public class Quizquestionsjson extends AppCompatActivity {
         }
         return json;
     }
-    boolean getNextQuestion(boolean timeIsUp){
+
+    public void selectGoodAnswer()
+    {
+        switch (correctIndex) {
+            case 0:
+                option1.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                break;
+            case 1:
+                option2.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                break;
+            case 2:
+                option3.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                break;
+            case 3:
+                option4.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                break;
+            default:
+                break;
+        }
+    }
+    public void setScore(Button option)
+    {
+        countDownTimer.cancel();
+        selectGoodAnswer();
+        if (option.getText().toString().equals(goodAnswer)) {
+            xp += scoreQuestion;
+            textXp.setText(String.valueOf(xp));
+        }
+        if (!option.getText().toString().equals(goodAnswer)) {
+            misses += 1;
+            questionsMiss.setText(Integer.toString(misses));
+            option.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+        }
+        if (qid == 5)
+        {
+            // afficher la page de fin de partie
+        }
+
+        qid++;
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setQuestion(qid);
+            }
+        }, 2000);
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId())
+        {
+            case R.id.option1:
+                setScore(option1);
+                break;
+            case R.id.option2:
+                setScore(option2);
+                break;
+            case R.id.option3:
+                setScore(option3);
+                break;
+            case R.id.option4:
+                setScore(option4);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+  /*  boolean getNextQuestion(boolean timeIsUp){
         nextFlag = true;
-/*
+
         if(option1.isPressed()||option2.isPressed()||option3.isPressed()||option4.isPressed()){
             qid++;
 
@@ -192,8 +293,8 @@ public class Quizquestionsjson extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),
                     "Please select atleast one Option",Toast.LENGTH_SHORT).show();
         }
-*/
+
         return true;
 
-    }
+    }*/
 }

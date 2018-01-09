@@ -12,6 +12,7 @@ private int correct_index;
 private int category_id;
 private String category_name;
 private int score;
+private String goodAnswer;
 
     public Quizstructure() {
     }
@@ -21,6 +22,10 @@ private int score;
     public String getQuestion() {
         return question;
     }
+
+    public String getGoodAnswer() { return goodAnswer; }
+
+    public void setGoodAnswer(String goodAnswer) { this.goodAnswer = goodAnswer; }
 
     public void setQuestion(String question) {
         this.question = question;
