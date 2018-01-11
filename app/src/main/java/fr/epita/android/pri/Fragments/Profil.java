@@ -56,6 +56,7 @@ public class Profil extends Fragment implements View.OnClickListener{
         name.setText(name.getText().toString().substring(0,1).toUpperCase() + name.getText().toString().substring(1));
         email.setText(LoginActivity.rl.getEmail());
         mobile.setText(LoginActivity.rl.getMob());
+        score.setText(String.valueOf(LoginActivity.rl.getScore()));
     }
 
     @Override

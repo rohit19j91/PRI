@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_game:
-                Intent intent = new Intent(MainActivity.this, StartQuiz.class);
+                Intent intent = new Intent(MainActivity.this, ChooseTopic.class);
                 startActivity(intent);
                 return true;
             case R.id.nav_computers:

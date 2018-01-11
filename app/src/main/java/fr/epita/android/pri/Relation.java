@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class Relation implements Serializable{
 
-    int id, sexe;
+    int id, sexe, score;
     String mob, email,name,login,pass, dob;
     Uri uri;
     private boolean isLogged = false;
@@ -80,4 +80,8 @@ public class Relation implements Serializable{
     public int getSexe() { return this.sexe; }
 
     public void setSexe(int s) { this.sexe = s; }
+
+    public int getScore() { return this.score; }
+
+    public void setScore(int score) { this.score = score; }
 }

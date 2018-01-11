@@ -16,7 +16,7 @@ import fr.epita.android.pri.Tools.PasswordFunctions;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION=2;
+    private static final int DATABASE_VERSION=3;
     private static final String DATABASE_NAME="pri-v1.db";
     private static final String TABLE_NAME="customer";
     private static final String COLUMN_ID="id";
@@ -28,6 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_SEXE = "sexe";
     private static final String COLUMN_DOB = "dob";
     private static final String COLUMN_PICTURE="picture";
+    private static final String COLUMN_SCORE="score";
 
     private static final String TABLE_CREATE="create table "+ TABLE_NAME +" (id integer primary key autoincrement," +
             " name text, email text not null, login text not null," +
@@ -35,7 +36,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             " mobile text not null," +
             " sexe int not null," +
             " dob date text null," +
-            " picture text);";
+            " picture text," +
+            " score int)";
 
     SQLiteDatabase db;
 
@@ -71,6 +73,7 @@ public DatabaseHandler(Context context)
         val.put(COLUMN_SEXE,r.getSexe());
         val.put(COLUMN_DOB,r.getDob());
         val.put(COLUMN_PICTURE, (r.getUri() == null) ? "" : r.getUri().toString());
+        val.put(COLUMN_SCORE, r.getScore());
 
     db.insert(TABLE_NAME,null,val);
         Log.d("Database Operation","Values inserted successfully");
@@ -98,6 +101,7 @@ public DatabaseHandler(Context context)
             rl.setSexe(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_SEXE))));
             rl.setDob(cursor.getString(cursor.getColumnIndex(COLUMN_DOB)));
             rl.setUri(Uri.parse(cursor.getString(cursor.getColumnIndex(COLUMN_PICTURE))));
+            rl.setScore(cursor.getInt(cursor.getColumnIndex(COLUMN_SCORE)));
             cursor.close();
             db.close();
             return rl;
@@ -217,6 +221,34 @@ public DatabaseHandler(Context context)
         db.close();
     }
 
+    public int find_score(String login)
+    {
+        db = this.getReadableDatabase();
+        String find_score = "SELECT " + COLUMN_SCORE + " FROM " + TABLE_NAME + " WHERE login = ?";
+        int score = -1;
+        Cursor cursor = db.rawQuery(find_score, new String[]{login});
+        if (cursor.moveToFirst())
+        {
+            score = cursor.getInt(cursor.getColumnIndex(COLUMN_SCORE));
+            cursor.close();
+            db.close();
+            return score;
+        }
+        cursor.close();
+        db.close();
+        return score;
+
+    }
+    public void updateScore(String login, int score)
+    {
+        int prev_score = find_score(login);
+        int new_score = prev_score + score;
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_SCORE, new_score);
+        db.update(TABLE_NAME, values, COLUMN_LOGIN + " = ?", new String[]{login});
+        db.close();
+    }
 
     public Cursor getAllData()
     {

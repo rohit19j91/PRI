@@ -164,6 +164,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     LoginActivity.rl.setUri(null);
                     LoginActivity.rl.setDob(date_birth);
                     LoginActivity.rl.setSexe(sexe);
+                    LoginActivity.rl.setScore(0);
 
                     dh.insertdata(LoginActivity.rl);
 

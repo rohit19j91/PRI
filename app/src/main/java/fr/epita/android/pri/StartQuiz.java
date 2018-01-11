@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by sadekseridj on 08/01/2018.
@@ -13,16 +14,22 @@ import android.widget.Button;
 public class StartQuiz extends AppCompatActivity implements View.OnClickListener {
 
     private Button start;
-    private DatabaseHandler dh = null;
+    private TextView topic;
+    String titleTopic = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startquiz);
-        dh = new DatabaseHandler(this);
         start = (Button) findViewById(R.id.start);
         start.setOnClickListener(this);
+        topic = (TextView) findViewById(R.id.quiztopic);
+
+        Intent intent = getIntent();
+        if (intent != null)
+            titleTopic = intent.getStringExtra("TOPIC");
+        topic.setText(titleTopic);
     }
 
 
@@ -32,6 +39,7 @@ public class StartQuiz extends AppCompatActivity implements View.OnClickListener
         {
             case R.id.start:
                 Intent intent = new Intent(StartQuiz.this, Quizquestionsjson.class);
+                intent.putExtra("TOPIC", titleTopic);
                 startActivity(intent);
                 break;
             default :

@@ -1,5 +1,6 @@
 package fr.epita.android.pri;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -43,12 +44,13 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
     //boolean nextFlag =false;
     //public static int score,correct,wrong,wronganswers;
     public boolean isCorrect;
-    static int qid=0;
+    int qid=0;
     String goodAnswer;
     int scoreQuestion = 0;
     int xp = 0;
     int misses = 0;
     int correctIndex;
+    String titleTopic = "";
     int totalCount=5;
     //boolean isTimerFinished = false;
     //static LinkedHashMap lhm = new LinkedHashMap();
@@ -116,6 +118,10 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
         option4.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.MULTIPLY);
         option4.setOnClickListener(this);
 
+        Intent intent = getIntent();
+        if (intent != null)
+            titleTopic = intent.getStringExtra("TOPIC");
+
         //quizstructure = new ArrayList<Quizstructure>();
         // currentQ = quesList.get(qid);
         myCountDownTimer = new MyCountDownTimer(10000, 1000);
@@ -128,7 +134,29 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
             JSONObject obj = new JSONObject(loadJSONFromAsset());
             JSONArray jArray = obj.getJSONArray("questions");
             //for (int i = 0; i < jArray.length(); i++) {
+            if (i >= jArray.length())
+            {
+                Intent intent = new Intent(Quizquestionsjson.this, FinishTopic.class);
+                intent.putExtra("TOPIC", titleTopic);
+                intent.putExtra("SCORE", xp);
+                startActivity(intent);
+            }
             JSONObject jo_inside = jArray.getJSONObject(i);
+            String categoryname = jo_inside.getString("categoryname");
+            while (! categoryname.equalsIgnoreCase(titleTopic))
+            {
+                i++;
+                qid++;
+                if (i >= jArray.length())
+                {
+                    Intent intent = new Intent(Quizquestionsjson.this, FinishTopic.class);
+                    intent.putExtra("TOPIC", titleTopic);
+                    intent.putExtra("SCORE", xp);
+                    startActivity(intent);
+                }
+                jo_inside = jArray.getJSONObject(i);
+                categoryname = jo_inside.getString("categoryname");
+            }
             JSONArray janswers = jo_inside.getJSONArray("answers");
 
             String question = jo_inside.getString("question");
@@ -138,7 +166,7 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
             goodAnswer = janswers.get(correctIndex).toString();
             String category_Id = jo_inside.getString("categoryId");
             scoreQuestion = Integer.valueOf(jo_inside.getString("score"));
-            String categoryname = jo_inside.getString("categoryname");
+
 
             //Setting all the TextViews values from the JSON file
             //question_category.setText(categoryname);
@@ -224,7 +252,10 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
         }
         if (qid == 5)
         {
-            // afficher la page de fin de partie
+            Intent intent = new Intent(Quizquestionsjson.this, FinishTopic.class);
+            intent.putExtra("TOPIC", titleTopic);
+            intent.putExtra("SCORE", xp);
+            startActivity(intent);
         }
 
         qid++;
