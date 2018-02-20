@@ -163,7 +163,7 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
             // String answer = jo_inside.getString("answers");
 
             correctIndex = Integer.valueOf(jo_inside.getString("correctIndex"));
-            goodAnswer = janswers.get(correctIndex).toString();
+            goodAnswer = janswers.get(correctIndex - 1).toString();
             String category_Id = jo_inside.getString("categoryId");
             scoreQuestion = Integer.valueOf(jo_inside.getString("score"));
 
@@ -220,7 +220,7 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
 
     public void selectGoodAnswer()
     {
-        switch (correctIndex) {
+        switch (correctIndex - 1) {
             case 0:
                 option1.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
                 break;
@@ -249,6 +249,7 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
             misses += 1;
             questionsMiss.setText(Integer.toString(misses));
             option.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+            //selectGoodAnswer();
         }
         if (qid == 5)
         {
@@ -264,6 +265,7 @@ public class Quizquestionsjson extends AppCompatActivity implements View.OnClick
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                System.out.println("HEEEEERE");
                 setQuestion(qid);
             }
         }, 2000);

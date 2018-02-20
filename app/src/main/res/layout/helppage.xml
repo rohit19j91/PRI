@@ -1,7 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Cybit application"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/what"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:text="What is it ?"/>
+    <TextView
+        android:id="@+id/what2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/what"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:text="SOME TEXT HERE"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/how"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/what2"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:text="How to use it ?"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/how2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/how"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:text="SOME TEXT HERE"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/quizz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/how2"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Quii part"/>
+    <TextView
+        android:id="@+id/quizz2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/quizz"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:layout_marginTop="10dp"
+        android:text="SOME TEXT HERE"/>
+
+    <TextView
+        android:id="@+id/authors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/quizz2"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="AUTHORS"/>
+    <TextView
+        android:id="@+id/authors2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/authors"
+        app:layout_constraintLeft_toLeftOf="@id/what"
+        android:layout_marginTop="10dp"
+        android:text="Alain, Rohit, Mourad, Ibrahima, Eymerick, Sadek"/>
 
 </android.support.constraint.ConstraintLayout>
