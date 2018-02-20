@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 6:
                 setTitle("My news");
                 customViewpagerAdapter.stack.push(8);
-                navigationView.getMenu().getItem(5).setChecked(true);
+                navigationView.getMenu().getItem(4).setChecked(true);
                 viewpagerAdapter.setCurrentItem(8, false);
                 break;
             case 7:
@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 8:
                 setTitle("Sign for news");
                 customViewpagerAdapter.stack.push(9);
-                navigationView.getMenu().getItem(6).setChecked(true);
+                navigationView.getMenu().getItem(5).setChecked(true);
                 //navigationView.getMenu().getItem(4).setChecked(true); mettre à jour une fois intégré dans le menu
                 viewpagerAdapter.setCurrentItem(9, false);
                 break;
