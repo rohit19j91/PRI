@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<TextView
+    android:id="@+id/aboutustxtview"
+    android:layout_width="357dp"
+    android:layout_height="57dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="16dp"
+    android:text="About us "
+    android:textColor="@color/colorPrimary"
+    android:textSize="30sp"
+    android:textStyle="bold|italic"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/aboutusedttxt"
+        android:layout_width="359dp"
+        android:layout_height="478dp"
+        android:autoSizeTextType="uniform"
+        android:inputType="textPersonName"
+        android:text="@string/descriptionabt"
+        android:textSize="8sp"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="82dp"
+        tools:ignore="MissingConstraints" />
+
+
+</android.support.constraint.ConstraintLayout>

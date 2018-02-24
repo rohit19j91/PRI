@@ -22,49 +22,30 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:textStyle="bold"
-        android:text="What is it ?"/>
+        android:text="What is Cybit?"/>
     <TextView
         android:id="@+id/what2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/what"
         app:layout_constraintLeft_toLeftOf="@id/what"
-        android:text="SOME TEXT HERE"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/how"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/what2"
-        app:layout_constraintLeft_toLeftOf="@id/what"
-        android:text="How to use it ?"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"/>
-    <TextView
-        android:id="@+id/how2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/how"
-        app:layout_constraintLeft_toLeftOf="@id/what"
-        android:text="SOME TEXT HERE"
+        android:text="Cybit is a cybersecurity awareness application which helps the user to keep a track of its computer in a funny but attentive way.It connects with you PC or laptop and helps you get the security status of your laptop via a character on your mobile application. The health of your character will define the status of your computer. It’s a pretty handy application which can be used on the go as well. To educate the user on the security issues there are different types of quizzes which can be played after creating your own account."
         android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/quizz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/how2"
+        app:layout_constraintTop_toBottomOf="@id/what2"
         app:layout_constraintLeft_toLeftOf="@id/what"
         android:layout_marginTop="20dp"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:text="Quii part"/>
+        android:text="Application Map"/>
     <TextView
         android:id="@+id/quizz2"
         android:layout_width="wrap_content"
@@ -72,7 +53,12 @@
         app:layout_constraintTop_toBottomOf="@id/quizz"
         app:layout_constraintLeft_toLeftOf="@id/what"
         android:layout_marginTop="10dp"
-        android:text="SOME TEXT HERE"/>
+        android:text="Login Page: Helps you create account and login
+        \nHome Page: Shows the Tamagotchi health and character based on the computer health.
+        \nProfile Page: Helps you update your profile and password
+        \nQuiz Game: Helps you to upgrade your cybersecurity knowledge by indulging you in a quiz game.
+        \nMy Computers: Displays the number of devices you have and which one are you connected to.
+        \nNews: Displays all the links and channels which you can subscribe based on your taste. "/>
 
     <TextView
         android:id="@+id/authors"
@@ -83,7 +69,7 @@
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:text="AUTHORS"/>
+        android:text="Cybit Team"/>
     <TextView
         android:id="@+id/authors2"
         android:layout_width="wrap_content"
@@ -91,6 +77,12 @@
         app:layout_constraintTop_toBottomOf="@id/authors"
         app:layout_constraintLeft_toLeftOf="@id/what"
         android:layout_marginTop="10dp"
-        android:text="Alain, Rohit, Mourad, Ibrahima, Eymerick, Sadek"/>
-
+        android:text="Rohit, Mourad, Alain, Jad, Sadek, Ibrahima, Eymerick"/>
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/authors2"
+        android:layout_marginTop="10dp"
+        android:text="Version 1.0"/>
 </android.support.constraint.ConstraintLayout>

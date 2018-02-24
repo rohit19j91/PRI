@@ -42,27 +42,13 @@ public class SignNews extends Fragment implements View.OnClickListener{
 
         // aller chercher les news dans la bdd une fois que c'est pret et cocher les cases dont l'user est abonné
         allNews = new ArrayList<>();
-        allNews.add("News 1");
-        allNews.add("News 2");
-        allNews.add("News 3");
-        allNews.add("News 4");
-        allNews.add("News 5");
-        allNews.add("News 6");
-        allNews.add("News 7");
-        allNews.add("News 8");
-        allNews.add("News 9");
-        allNews.add("News 10");
-        allNews.add("News 11");
-        allNews.add("News 12");
-        allNews.add("News 12");
-        allNews.add("News 13");
-        allNews.add("News 14");
-        allNews.add("News 15");
-        allNews.add("News 16");
-        allNews.add("News 17");
-        allNews.add("News 18");
-        allNews.add("News 19");
-        allNews.add("News 20");
+        allNews.add("Samsung Phone Updates");
+        allNews.add("Apple Phone Updates");
+        allNews.add("Cybersecurity News");
+        allNews.add("Latest News");
+        allNews.add("New Technologies");
+        allNews.add("Security Issues");
+        allNews.add("Programming Languages");
 
 
 

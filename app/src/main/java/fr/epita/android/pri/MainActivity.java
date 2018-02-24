@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_about_us:
-                display_fragment(5);
+                display_fragment(10);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_logout:
