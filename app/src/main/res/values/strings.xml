@@ -48,38 +48,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="descriptionabt">
-         <![CDATA[
-        What is Cybit? Cybit is a cybersecurity awareness application
-        which helps the user to keep a track of its computer in a funny
-        but attentive way.It connects with you PC or laptop and helps
-        you get the security status of your laptop via a character on
-        your mobile application. The health of your character will
-        define the status of your computer. It’s a pretty handy
-        application which can be used on the go as well. To educate
-        the user on the security issues there are different types of
-        quizzes which can be played after creating your own account.
 
-        Cybit Team We are team of
-        7 students from EPITA college in Paris working together to make the world aware about
-        cybersecurity.
-        Rohit Chauhan
-        Mourad Melki
-        Alain Khoury
-        Jad Karaki
-        Sadek Seridj
-        Ibrahima Toure
-        Eymerick Laloupo
-
-        Application Map
-        Login Page: Helps you create account and login
-        Home Page: Shows the Tamagotchi health and character based on the computer health.
-        Profile Page: Helps you update your profile and password
-        Quiz Game: Helps you to upgrade your cybersecurity knowledge by indulging you in a quiz game.
-        My Computers: Displays the number of devices you have and which one are you connected to.
-        News: Displays all the links and channels which you can subscribe based on your taste.
-
-        Version 1.0
-         ]]>
-        </string>
 </resources>

@@ -35,7 +35,7 @@
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    Button loginbut,viewall;
+    Button loginbut;
     EditText login, password;
     TextView forgot, signup;
     CheckBox rememberMe;
@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         login = (EditText) findViewById(R.id.editloginconnex);
         password = (EditText) findViewById(R.id.editpassconnex);
         rememberMe = (CheckBox) findViewById(R.id.rememberme);
-        viewall = (Button) findViewById(R.id.showall);
         forgot = (TextView) findViewById(R.id.forgotpass);
         signup = (TextView) findViewById(R.id.signup);
         fbloginbut = (LoginButton) findViewById(R.id.facebook_login);
@@ -184,18 +183,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 }
             }
         });
-
-        viewall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-               //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                //intent.putExtra("FRAGMENT", 10);
-               //startActivity(intent);
-            }
-        });
-
-
 
     }
 

@@ -153,8 +153,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 display_fragment(4);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
-            case R.id.nav_notifications:
-                return true;
             case R.id.nav_mynews:
                display_fragment(6);
                 drawer.closeDrawer(GravityCompat.START);
@@ -170,12 +168,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_about_us:
-                display_fragment(10);
+                display_fragment(5);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             case R.id.nav_logout:
-               Intent intent_nav = new Intent(MainActivity.this, LoginActivity.class);
-               startActivity(intent_nav);
+               // navigationView.getMenu().getItem(2).setChecked(true);
+                Intent intent2 = new Intent(MainActivity.this, SignIn.class);
+                startActivity(intent2);
                 return true;
             default:
                 return false;

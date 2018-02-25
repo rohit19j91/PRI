@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Rohit on 12/14/2017.
@@ -38,7 +40,10 @@ Context context;
         holder.quizquestions=(TextView)convertView.findViewById(R.id.quizquestions);
         holder.quiztopic=(TextView)convertView.findViewById(R.id.quiztopic);
       //  holder.currentquizpoints=(TextView)convertView.findViewById(R.id.quizpointlabel);
-        //holder.option1=(TextView)convertView.findViewById(R.id.option1);
+        //holder.option1=(TextView)convertView.findViewById(R.id.option1);\
+        //HashSet hs = new HashSet();
+        //hs.addAll(arraylistquestion);
+        //arraylistquestion.addAll(hs);
         holder.quiztopic.setText(arraylistquestion.get(position).getCategory_name());
         holder.quizquestions.setText(arraylistquestion.get(position).getQuestion());
         holder.currentquizpoints.setText(arraylistquestion.get(position).getScore());

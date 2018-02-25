@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by sadekseridj on 10/01/2018.
@@ -28,7 +29,7 @@ public class CustomListViewTopics extends BaseAdapter {
     public int getCount() { return listTopics.size(); }
 
     @Override
-    public Object getItem(int i) { return listTopics.get(i); }
+    public Object getItem(int i) { return listTopics.iterator().next(); }
 
     @Override
     public long getItemId(int i) { return i; }

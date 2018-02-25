@@ -82,7 +82,6 @@
         android:id="@+id/forgotpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordtext"
         app:layout_constraintTop_toTopOf="@id/rememberme"
         app:layout_constraintLeft_toRightOf="@id/rememberme"
         android:layout_marginTop="7dp"
@@ -96,14 +95,14 @@
 
     <Button
         android:id="@+id/loginbutton"
-        android:layout_width="0dp"
+        style="@style/ButtonStyle.Colored.NoRaise"
+        android:layout_width="171dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rememberme"
-        app:layout_constraintLeft_toLeftOf="@id/inputloginconnex"
-        app:layout_constraintRight_toLeftOf="@id/guide"
+        android:layout_marginTop="24dp"
         android:text="@string/loginbutton"
-        android:layout_marginTop="20dp"
-        style="@style/ButtonStyle.Colored.NoRaise"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rememberme" />
 
     <TextView
         android:id="@+id/signup"
@@ -136,15 +135,5 @@
         app:layout_constraintLeft_toLeftOf="@id/guide"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
-
-    <Button
-        android:id="@+id/showall"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/loginbutton"
-        app:layout_constraintLeft_toRightOf="@id/guide"
-        app:layout_constraintRight_toRightOf="@id/inputloginconnex"
-        android:text="ShowAll"
-        style="@style/ButtonStyle.Colored.NoRaise"/>
 
 </android.support.constraint.ConstraintLayout>

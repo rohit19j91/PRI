@@ -12,6 +12,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by sadekseridj on 10/01/2018.
@@ -33,6 +36,13 @@ public class ChooseTopic extends AppCompatActivity
 
         listViewTopics = (ListView) findViewById(R.id.listtopics);
         emptyListTopics = (TextView) findViewById(R.id.emptylisttopics);
+        //List<String> al = new ArrayList<>();
+// add elements to al, including duplicates
+       // Set<String> hs = new HashSet<>();
+        /*Issues is here!*/ // hs.addAll(fillListTopics());
+/*Issues is here!*/  //      for(String s: hs){System.out.println(s);}
+/*Issues is here!*/    //    listTopics.clear();
+       // listTopics.addAll(hs);
         listTopics = fillListTopics();
 
         CustomListViewTopics customListViewTopics = new CustomListViewTopics(this, listTopics);
@@ -62,14 +72,16 @@ public class ChooseTopic extends AppCompatActivity
     public ArrayList<String> fillListTopics()
     {
         ArrayList<String> list = new ArrayList<>();
+     //   HashSet<String> list=new HashSet<String>();
 
         try {
+            int present=0;
             JSONObject obj = new JSONObject(loadJSONFromAsset());
             JSONArray jArray = obj.getJSONArray("questions");
             for (int i = 0; i < jArray.length(); i++) {
                 JSONObject jo_inside = jArray.getJSONObject(i);
                 String categoryname = jo_inside.getString("categoryname");
-                list.add(categoryname);
+            list.add(categoryname);
             }
 
         } catch (JSONException e) {
